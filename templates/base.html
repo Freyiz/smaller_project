@@ -1,0 +1,16 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+    {{ super() }}
+    <title>{% block title %}关于{% endblock %}</title>
+    <style>
+        a {text-decoration: none; color: #46abe0;}
+        body {background-image: url("http://pic.qiantucdn.com/58pic/15/96/56/23V58PICyXp_1024.jpg")}
+    </style>
+{% endblock %}
+
+{% block navbar %}
+    {{ nav.top.render() }}
+{% endblock %}
+
+

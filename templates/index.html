@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ super() }}
+    <title>{% block title %}主页{% endblock %}</title>
+    <style>ul {color:darkslategray}</style>
+{% endblock %}
+
+{% block content %}
+    <ul class="container" type="circle">
+        <li >{{ text|safe }}</li>
+        <li>{{ body|md|safe }}</li>
+        <li>{{ read_md('text.txt')|md|safe }}</li>
+        <li><h4><i>你好，旅行者</i></h4></li>
+    </ul>
+{% endblock %}
+
+

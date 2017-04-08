@@ -1,0 +1,14 @@
+{% set links=[
+    ('Index', url_for('.index')),
+    ('Login', url_for('.login')),
+    ('upload', url_for('.upload')),
+    ('Attack', url_for('.attack')),
+    ('Base', url_for('.base')),
+    ('About', url_for('.about')),
+] %}
+<nav>
+    {% for label,href in links %}
+        {% if not loop.first %}|{% endif %}
+            <a class='tags' href="{% if href is current_link %}#{% else %}{{ href }}{% endif %}">{{ label }}</a>
+    {% endfor %}
+</nav>
