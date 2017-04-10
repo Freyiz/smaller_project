@@ -1,7 +1,6 @@
-from flask import render_template, request, send_from_directory
+from flask import render_template, send_from_directory
+from config import Config
 from . import main
-from ..config import Config
-import os
 
 
 @main.route('/')
@@ -12,38 +11,6 @@ def index():
 @main.route('/about')
 def about():
     return render_template("about.html", img_path=r'%s\bg.jpg' % Config.UPLOAD_FOLDER)
-
-
-@main.route('/attack')
-def attack():
-    return render_template('attack.html')
-
-
-@main.route('/upload', methods=['GET', 'POST'])
-def upload():
-    text = ''
-    if request.method == 'POST':
-        f = request.files['file']
-        if f:
-            filename = f.filename
-            if f.filename in os.listdir(Config.UPLOAD_FOLDER):
-                text = '文件已存在！'
-            else:
-                text = '上传成功！'
-            # secure_filename（） 不识别汉字的问题尚未解决
-            # filename = secure_filename(f.filename)
-            # if filename == 'py':
-            # filename = '12345.py'
-            f.save(os.path.join(Config.UPLOAD_FOLDER, filename))
-            # return redirect(url_for('upload'), filename=filename)
-        else:
-            text = '未找到文件！'
-    return render_template('upload.html', text=text)
-
-
-@main.route('/download/<filename>')
-def download(filename):
-    return send_from_directory(Config.UPLOAD_FOLDER, filename)
 
 
 @main.app_template_filter('md')
@@ -69,3 +36,7 @@ def read_md(filename):
 def inject():
     return dict(read_md=read_md)
 
+
+@main.route('/download/<filename>')
+def download(filename):
+    return send_from_directory(Config.UPLOAD_FOLDER, filename)

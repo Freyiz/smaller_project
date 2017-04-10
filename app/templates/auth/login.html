@@ -9,14 +9,6 @@
 
 {% block content %}
     <div class="container"><h1><span>你好，欢迎来到我的个人博客！</span></h1></div>
-    <div class="page-header">
-        <div class="container">
-            <h1>{{ self.title() }}</h1>
-        </div>
-    </div>
-    <div class="container">
-        {{ wtf.quick_form(form) }}
-    </div>
     <div class="container">
         {% for message in get_flashed_messages() %}
             <div class="alert alert-success">
@@ -24,6 +16,16 @@
                 {{ message }}
             </div>
         {% endfor %}
+    </div>
+    <div class="page-header">
+        <div class="container">
+            <h1>{{ self.title() }}</h1>
+        </div>
+    </div>
+    <div class="container">
+        {% block form %}
+            {{ wtf.quick_form(form) }}
+        {% endblock %}
     </div>
     <div class="container"><i class="container">让我们红尘作伴，活得潇潇洒洒；策马奔腾，共享人世繁华！</i></div>
 {% endblock %}
