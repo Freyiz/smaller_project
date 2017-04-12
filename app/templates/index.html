@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
 
+{% block title %}主页{% endblock %}
+
 {% block head %}
     {{ super() }}
-    <title>{% block title %}主页{% endblock %}</title>
     <style>ul {color:darkslategray}</style>
 {% endblock %}
 
-{% block content %}
+{% block page_content %}
+    <div class="jumbotron">
+        <h1>欢迎来到暴风城!</h1>
+        <p>{% if current_user.is_authenticated %}{{ current_user.username }}
+            {% else %}旅行者{% endif %}，在狮王之傲旅店放松放松吧！</p>
+        <i>{{ moment().format('LLL') }}</i>
+        <i>{{ moment().fromNow(refresh=True) }}</i>
+    </div>
+
     <div class="container">
-        {% for message in get_flashed_messages() %}
-            <div class="alert alert-success">
-                <button class="close" data-dismiss="alert" >&times;</button>
-                {{ message }}
-            </div>
+        {% for post in posts %}
+            <i>{{ post.author }}{{ post.timestamp }}</i>
+            <p>{{ post.body }}</p>
+            <p>{% if post.comments %}{{ post.comments }}{% endif %}</p>
+            <a href="{{ url_for('.post', id=post.id) }}">评论</a>
         {% endfor %}
     </div>
-    <ul class="container" type="circle">
-        <li >{{ text|safe }}</li>
-        <li>{{ body|md|safe }}</li>
-        <li>{{ read_md('app/text.txt')|md|safe }}</li>
-        <li><h4><i>你好，旅行者</i></h4></li>
-    </ul>
 {% endblock %}
-
-

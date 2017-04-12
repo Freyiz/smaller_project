@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 
-{% block head %}
-    {{ super() }}
-    <title>{% block title %}上传{% endblock %}</title>
-{% endblock %}
+{% block title %}上传{% endblock %}
 
-{% block content %}
+{% block page_content %}
     <div class="container"><h1>上传文件</h1></div>
     <form class="container" action="" method="post" enctype="multipart/form-data">
         <div class="container"><input type="file" name="file"/><br>
