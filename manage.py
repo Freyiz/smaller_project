@@ -1,12 +1,12 @@
-from flask_migrate import Migrate, MigrateCommand, upgrade
+from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager, Shell
 from app import create_app, db
-from app.models import User, Role, Post, Comment
-from app.email import send_email
+from app.models import User, Role, Post, Comment, Follow
+from app.main.views import db_reset
 
 
 def make_shell_context():
-    return {'app': app, 'db': db, 'User': User, 'send_mail': send_email,
+    return {'app': app, 'db': db, 'User': User, 'Follow': Follow, 'db_reset': db_reset(),
             'Role': Role, 'Post': Post, 'Comment': Comment}
 
 app = create_app('default')
@@ -31,13 +31,6 @@ def test():
     import unittest
     tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
-
-
-# @manager.command
-# def deploy():
-#    from app.models import Role
-#    Role.seed()
-#    upgrade()
 
 if __name__ == '__main__':
     manager.run()

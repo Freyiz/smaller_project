@@ -1,17 +1,14 @@
 {% extends 'bootstrap/base.html' %}
 
-{% block title %}关于{% endblock %}
+{% block title %}Flasky{% endblock %}
 
 {% block head %}
     {{ super() }}
-    <style>
-
-        body {background-image: url("http://pic.qiantucdn.com/58pic/15/96/56/23V58PICyXp_1024.jpg")}
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 {% endblock %}
 
 {% block navbar %}
-    <div class="nav navbar-inverse">
+    <div class="nav navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button  class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,22 +18,32 @@
                 </button>
                 <a class="navbar-brand" href="{{ url_for('main.index') }}">Welcome</a>
             </div>
-            <div class="navbar-collapse">
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" >
-                    <li><a href="{{ url_for('main.edit') }}">发表</a></li>
                     <li><a href="{{ url_for('main.attack') }}">进攻</a></li>
                     <li><a href="{{ url_for('main.upload') }}">上传</a></li>
                     <li><a href="{{ url_for('main.about') }}">关于</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                        <li><a href="{{ url_for('main.moderate') }}">管理所有评论</a></li>
+                    {% endif %}
                     {% if current_user.is_authenticated %}
-                    <li><a href="">{{ current_user.username }}</a></li>
-                    <li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
-                    <li><a href="{{ url_for('auth.change_email_request') }}">修改邮箱</a></li>
-                    <li><a href="{{ url_for('auth.delete') }}">删除个人配置</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{{ current_user.gravatar(size=18) }}">&#12288;
+                                账户&#12288;<span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </a>
+                            <ul class="dropdown-menu navbar-nav navbar-inverse">
+                                <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人信息</a></li>
+                                <li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
+                                <li><a href="{{ url_for('auth.change_email_request') }}">修改邮箱</a></li>
+                                <li><a href="{{ url_for('auth.delete') }}">删除个人配置</a></li>
+                                <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                            </ul>
+                        </li>
                     {% else %}
-                    <li><a href="{{ url_for('auth.login') }}">登陆</a></li>
+                        <li><a href="{{ url_for('auth.login') }}">登陆</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -45,12 +52,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    {% for message in get_flashed_messages() %}
-        <div class="alert alert-success">
-            <button class="close" data-dismiss="alert" >&times;</button>
-            {{ message }}
-        </div>
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert" >&times;</button>
+                {{ message }}
+            </div>
     {% endfor %}
     {% block page_content %}{% endblock %}
 </div>
@@ -58,6 +65,5 @@
 
 {% block scripts %}
     {{ super() }}
-    {{ pagedown.include_pagedown() }}
     {{ moment.include_moment() }}
 {% endblock %}

@@ -3,10 +3,10 @@
 {% block title %}上传{% endblock %}
 
 {% block page_content %}
-    <div class="container"><h1>上传文件</h1></div>
+
     <form class="container" action="" method="post" enctype="multipart/form-data">
-        <div class="container"><input type="file" name="file"/><br>
-            <input type="submit" value="upload"></div>
+            <input type="file">
+            <input type="submit" value="确定">
     </form><br>
     <div class="container"><p class="container">{{ text }}</p></div>
 {% endblock %}

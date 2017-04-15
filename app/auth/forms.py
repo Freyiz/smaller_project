@@ -16,12 +16,10 @@ class RegistrationForm(FlaskForm):
     password2 = PasswordField('确认密码 ', validators=[DataRequired()])
     submit = SubmitField('注册')
 
-    @staticmethod
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('哎哟，被别人注册过了~')
 
-    @staticmethod
     def validate_name(self, field):
         if User.query.filter_by(username=field.data).first():
             raise ValidationError('名字被征用啦，换一个吧~')
@@ -65,7 +63,6 @@ class ChangeEmailForm(FlaskForm):
     password = PasswordField('密码', validators=[DataRequired()])
     submit = SubmitField('提交')
 
-    @staticmethod
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('哎哟，被别人注册过了~')

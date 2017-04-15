@@ -13,8 +13,7 @@ def register():
     if form.validate_on_submit():
         user = User(email=form.email.data,
                     username=form.name.data,
-                    password=form.password.data
-                    )
+                    password=form.password.data)
         db.session.add(user)
         db.session.commit()
         token = user.generate_confirmation_token()
@@ -26,12 +25,14 @@ def register():
 
 @auth.before_app_request
 def before_request():
-    if current_user.is_authenticated \
-            and not current_user.confirmed \
-            and request.endpoint != 'main.index' \
-            and request.endpoint != 'main.about' \
-            and request.endpoint[:5] != 'auth.':
-        return redirect(url_for('auth.unconfirmed'))
+    if current_user.is_authenticated:
+        current_user.ping()
+        if not current_user.confirmed \
+                and request.endpoint != 'main.index' \
+                and request.endpoint != 'main.about' \
+                and request.endpoint != 'main.user' \
+                and request.endpoint[:5] != 'auth.':
+            return redirect(url_for('auth.unconfirmed'))
 
 
 @auth.route('/unconfirmed')
@@ -131,11 +132,9 @@ def change_email_request():
     form = ChangeEmailForm()
     if form.validate_on_submit():
         if current_user.verify_password(form.password.data):
-            current_user.new_email = form.email.data
-            db.session.add(current_user)
-            db.session.commit()
-            token = current_user.generate_confirmation_token()
-            send_email(current_user.email, '验证新邮箱', 'auth/email/change_email',
+            new_email = form.email.data
+            token = current_user.generate_email_change_token(new_email)
+            send_email(new_email, '验证新邮箱', 'auth/email/change_email',
                        user=current_user, token=token)
             flash('一封确认邮件已经发往你的新邮箱，请注意查收哦！')
             return redirect(url_for('main.index'))
@@ -145,13 +144,9 @@ def change_email_request():
 
 @auth.route('/change-email/<token>')
 def change_email(token):
-    if not current_user.confirm(token):
+    if not current_user.change_email(token):
         flash('链接失效！')
-        return redirect(url_for('main.index'))
     else:
-        current_user.email = current_user.new_email
-        db.session.add(current_user)
-        db.session.commit()
         flash('邮箱修改成功!')
     return render_template('index.html')
 

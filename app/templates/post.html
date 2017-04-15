@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
+{% import "_macros.html" as macros %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}评论{% endblock %}
 
 {% block page_content %}
-    <div class="page-header">
-        <div class="container">
-            <h1>{{ self.title() }}</h1>
-        </div>
+    {% include '_posts.html' %}
+    <div>
+        {{ wtf.quick_form(form) }}
     </div>
-    <div class="container">
-        {% block form %}
-            {{ wtf.quick_form(form) }}
-        {% endblock %}
-        <li><a href="{{ url_for('main.upload') }}">评论</a></li>
-    </div>
+    {% include '_comments.html' %}
+    {% if pagination.pages > 1 %}
+        {{ macros.pagination_widget(pagination, '.post', id=posts[0].id) }}
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
 {% endblock %}

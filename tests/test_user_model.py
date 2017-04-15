@@ -1,5 +1,6 @@
 import unittest
-from app.models import User
+import time
+from app.models import User, Permission, Role, AnonymousUser
 from app import create_app, db
 
 
@@ -33,3 +34,36 @@ class UerModelTestCase(unittest.TestCase):
         u = User(password='cat')
         u2 = User(password='cat')
         self.assertTrue(u.password_hash != u2.password_hash)
+
+    def test_valid_confirmation_token(self):
+        u = User()
+        db.session.add(u)
+        db.session.commit()
+        token = u.generate_confirmation_token()
+        self.assertTrue(u.confirm(token))
+
+    def test_invalid_confirmation_token(self):
+        u = User()
+        u2 = User()
+        db.session.add_all([u, u2])
+        db.session.commit()
+        token = u.generate_confirmation_token()
+        self.assertFalse(u2.confirm(token))
+
+    def test_expired_confirmation_token(self):
+        u = User()
+        db.session.add(u)
+        db.session.commit()
+        token = u.generate_confirmation_token(1)
+        time.sleep(2)
+        self.assertFalse(u.confirm(token))
+
+    def test_roles_and_permissions(self):
+        Role.insert_roles()
+        u = User(email='asd@qq.com', username='hehe')
+        self.assertFalse(u.can(Permission.ADMINISTER))
+        self.assertTrue(u.can(Permission.WRITE_ARTICLES))
+
+    def test_anonymous_user(self):
+        u = AnonymousUser()
+        self.assertFalse(u.can(Permission.FOLLOW))

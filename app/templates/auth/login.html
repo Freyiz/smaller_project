@@ -3,13 +3,8 @@
 
 {% block title %}登陆{% endblock %}
 
-{% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='sit.css') }}">
-{% endblock %}
-
 {% block page_content %}
-    <div class="container"><h1><span>你好，欢迎来到我的个人博客！</span></h1></div>
+    <div class="container"><h1 class="page-sayhi">你好，欢迎来到我的个人博客！</span></h1></div>
     <div class="page-header">
         <h1>登录</h1>
     </div>
