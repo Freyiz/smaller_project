@@ -12,14 +12,14 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(email=form.email.data,
-                    username=form.name.data,
+                    username=form.username.data,
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
         token = user.generate_confirmation_token()
         send_email(user.email, '验证邮箱', 'auth/email/confirm', user=user, token=token)
         flash('注册成功啦，一封确认邮件已经发往你的邮箱，请注意查收哦！')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('auth.login'))
     return render_template('auth/register.html', form=form)
 
 
@@ -64,15 +64,15 @@ def confirm(token):
         flash('验证成功！')
     else:
         flash('链接失效！')
-    return render_template('index.html')
+    return redirect(url_for('main.index'))
 
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.name_or_email.data).first() or \
-                 User.query.filter_by(username=form.name_or_email.data).first()
+        user = User.query.filter_by(email=form.username_or_email.data).first() or \
+                 User.query.filter_by(username=form.username_or_email.data).first()
         if user and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             flash('欢迎回来！%s' % user.username)

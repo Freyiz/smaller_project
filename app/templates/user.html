@@ -6,63 +6,61 @@
 {% block page_content %}
     <div class="jumbotron">
         <img src="{{ user.gravatar(size=100) }}" class="img-rounded profile-thumbnail">
-        <div>
-            <h1 class="profile-header">{{ user.username }}</h1>
-            {% if user.location or user.name %}
-                <p>
-                    {% if user.name %}{{ user.name }}{% endif %}
-                    {% if user.location %}来自
-                        <a href="http://maps.baidu.com/?q={{ user.location }}" target="_blank">{{ user.location }}</a>
+        <h1 class="profile-header">{{ user.username }}</h1>
+        {% if user.location or user.name %}
+            <p>
+                {% if user.name %}{{ user.name }}{% endif %}
+                {% if user.location %}来自
+                    <a href="http://maps.baidu.com/?q={{ user.location }}" target="_blank">{{ user.location }}</a>
+                {% endif %}
+            </p>
+        {% endif %}
+        {% if current_user.is_administrator() %}
+            <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        {% endif %}
+        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+        <p>
+            {% if current_user.can(Permission.FOLLOW) and current_user != user %}
+                <a class="btn bg-primary" href="{{ url_for('.follow_toggle', username=user.username) }}">
+                    {% if user.is_following(current_user) %}
+                        <span class="glyphicon glyphicon-heart"></span>
+                    {% else %}
+                        <span class="glyphicon glyphicon-heart-empty"></span>
                     {% endif %}
-                </p>
+                    {% if current_user.is_following(user) %}已关注{% else %}关注&#12288;{% endif %}
+                </a>&#8194;
+            {% endif %}
+            关注者
+            <a {% if user.followers.count() != 1 %}
+                href="{{ url_for('.followers', username=user.username) }}"
+            {% endif %}>
+                {{ user.followers.count() - 1 }}
+            </a>
+            人 | 关注了
+            <a {% if user.followed.count() != 1 %}
+                href="{{ url_for('.followed_by', username=user.username) }}"
+            {% endif %}>
+                {{ user.followed.count() - 1 }}
+            </a>
+            人
+        </p>
+        <p>账户创建日期 {{ moment(user.member_since).format('L') }} | 最近登录 {{ moment(user.last_seen).fromNow() }}</p>
+        <p>
+            {% if user == current_user %}
+                <a class="btn btn-info" href="{{ url_for('.edit_profile') }}">更改信息</a>
             {% endif %}
             {% if current_user.is_administrator() %}
-                <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+                <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">
+                    更改信息-管理员
+                </a>
             {% endif %}
-            {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-            <p>
-                {% if current_user.can(Permission.FOLLOW) and current_user != user %}
-                    <a class="btn bg-primary" href="{{ url_for('.follow_toggle', username=user.username) }}">
-                        {% if user.is_following(current_user) %}
-                            <span class="glyphicon glyphicon-heart"></span>
-                        {% else %}
-                            <span class="glyphicon glyphicon-heart-empty"></span>
-                        {% endif %}
-                        {% if current_user.is_following(user) %}已关注{% else %}关注&#12288;{% endif %}
-                    </a>&#8194;
-                {% endif %}
-                关注者
-                <a {% if user.followers.count() != 1 %}
-                    href="{{ url_for('.followers', username=user.username) }}"
-                {% endif %}>
-                    {{ user.followers.count() - 1 }}
-                </a>
-                人 | 关注了
-                <a {% if user.followed.count() != 1 %}
-                    href="{{ url_for('.followed_by', username=user.username) }}"
-                {% endif %}>
-                    {{ user.followed.count() - 1 }}
-                </a>
-                人
-            </p>
-            <p>账户创建日期 {{ moment(user.member_since).format('L') }} | 最近登录 {{ moment(user.last_seen).fromNow() }}</p>
-            <p>
-                {% if user == current_user %}
-                    <a class="btn btn-info" href="{{ url_for('.edit_profile') }}">更改信息</a>
-                {% endif %}
-                {% if current_user.is_administrator() %}
-                    <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">
-                        更改信息-管理员
-                    </a>
-                {% endif %}
-            </p>
-        </div>
+        </p>
     </div>
     {% if posts %}
-    <h3>{{ user.username }}的文章</h3>
-    {% include '_posts.html' %}
-    {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
-    {% endif %}
+        <h3>{{ user.username }}的文章</h3>
+        {% include '_posts.html' %}
+        {% if pagination.pages > 1 %}
+            {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
+        {% endif %}
     {% endif %}
 {% endblock %}

@@ -6,7 +6,7 @@ from app.models import User
 
 class RegistrationForm(FlaskForm):
     email = StringField('邮箱', validators=[DataRequired(), Length(1, 64), Email()])
-    name = StringField('用户名', validators=[DataRequired(), Length(2, 20),
+    username = StringField('用户名', validators=[DataRequired(), Length(2, 20),
                 Regexp(r'^[a-zA-z][\w]*$', 0, '用户名必须以字母开头，只能包含数字、字母或下划线。')])
     password = PasswordField('密码 ', validators=[DataRequired(),
                 Length(6, 20, message='密码长度至少6位！'),
@@ -26,7 +26,7 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    name_or_email = StringField('用户名/邮箱', validators=[DataRequired()])
+    username_or_email = StringField('用户名/邮箱', validators=[DataRequired()])
     password = PasswordField('密码 ', validators=[DataRequired()])
     remember_me = BooleanField('保持登录')
     submit = SubmitField('提交')

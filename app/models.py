@@ -5,8 +5,9 @@ import bleach
 from markdown import markdown
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import current_app, request
+from flask import current_app, request, url_for
 import hashlib
+from app.exceptions import ValidationError
 
 
 class Permission:
@@ -50,7 +51,7 @@ class Follow(db.Model):
     __tablename__ = 'follows'
     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     followed_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
     @staticmethod
     def generate_fake(x=5, y=20):
@@ -70,7 +71,6 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
-    password = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
     avatar_hash = db.Column(db.String(32))
     confirmed = db.Column(db.BOOLEAN, default=False)
@@ -98,7 +98,7 @@ class User(db.Model, UserMixin):
                 self.role = Role.query.filter_by(default=True).first()
         if self.email and not self.avatar_hash:
             self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
-        self.follow(self)
+        self.followers.append(Follow(follower=self))
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -159,6 +159,31 @@ class User(db.Model, UserMixin):
         db.session.add(self)
         return True
 
+    def generate_auth_token(self, expiration):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'id': self.id}).decode('ascii')
+
+    @staticmethod
+    def verify_auth_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return None
+        return User.query.get(data['id'])
+
+    def to_json(self):
+        json_user = {
+            'url': url_for('api.get_user', id=self.id, _external=True),
+            'username': self.username,
+            'member_since': self.member_since,
+            'last_seen': self.last_seen,
+            'posts': url_for('api.get_user_posts', id=self.id, _external=True),
+            'followed_posts': url_for('api.get_user_followed_posts', id=self.id, _external=True),
+            'post_count': self.posts.count(),
+        }
+        return json_user
+
     def ping(self):
         self.last_seen = datetime.utcnow()
         db.session.add(self)
@@ -178,25 +203,23 @@ class User(db.Model, UserMixin):
             if not user.is_following(user):
                 user.follow(user)
                 db.session.add(user)
-        #db.session.commmit()
+        db.session.commit()
 
     def follow(self, user):
         if not self.is_following(user):
             f = Follow(follower=self, followed=user)
             db.session.add(f)
-            db.session.commit()
 
     def unfollow(self, user):
         f = self.followed.filter_by(followed_id=user.id).first()
         if f:
             db.session.delete(f)
-            db.session.commit()
 
     def is_following(self, user):
         return self.followed.filter_by(followed_id=user.id).first() is not None
 
     def is_followed_by(self, user):
-        return self.follower.filter_by(follower_id=user.id).first() is not None
+        return self.followers.filter_by(follower_id=user.id).first() is not None
 
     @property
     def followed_posts(self):
@@ -271,6 +294,25 @@ class Post(db.Model):
             markdown(value, output_format='html'),
             tags=allowed_tags, strip=True))
 
+    def to_json(self):
+        json_post = {
+            'url': url_for('api.get_post', id=self.id, _external=True),
+            'body': self.body,
+            'body_html': self.body_html,
+            'timestamp': self.timestamp,
+            'author': url_for('api.get_user', id=self.author_id, _external=True),
+            'comments': url_for('api.get_post_comments', id=self.id, _external=True),
+            'comment_count': self.comments.count(),
+        }
+        return json_post
+
+    @staticmethod
+    def from_json(json_post):
+        body = json_post.get('body')
+        if not body or body == '':
+            raise ValidationError('没有内容')
+        return Post(body=body)
+
 db.event.listen(Post.body, 'set', Post.on_changed_body)
 
 
@@ -305,5 +347,23 @@ class Comment(db.Model):
         target.body_html = bleach.linkify(bleach.clean(
             markdown(value, output_format='html'),
             tags=allowed_tags, strip=True))
+
+    def to_json(self):
+        json_comment = {
+            'url': url_for('api.get_comment', id=self.id, _external=True),
+            'body': self.body,
+            'body_html': self.body_html,
+            'timestamp': self.timestamp,
+            'author': url_for('api.get_user', id=self.author_id, _external=True),
+            'post': url_for('api.get_post', id=self.post_id, _external=True),
+        }
+        return json_comment
+
+    @staticmethod
+    def from_json(json_comment):
+        body = json_comment.get('body')
+        if not body or body == '':
+            raise ValidationError('没有内容')
+        return Comment(body=body)
 
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
