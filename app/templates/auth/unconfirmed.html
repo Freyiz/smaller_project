@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}账户{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>你好, {{ current_user.username }}!</h1><br>
+        <h4>干点啥之前，请验证你的账户哦！前往
+            <a href="{{ email_address }}" target="_blank">邮箱</a>
+            或者
+            <a href="{{ url_for('auth.resend_confirmation') }}">重新发送确认邮件</a>。
+        </h4>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+你好， {{ user.username }}。
+欢迎来到我的 Flasky！
+为了确保账户安全，请点击下方链接：
+{{ url_for('auth.confirm', token=token, _external=True) }}
+祝:
+生活愉快！
+请勿回复邮件。

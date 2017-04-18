@@ -1,0 +1,11 @@
+<p>你好， {{ user.username }}。</p>
+<p>你的邮箱请求被修改！</p>
+<p>如果这不是你的操作，请忽略此邮件。</p>
+<p>否则，请点击
+    <a href="{{ url_for('auth.change_email', token=token, _external=True) }}">重置</a>。
+</p>
+<p>你也可以复制下方链接到浏览器：</p>
+<p>{{ url_for('auth.change_email', token=token, _external=True) }}</p>
+<p>祝：</p>
+<p>生活愉快！</p>
+<p><small>请勿回复邮件。</small></p>

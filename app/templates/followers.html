@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import "_macros.html" as macros %}
+
+{% block title %}互动{% endblock %}
+
+{% block page_content %}
+    <div class="jumbotron">
+        <a href="{{ url_for('.user', username=user.username) }}">
+            <h1>{{ user.username }}{{ title }}</h1>
+        </a>
+    <table class="table table-hover">
+        <thead><tr><th>用户</th><th>关注时间</th></tr></thead>
+        {% for follow in follows %}
+            {% if user != follow.user %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('.user', username=follow.user.username) }}">
+                        <img class='img-rounded' src="{{ follow.user.gravatar(size=32) }}">
+                        {{ follow.user.username }}
+                    </a>
+                </td>
+                <td>
+                    {{ moment(follow.timestamp).format('L') }}
+                </td>
+            </tr>
+             {% endif %}
+        {% endfor %}
+    </table>
+    {% if pagination.pages > 1 %}
+        {{ macros.pagination_widget(pagination, endpoint, username=user.username) }}
+    {% endif %}
+    </div>
+{% endblock %}

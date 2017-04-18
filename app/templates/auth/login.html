@@ -1,29 +1,20 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block head %}
-    {{ super() }}
-    <title>{% block title %}{{ title }}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='sit.css') }}">
-{% endblock %}
+{% block title %}登陆{% endblock %}
 
-{% block content %}
-    <div class="container"><h1><span>你好，欢迎来到我的个人博客！</span></h1></div>
+{% block page_content %}
+    <div class="container"><h1 class="page-sayhi">你好，欢迎来到我的个人博客！</span></h1></div>
     <div class="page-header">
-        <div class="container">
-            <h1>{{ self.title() }}</h1>
-        </div>
+        <h1>登录</h1>
     </div>
-    <div class="container">
-        {{ wtf.quick_form(form) }}
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}<br>
+        <p>忘记密码?
+            <a href="{{ url_for('auth.password_reset_request') }}">重置</a>
+            新用户?
+            <a href="{{ url_for('auth.register') }}">注册</a>
+        </p>
+        <i>让我们红尘作伴，活得潇潇洒洒；策马奔腾，共享人世繁华！</i>
     </div>
-    <div class="container">
-        {% for message in get_flashed_messages() %}
-            <div class="alert alert-success">
-                <button class="close" data-dismiss="alert" >&times;</button>
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
-    <div class="container"><i class="container">让我们红尘作伴，活得潇潇洒洒；策马奔腾，共享人世繁华！</i></div>
 {% endblock %}
