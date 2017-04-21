@@ -2,13 +2,13 @@ from flask import render_template, send_from_directory, request, \
     redirect, url_for, flash, current_app, abort, make_response
 from . import main
 from flask_login import login_required, current_user
-from config import Config
 import os
 from .forms import PostForm, CommentForm, EditProfileForm, EditProfileAdminForm
-from ..models import Post, Comment, User, Role, Permission, Follow
+from ..models import Post, Comment, User, Role, Permission
 from .. import db
 from ..decorators import admin_required, permission_required
 from flask_sqlalchemy import get_debug_queries
+from datetime import datetime
 
 
 @main.after_app_request
@@ -22,6 +22,7 @@ def after_request(response):
 
 
 @main.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     form = PostForm()
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
@@ -29,18 +30,18 @@ def index():
         db.session.add(post)
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
-    show_followed = False
-    if current_user.is_authenticated:
-        show_followed = bool(request.cookies.get('show_followed', ''))
-    if show_followed:
+    show_which = request.cookies.get('show_which')
+    if show_which == 'all':
+        query = Post.query
+    elif show_which == 'followed':
         query = current_user.followed_posts
     else:
-        query = Post.query
+        query = current_user.posts_collect
     pagination = query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination)
+                           show_which=show_which, pagination=pagination)
 
 
 @main.route('/user/<username>')
@@ -59,6 +60,12 @@ def user(username):
 def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
+        f = form.avatar.data
+        filename = '%d_%s.%s' % (current_user.id,
+                                 datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%S'),
+                                 f.filename.rsplit('.')[1])
+        current_user.avatar = os.path.join('../static/uploads', filename)
+        f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
         current_user.name = form.name.data
         current_user.location = form.location.data
         current_user.about_me = form.about_me.data
@@ -128,7 +135,7 @@ def post(id):
     page = request.args.get('page', 1, type=int)
     if page == -1:
         page = (post.comments.count() - 1) // current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
-    pagination = post.comments.order_by(Comment.timestamp.asc()).paginate(
+    pagination = post.comments.order_by(Comment.likes.desc(), Comment.timestamp.asc()).paginate(
         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
     return render_template('post.html', form=form, posts=[post], page=page,
@@ -209,7 +216,7 @@ def followed_by(username):
 @main.route('/all')
 def show_all():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '', max_age=30*24*60*60)
+    resp.set_cookie('show_which', 'all', max_age=30*24*60*60)
     return resp
 
 
@@ -217,8 +224,34 @@ def show_all():
 @login_required
 def show_followed():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '1', max_age=30*24*60*60)
+    resp.set_cookie('show_which', 'followed', max_age=30*24*60*60)
     return resp
+
+
+@main.route('/collection')
+@login_required
+def show_collection():
+    resp = make_response(redirect(url_for('.index')))
+    resp.set_cookie('show_which', 'collection', max_age=30*24*60*60)
+    return resp
+
+
+@main.route('/like/<int:id>')
+@login_required
+def like_toggle(id):
+    page = request.args.get('page', 1, type=int)
+    comment = Comment.query.get_or_404(id)
+    current_user.like_toggle(comment)
+    return redirect(url_for('.post', id=comment.post_id, page=page))
+
+
+@main.route('/collect/<int:id>')
+@login_required
+def collect_toggle(id):
+    page = request.args.get('page', 1, type=int)
+    post = Post.query.get_or_404(id)
+    current_user.collect_toggle(post)
+    return redirect(url_for('.index', id=id, page=page))
 
 
 # @main.route('/shutdown')
@@ -240,7 +273,7 @@ def upload():
         f = request.files['file']
         if f:
             filename = f.filename
-            if f.filename in os.listdir(Config.UPLOAD_FOLDER):
+            if f.filename in os.listdir(current_app.config['UPLOAD_FOLDER']):
                 text = '文件已存在！'
             else:
                 text = '上传成功！'
@@ -248,7 +281,7 @@ def upload():
             # filename = secure_filename(f.filename)
             # if filename == 'py':
             # filename = '12345.py'
-            f.save(os.path.join(Config.UPLOAD_FOLDER, filename))
+            f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
             # return redirect(url_for('upload'), filename=filename)
         else:
             text = '未找到文件！'
@@ -257,7 +290,7 @@ def upload():
 
 @main.route('/download/<filename>')
 def download(filename):
-    return send_from_directory(Config.UPLOAD_FOLDER, filename)
+    return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
 
 
 @main.route('/attack')
@@ -294,28 +327,3 @@ def about():
 # def inject():
 #    return dict(read_md=read_md)
 
-def db_reset():
-    print('开始重置数据库...')
-    print('清空数据库...')
-    db.drop_all()
-    print('创建数据库...')
-    db.create_all()
-    print('生成角色...')
-    Role.insert_roles()
-    print('生成我...')
-    u = User(username='Yiz', email='562124140@qq.com', password='1', confirmed=True, name='野蛮角斗士',
-             location='试炼之环', about_me='非著名猫德')
-    db.session.add(u)
-    db.session.commit()
-    print('生成小弟...')
-    User.generate_fake(200)
-    print('生成文章...')
-    Post.generate_fake(200)
-    print('生成评论...')
-    Comment.generate_fake(5, 15)
-    print('生成关注...')
-    Follow.generate_fake(5, 20)
-    print('生成自关注...')
-    User.add_self_follows()
-    print('重置数据库完成，谢谢使用!')
-    quit()

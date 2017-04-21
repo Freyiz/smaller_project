@@ -7,7 +7,8 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
-    UPLOAD_FOLDER = r'D:\my_project\app\static\uploads'
+    UPLOAD_FOLDER = '/home/freyiz/smaller_project/app/static/uploads'
+    ALLOWED_EXTENSIONS = ['bmp', 'jpg', 'png', 'gif', 'jpeg']
     MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 465
     MAIL_USE_SSL = True

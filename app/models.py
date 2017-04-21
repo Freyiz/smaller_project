@@ -10,6 +10,15 @@ import hashlib
 from app.exceptions import ValidationError
 
 
+users_like_comments = db.Table('likes',
+                 db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                 db.Column('comment_id', db.Integer, db.ForeignKey('comments.id')))
+
+users_collect_posts = db.Table('collections',
+                 db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                 db.Column('post_id', db.Integer, db.ForeignKey('posts.id')))
+
+
 class Permission:
     FOLLOW = 0x01
     COMMENT = 0x02
@@ -73,6 +82,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     avatar_hash = db.Column(db.String(32))
+    avatar = db.Column(db.String())
     confirmed = db.Column(db.BOOLEAN, default=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     name = db.Column(db.String(64))
@@ -87,7 +97,15 @@ class User(db.Model, UserMixin):
                                lazy='dynamic', cascade='all, delete-orphan')
     followers = db.relationship('Follow', foreign_keys=[Follow.followed_id],
                                backref=db.backref('followed', lazy='joined'),
-                               lazy='dynamic', cascade='all, delete-orphan')
+                                lazy='dynamic', cascade='all, delete-orphan')
+    comments_like = db.relationship('Comment',
+                                    secondary=users_like_comments,
+                                    backref=db.backref('users_like', lazy='dynamic'),
+                                    lazy='dynamic')
+    posts_collect = db.relationship('Post',
+                                    secondary=users_collect_posts,
+                                    backref=db.backref('users_collect', lazy='dynamic'),
+                                    lazy='dynamic')
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -221,6 +239,22 @@ class User(db.Model, UserMixin):
     def is_followed_by(self, user):
         return self.followers.filter_by(follower_id=user.id).first() is not None
 
+    def like_toggle(self, comment):
+        if comment not in self.comments_like.all():
+            self.comments_like.append(comment)
+            comment.likes += 1
+            db.session.add(comment)
+        else:
+            self.comments_like.remove(comment)
+            comment.likes -= 1
+            db.session.add(comment)
+
+    def collect_toggle(self, post):
+        if post not in self.posts_collect.all():
+            self.posts_collect.append(post)
+        else:
+            self.posts_collect.remove(post)
+
     @property
     def followed_posts(self):
         return Post.query.join(Follow, Follow.followed_id == Post.author_id)\
@@ -279,7 +313,7 @@ class Post(db.Model):
         user_count = User.query.count()
         for i in range(count):
             u = User.query.offset(randint(0, user_count - 1)).first()
-            post = Post(body=forgery_py.lorem_ipsum.sentences(randint(1, 5)),
+            post = Post(body=forgery_py.lorem_ipsum.sentences(randint(5, 30)),
                         timestamp=forgery_py.date.date(True),
                         author=u)
             db.session.add(post)
@@ -325,6 +359,7 @@ class Comment(db.Model):
     disabled = db.Column(db.Boolean)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    likes = db.Column(db.Integer, default=0, index=True)
 
     @staticmethod
     def generate_fake(x=5, y=15):

@@ -1,9 +1,10 @@
 from wtforms import StringField, SubmitField, TextAreaField, \
-    BooleanField, SelectField, ValidationError
+    BooleanField, SelectField, ValidationError, FileField
 from wtforms.validators import DataRequired, Length, Regexp, Email
 from flask_wtf import FlaskForm
 from flask_pagedown.fields import PageDownField
 from ..models import Role, User
+from flask import current_app
 
 
 class PostForm(FlaskForm):
@@ -17,10 +18,15 @@ class CommentForm(FlaskForm):
 
 
 class EditProfileForm(FlaskForm):
+    avatar = FileField('更改头像')
     name = StringField('姓名')
     location = StringField('地址')
     about_me = TextAreaField('简介')
     submit = SubmitField('提交')
+
+    def validate_avatar(self, field):
+        if field.data.filename.rsplit('.')[1] not in current_app.config['ALLOWED_EXTENSIONS']:
+            raise ValidationError('确保文件后缀为其中之一：%s' % current_app.config['ALLOWED_EXTENSIONS'])
 
 
 class EditProfileAdminForm(FlaskForm):
