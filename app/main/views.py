@@ -22,7 +22,6 @@ def after_request(response):
 
 
 @main.route('/', methods=['GET', 'POST'])
-@login_required
 def index():
     form = PostForm()
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
@@ -30,13 +29,13 @@ def index():
         db.session.add(post)
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
-    show_which = request.cookies.get('show_which')
-    if show_which == 'all':
-        query = Post.query
-    elif show_which == 'followed':
-        query = current_user.followed_posts
-    else:
-        query = current_user.posts_collect
+    show_which = request.cookies.get('show_which', 'all')
+    query = Post.query
+    if current_user.is_authenticated:
+        if show_which == 'followed':
+            query = current_user.followed_posts
+        if show_which == 'collection':
+            query = current_user.posts_collect
     pagination = query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
@@ -254,15 +253,15 @@ def collect_toggle(id):
     return redirect(url_for('.index', id=id, page=page))
 
 
-# @main.route('/shutdown')
-# def server_shutdown():
-#    if not current_app.testing:
-#        abort(404)
-#    shutdown = request.environ.get('werkzeug.server.shutdown')
-#    if not shutdown:
-#        abort(500)
-#    shutdown()
-#    return '服务器即将关闭...'
+@main.route('/shutdown')
+def server_shutdown():
+    if not current_app.testing:
+        abort(404)
+    shutdown = request.environ.get('werkzeug.server.shutdown')
+    if not shutdown:
+        abort(500)
+    shutdown()
+    return '服务器即将关闭...'
 
 
 @main.route('/upload', methods=['GET', 'POST'])

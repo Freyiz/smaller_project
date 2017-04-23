@@ -23,13 +23,15 @@
                     {% else %}
                         {{ post.body }}
                     {% endif %}
-                    <div><a href="{{ url_for('.post', id=post.id) }}">{{ post.comments.count() }}</a> comments |
-                        {% if post not in current_user.posts_collect.all() %}
-                            <a href="{{ url_for('.collect_toggle', id=post.id, page=page) }}">
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </a>收藏
-                        {% else %}
-                            已收藏
+                    <div><a href="{{ url_for('.post', id=post.id) }}">{{ post.comments.count() }}</a> comments
+                        {% if current_user.is_authenticated %}|
+                            {% if post not in current_user.posts_collect.all() %}
+                                <a href="{{ url_for('.collect_toggle', id=post.id, page=page) }}">
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </a>收藏
+                            {% else %}
+                                已收藏
+                            {% endif %}
                         {% endif %}
                     </div>
                     <div class="post-footer">

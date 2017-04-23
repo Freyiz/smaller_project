@@ -155,6 +155,7 @@ def change_email(token):
 @login_required
 def logout():
     logout_user()
+
     flash('See you again!')
     return redirect(url_for('main.index'))
 

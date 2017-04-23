@@ -106,7 +106,6 @@ def reset():
                 u.comments_like.append(c)
                 c.likes += 1
                 db.session.add(u)
-                db.session.add(c)
             if p not in u2.posts_collect:
                 u2.posts_collect.append(p)
                 db.session.add(u2)

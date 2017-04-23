@@ -2,3 +2,5 @@ __pycache__
 tmp
 *.sqlite
 venv
+1.py
+.env

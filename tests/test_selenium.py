@@ -1,4 +1,4 @@
-'''from selenium import webdriver
+from selenium import webdriver
 import unittest
 from app.models import User, Role, Post, Comment, Follow
 from app import create_app, db
@@ -7,11 +7,12 @@ import threading
 
 class SeleniumTestCase(unittest.TestCase):
     client = None
+    app_context = None
 
     @classmethod
     def setUpClass(cls):
         try:
-            cls.client = webdriver.Firefox()
+            cls.client = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
         except:
             pass
 
@@ -57,17 +58,18 @@ class SeleniumTestCase(unittest.TestCase):
         pass
 
     def test_admin_home_page(self):
-        self.client.get('http://localhost:5500/')
-        self.assertTrue('陌生人' in self.client.page_source)
+        self.client.get('http://localhost:5000/')
+        self.assertTrue('旅行者' in self.client.page_source)
 
-        self.client.find_element_by_link_text('登陆').cilck()
+        self.client.find_element_by_link_text('登陆').click()
         self.assertTrue('<h1>登录</h1>' in self.client.page_source)
 
-        self.client.find_element_by_name('用户名/邮箱').send_keys('1@qq.com')
-        self.client.find_element_by_name('密码').send_keys('a123456')
-        self.client.find_element_by_name('提交').click()
+        self.client.find_element_by_name('username_or_email').send_keys('1@qq.com')
+        self.client.find_element_by_name('password').send_keys('a123456')
+        self.client.find_element_by_name('submit').click()
         self.assertTrue('w1' in self.client.page_source)
 
+        self.client.find_element_by_link_text('账户').click()
         self.client.find_element_by_link_text('个人信息').click()
-        self.assertTrue('更改信息' in self.client.page_source)'''
+        self.assertTrue('更改信息' in self.client.page_source)
 

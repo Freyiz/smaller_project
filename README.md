@@ -65,3 +65,7 @@
 * 改进 db_reset 测试函数，可生成点赞和收藏。
 * 改进头像命名规则，解决之前上传头像后需要刷新才能正确显示新头像的 bug；遗留问题：用户的旧头像文件将保留在静态库。
 * 增加 ALLOWED_EXTENSIONS 配置，限制头像上传格式。
+
+2017-04-21 (3a)
+* solved(a_5)：以 chrome 为例，在终端使用 sudo apt-get install chromium-chromedriver 命令，下载完成后 chromedriver 的默认路径为 /usr/lib/chromium-browser/chromedriver，将此路径作为参数传给 webdriver.Chrome() 即可。
+* to_be_solved(q_6)：关于 flask-babel 的扩展使用。
