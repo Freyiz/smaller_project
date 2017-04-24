@@ -2,3 +2,4 @@
 Flask-SSLify==0.1.5
 gunicorn==19.7.1
 psycopg2==2.7.1
+ForgeryPy==0.1
