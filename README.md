@@ -66,6 +66,16 @@
 * 改进头像命名规则，解决之前上传头像后需要刷新才能正确显示新头像的 bug；遗留问题：用户的旧头像文件将保留在静态库。
 * 增加 ALLOWED_EXTENSIONS 配置，限制头像上传格式。
 
-2017-04-21 (3a)
+2017-04-22 (3a)
 * solved(a_5)：以 chrome 为例，在终端使用 sudo apt-get install chromium-chromedriver 命令，下载完成后 chromedriver 的默认路径为 /usr/lib/chromium-browser/chromedriver，将此路径作为参数传给 webdriver.Chrome() 即可。
 * to_be_solved(q_6)：关于 flask-babel 的扩展使用。
+
+2017-04-24 (3b)
+* 部署到 heroku：一顿折腾，以下为坑：
+    * heroku addons:add heroku-postgresql:dev 无效，替换为 heroku addons:create heroku-postgresql:hobby-dev，这两者据说是付费与免费的区别。
+    * git push heroku master 失败：
+        * 需要 buildpacks：程序文件夹根目录必须有 requirement.txt, Procfile, *.py 这三个文件，严格来说是远程仓库对应 repository 根目录下必须有这三个文件，因为其实只需要一个 .git 文件夹就可以 push 了。还有一个可选的 runtime.txt, 这个文件标明了 heroku 使用哪个版本的编程语言。注意 Procfile 文件名区分大小写，其内容也严格限制了空格的使用，比如我的是这样：web: gunicorn manage:app。
+        * failed to detect app...：其实还是上一个问题，把本地的改动同步到远程仓库的 master 分支就可以了。
+        * 详见 heroku 官方文档：https://devcenter.heroku.com/articles/buildpacks。
+    * 各种 error pages，查看 heroku logs，google it。
+    * Internal Server Error：若有关数据库的页面都打不开，而其他页面却能打开，说明数据库配置不正确。比如我之前用的是 sqlite，在 heroku 改用 postgresql，就要对 config 作相关改动。目前正在研究中...
