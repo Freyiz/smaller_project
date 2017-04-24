@@ -1,3 +1,4 @@
+# coding=utf-8
 import os
 CDV = None
 if os.environ.get('FLASK_COVERAGE'):

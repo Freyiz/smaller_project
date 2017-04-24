@@ -1,3 +1,4 @@
+# coding=utf-8
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm, \
     PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 from flask import flash, render_template, redirect, url_for, request

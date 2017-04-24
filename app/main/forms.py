@@ -1,3 +1,4 @@
+# coding=utf-8
 from wtforms import StringField, SubmitField, TextAreaField, \
     BooleanField, SelectField, ValidationError, FileField
 from wtforms.validators import DataRequired, Length, Regexp, Email
