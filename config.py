@@ -23,7 +23,7 @@ class Config:
     FLASKY_FOLLOWERS_PER_PAGE = 10
     FLASKY_COMMENTS_PER_PAGE = 10
     FLASKY_SLOW_DB_QUERY_TIME = 0.5
-    BABEL_DEFAULT_LOCALE = 'zh'
+    # BABEL_DEFAULT_LOCALE = 'zh'
 
     @staticmethod
     def init_app(app):
