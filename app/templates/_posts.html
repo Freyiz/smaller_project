@@ -23,7 +23,7 @@
                     {% else %}
                         {{ post.body }}
                     {% endif %}
-                    <div><a href="{{ url_for('.post', id=post.id) }}">{{ post.comments.count() }}</a> comments
+                    <div><a href="{{ url_for('.post', id=post.id) }}">{{ post.comments.count() }}</a> 评论
                         {% if current_user.is_authenticated %}|
                             {% if post not in current_user.posts_collect.all() %}
                                 <a href="{{ url_for('.collect_toggle', id=post.id, page=page) }}">

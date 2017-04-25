@@ -9,7 +9,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
     SSL_DISABLE = False
-    UPLOAD_FOLDER = '/home/freyiz/smaller_project/app/static/uploads'
+    UPLOAD_FOLDER = 'app/static/uploads'
     CHROMEDRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
     ALLOWED_EXTENSIONS = ['bmp', 'jpg', 'png', 'gif', 'jpeg']
     MAIL_SERVER = 'smtp.qq.com'

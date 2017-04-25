@@ -20,7 +20,7 @@
     <div id='all_or_followed' class="post-tabs">
         <ul class="nav nav-tabs">
             <li{% if show_which == 'all' %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}#all_or_followed">所有</a></li>
-            {% if current_user.is_authentica %}
+            {% if current_user.is_authenticated %}
             <li{% if show_which == 'followed' %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}#all_or_followed">关注</a></li>
             <li{% if show_which == 'collection' %} class="active"{% endif %}><a href="{{ url_for('.show_collection') }}#all_or_followed">收藏</a></li>
             {% endif %}

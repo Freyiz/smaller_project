@@ -27,21 +27,23 @@
                         {% endif %}
                         <br>
                         <a class={% if comment not in current_user.comments_like.all() %}"glyphicon glyphicon-triangle-top"{% else %}"glyphicon glyphicon-triangle-bottom"{% endif %}
-                            href="{{ url_for('.like_toggle', id=comment.id, page=page) }}#{{ comment.id }}">
+                        href="{{ url_for('.like_toggle', id=comment.id, page=page) }}#{{ comment.id }}">
                         </a>
                         {{ comment.likes }}likes
                     {% endif %}
                 </div>
-                {% if current_user == comment.author %}
-                    <a class="btn bg-info btn-xs" href="{{ url_for('.delete_comment', id=comment.id, page=page) }}#{{ comment.id }}">删除</a>
-                {% endif %}
-                {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                    {% if not comment.disabled %}
-                        <a class="btn btn-default btn-xs" href="{{ url_for('.comment_show_toggle', id=comment.id, page=page) }}#{{ comment.id }}">屏蔽</a>
-                    {% else %}
-                        <a class="btn btn-danger btn-xs" href="{{ url_for('.comment_show_toggle', id=comment.id, page=page) }}#{{ comment.id }}">解除屏蔽</a>
+                <div class="post-footer">
+                    {% if current_user == comment.author %}
+                        <a class="btn bg-info btn-xs" href="{{ url_for('.delete_comment', id=comment.id, page=page) }}#{{ comment.id }}">删除</a>
                     {% endif %}
-                {% endif %}
+                    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                        {% if not comment.disabled %}
+                            <a class="btn btn-default btn-xs" href="{{ url_for('.comment_show_toggle', id=comment.id, page=page) }}#{{ comment.id }}">屏蔽</a>
+                        {% else %}
+                            <a class="btn btn-danger btn-xs" href="{{ url_for('.comment_show_toggle', id=comment.id, page=page) }}#{{ comment.id }}">解除屏蔽</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </li>
     {% endfor %}

@@ -78,4 +78,16 @@
         * failed to detect app...：其实还是上一个问题，把本地的改动同步到远程仓库的 master 分支就可以了。
         * 详见 heroku 官方文档：https://devcenter.heroku.com/articles/buildpacks。
     * 各种 error pages，查看 heroku logs，google it。
-    * Internal Server Error：若有关数据库的页面都打不开，而其他页面却能打开，说明数据库配置不正确。比如我之前用的是 sqlite，在 heroku 改用 postgresql，就要对 config 作相关改动。目前正在研究中...
+    * Internal Server Error：若有关数据库的页面都打不开，而其他页面却能打开，说明数据库配置不正确。比如我之前用的是 sqlite，在 heroku 改用 postgresql，就要使用对应数据库的 URL。
+        * 如果使用 SQLAlchemy,确保 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or...， DATABASE_URL 从 heroku 的环境变量读取。
+        * 把 models 模块里所有的 db.DateTime() 更换为 db.TIMESTAMP()，因为 postgresql 不支持 datetime 类型。
+    * 关于静态库
+    * 本地调试记得设置 DEBUG=True。
+    
+学习编程的个人经验
+* google 是个好工具。
+* 出了问题，想知道为什么？除了 google，你还可以翻看相应的原始文档或官方文档，如果你想得到最直接，最全面的答案。
+* 学习编程是学习英语的良好机会。不想学英语？除非你能做到让大部分程序员都使用你的语言。
+* 哲学是个好东西。你说你已经三十岁了，之前从没接触过编程，也不认识任何一个程序员，没有人能给你提供帮助，英语只会简单的点头 yes 摇头 no？没关系，哲学能帮到你——量变可以引发质变。我们都清楚这句话是什么意思。下面我分两点来作进一步的解释：
+    * 改变是困难的，确实如此。但是，改变，任何时候都不晚。你应该听说过一句话：种一棵树，最好的时间是十年前，其次是现在。
+    * 量变到质变是一个漫长的过程。比如，一个婴儿如果想长出长胡子，怎么办呢？我有一个办法——只要他坚持活到六十岁，就不难达到目标。幸好，我们从零开始到成为一个初级程序员并不需要六十年这么久，对吧？
