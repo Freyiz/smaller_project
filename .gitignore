@@ -3,4 +3,7 @@ tmp
 *.sqlite*
 venv
 1.py
+2.py
+1.html
 .env
+os

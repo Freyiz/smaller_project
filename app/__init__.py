@@ -7,6 +7,7 @@ from config import config
 from flask_pagedown import PageDown
 from flask_moment import Moment
 from flask_mail import Mail
+from flask_oauthlib.client import OAuth
 # from flask_babel import Babel, gettext as _
 
 bootstrap = Bootstrap()
@@ -19,6 +20,7 @@ login_manager.login_view = 'auth.login'
 login_manager.login_message = '军情七处特派员沃尔森·弗利摩尔需要查看你的通行证!'
 login_manager.session_protection = 'strong'
 # babel = Babel()
+oauth = OAuth()
 
 
 def create_app(config_name):
@@ -32,6 +34,7 @@ def create_app(config_name):
     moment.init_app(app)
     mail.init_app(app)
     # babel.init_app(app)
+    oauth.init_app(app)
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)

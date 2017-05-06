@@ -1,20 +1,21 @@
 # coding=utf-8
 from wtforms import StringField, PasswordField, SubmitField, ValidationError, BooleanField
 from wtforms.validators import DataRequired, EqualTo, Length, Email, Regexp
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from app.models import User
 
 
 class RegistrationForm(FlaskForm):
-    email = StringField('邮箱', validators=[DataRequired(), Length(1, 64), Email()])
-    username = StringField('用户名', validators=[DataRequired(), Length(2, 20),
+    email = StringField('邮箱', validators=[DataRequired(), Length(1, 64), Email(message='邮箱名称无效！')])
+    username = StringField('用户名', validators=[DataRequired(), Length(2, 20, message='用户名长度为2～20位之间！'),
                 Regexp(r'^[a-zA-z][\w]*$', 0, '用户名必须以字母开头，只能包含数字、字母或下划线。')])
     password = PasswordField('密码 ', validators=[DataRequired(),
-                Length(6, 20, message='密码长度至少6位！'),
+                Length(6, 20, message='密码长度为6～20位之间！'),
                 EqualTo('password2', message='两次输入密码不一致！'),
                 Regexp(r'^[a-zA-z0-9]*([a-zA-Z][0-9]|[0-9][a-zA-Z])[a-zA-Z0-9]*$',
                        0, '密码必须由数字和字母组成！')])
     password2 = PasswordField('确认密码 ', validators=[DataRequired()])
+    recaptcha = RecaptchaField()
     submit = SubmitField('注册')
 
     def validate_email(self, field):
@@ -29,6 +30,7 @@ class RegistrationForm(FlaskForm):
 class LoginForm(FlaskForm):
     username_or_email = StringField('用户名/邮箱', validators=[DataRequired()])
     password = PasswordField('密码 ', validators=[DataRequired()])
+    verification_code = StringField('验证码', validators=[DataRequired()])
     remember_me = BooleanField('保持登录')
     submit = SubmitField('提交')
 
@@ -48,8 +50,13 @@ class PasswordResetRequestForm(FlaskForm):
     email = StringField('邮箱', validators=[DataRequired()])
     submit = SubmitField('提交')
 
+    def validate_email(self, field):
+        if not User.query.filter_by(email=field.data).first():
+            raise ValidationError('邮箱不正确！')
+
 
 class PasswordResetForm(FlaskForm):
+    email = StringField('邮箱')
     password = PasswordField('新密码 ', validators=[DataRequired(),
                 Length(6, 20, message='密码长度至少6位！'),
                 EqualTo('password2', message='两次输入密码不一致！'),
@@ -57,6 +64,10 @@ class PasswordResetForm(FlaskForm):
                        0, '密码必须由数字和字母组成！')])
     password2 = PasswordField('确认密码', validators=[DataRequired()])
     submit = SubmitField('提交')
+
+    def validate_email(self, field):
+        if not User.query.filter_by(email=field.data).first():
+            raise ValidationError('邮箱不正确！')
 
 
 class ChangeEmailForm(FlaskForm):

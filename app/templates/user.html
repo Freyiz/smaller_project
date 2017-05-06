@@ -10,7 +10,9 @@
         {% else %}
             <img src="{{ user.gravatar(size=100) }}" class="img-rounded profile-thumbnail">
         {% endif %}
-        <h1 class="profile-header">{{ user.username }}</h1>
+
+        <h1 class="profile-header">{{ user.username }}
+            {% if user.is_following(current_user) and current_user != user %}<span class="rank">,你的追随者</span>{% endif %}</h1>
         {% if user.location or user.name %}
             <p>
                 {% if user.name %}{{ user.name }}{% endif %}
@@ -26,45 +28,56 @@
         <p>
             {% if current_user.can(Permission.FOLLOW) and current_user != user %}
                 <a class="btn bg-primary" href="{{ url_for('.follow_toggle', username=user.username) }}">
-                    {% if user.is_following(current_user) %}
                         <span class="glyphicon glyphicon-heart"></span>
-                    {% else %}
-                        <span class="glyphicon glyphicon-heart-empty"></span>
-                    {% endif %}
-                    {% if current_user.is_following(user) %}已关注{% else %}关注&#12288;{% endif %}
+                    {% if current_user.is_following(user) %}已追随{% else %}追随&#12288;{% endif %}
                 </a>&#8194;
             {% endif %}
-            关注者
-            <a {% if user.followers.count() != 1 %}
-                href="{{ url_for('.followers', username=user.username) }}"
-            {% endif %}>
+            追随者
+            {% if user.followers.count() > 1 %}
+                <a href="{{ url_for('.followers', username=user.username) }}">
                 {{ user.followers.count() - 1 }}
-            </a>
-            人 | 关注了
-            <a {% if user.followed.count() != 1 %}
-                href="{{ url_for('.followed_by', username=user.username) }}"
-            {% endif %}>
+                </a>
+
+            {% else %}
+                0
+            {% endif %}
+            人 | 追随了
+        {% if user.followed.count() > 1 %}
+                <a href="{{ url_for('.followed_by', username=user.username) }}">
                 {{ user.followed.count() - 1 }}
-            </a>
+                </a>
+        {% else %}0
+        {% endif %}
             人
+
         </p>
-        <p>账户创建日期 {{ moment(user.member_since).format('L') }} | 最近登录 {{ moment(user.last_seen).fromNow() }}</p>
+        <p>出生于 {{ moment(user.member_since).format('L') }} | 最近操作 {{ moment(user.last_seen).fromNow() }}</p>
         <p>
             {% if user == current_user %}
-                <a class="btn btn-info" href="{{ url_for('.edit_profile') }}">更改信息</a>
+                <a class="btn btn-info" href="{{ url_for('.edit_profile') }}">变更信息</a>
             {% endif %}
             {% if current_user.is_administrator() %}
                 <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">
-                    更改信息-管理员
+                    变更信息-官员
                 </a>
             {% endif %}
         </p>
     </div>
     {% if posts %}
-        <h3>{{ user.username }}的文章</h3>
+        <h3>{{ user.username }}的公告</h3>
         {% include '_posts.html' %}
         {% if pagination.pages > 1 %}
             {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
         {% endif %}
     {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+    function refresh(){
+        document.getElementById("fff").innerHTML={{ user.followers.count() - 1 }};
+        document.getElementById('ffff').innerHTML={{ user.followed.count() - 1 }};
+        }
+    </script>
 {% endblock %}

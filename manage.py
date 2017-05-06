@@ -6,12 +6,12 @@ if os.environ.get('FLASK_COVERAGE'):
     CDV = coverage.coverage(branch=True, include='app/*')
     CDV.start()
 
-# if os.path.exists('.env'):
-#    print('导入环境变量...')
-#    for line in open('.env'):
-#        var = line.strip().split('=')
-#        if len(var) == 2:
-#            os.environ[var[0]] = var[1]
+if os.path.exists('.env'):
+    print('导入环境变量...')
+    for line in open('.env'):
+        var = line.strip().split('=')
+        if len(var) == 2:
+            os.environ[var[0]] = var[1]
 
 from flask_migrate import Migrate, MigrateCommand, upgrade
 from flask_script import Manager, Shell

@@ -234,6 +234,12 @@ class User(db.Model, UserMixin):
         if f:
             db.session.delete(f)
 
+    def follow_toggle(self, user):
+        if self.is_following(user):
+            self.unfollow(user)
+        else:
+            self.follow(user)
+
     def is_following(self, user):
         return self.followed.filter_by(followed_id=user.id).first() is not None
 
