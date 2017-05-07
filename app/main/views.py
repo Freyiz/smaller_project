@@ -179,7 +179,7 @@ def comment_show_toggle(id):
 @main.route('/follow/<username>')
 @permission_required(Permission.FOLLOW)
 def follow_toggle(username):
-
+    user = User.query.filter_by(username=username).first_or_404()
     current_user.follow_toggle(user)
     return redirect(url_for('.user', username=user.username))
 
