@@ -1,5 +1,20 @@
 body {
-    background-image: url("http://pic.qiantucdn.com/58pic/15/96/56/23V58PICyXp_1024.jpg");
+    background-image: url('wow/bg_wow1.jpg');
+    background-size: cover;
+    color: #e7e7e7;
+}
+.jumbotron {
+    background-color: transparent;
+}
+.dropdown-menu {
+    min-width: 100%;
+}
+a {
+    color: #89ae96;
+    cursor: pointer;
+}
+.str-inline {
+    display: inline;
 }
 .rank {
     font-size: 30%;
@@ -7,16 +22,20 @@ body {
 a:hover {
     text-decoration: none;
 }
+a:focus {
+    outline: none;
+    text-decoration: none;
+    color: rgb(227, 216, 231);
+}
 .page-sayhi {
     color: #4cc544;
 }
 .lion {
-    position: absolute;
-    margin-top: -67px;
-    margin-left: 69px;
+    margin: -4%;
+    float: right;
 }
 .stormwind {
-    min-height: 296px;
+    overflow: hidden;
 }
 .profile-thumbnail {
     position: absolute;
@@ -32,7 +51,7 @@ ul.posts {
     list-style-type: none;
     padding: 0px;
     margin: 16px 0px 0px 0px;
-    border-top: 1px solid #e0e0e0;
+
 }
 div.post-tabs ul.posts {
     margin: 0px;
@@ -40,10 +59,10 @@ div.post-tabs ul.posts {
 }
 ul.posts li.post {
     padding: 8px;
-    border-bottom: 1px solid #e0e0e0;
+
 }
 ul.posts li.post:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(77, 83, 82, 0.26);
 }
 div.post-date {
     float: right;
@@ -69,13 +88,13 @@ ul.comments {
 ul.comments li.comment {
     margin-left: 32px;
     padding: 8px;
-    border-bottom: 1px solid #e0e0e0;
+
 }
 ul.comments li.comment:nth-child(1) {
-    border-top: 1px solid #e0e0e0;
+
 }
 ul.comments li.comment:hover {
-    background-color: #f0f0f0;
+    background-color:  rgba(77, 83, 82, 0.26);
 }
 div.comment-date {
     float: right;
@@ -122,6 +141,10 @@ div.flask-pagedown-preview h3 {
 .post-body h3 {
     font-size: 120%;
 }
-.table.followers tr {
-    border-bottom: 1px solid #e0e0e0;
+.table tr {
+    margin: 100%;
+    border: hidden;
+}
+.table tr:hover {
+    background-color:  rgba(77, 83, 82, 0.26);
 }

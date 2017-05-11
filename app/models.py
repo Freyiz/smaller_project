@@ -1,4 +1,3 @@
-# coding=utf-8
 from . import db, login_manager
 from flask_login import UserMixin, AnonymousUserMixin
 from datetime import datetime
@@ -12,12 +11,12 @@ from app.exceptions import ValidationError
 
 
 users_like_comments = db.Table('likes',
-                 db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-                 db.Column('comment_id', db.Integer, db.ForeignKey('comments.id')))
+                               db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                               db.Column('comment_id', db.Integer, db.ForeignKey('comments.id')))
 
 users_collect_posts = db.Table('collections',
-                 db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-                 db.Column('post_id', db.Integer, db.ForeignKey('posts.id')))
+                               db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                               db.Column('post_id', db.Integer, db.ForeignKey('posts.id')))
 
 
 class Permission:
@@ -26,6 +25,45 @@ class Permission:
     WRITE_ARTICLES = 0x04
     MODERATE_COMMENTS = 0x08
     ADMINISTER = 0x80
+
+
+class WowConfig:
+    factions = ['联盟', '部落']
+    races = {
+        '联盟': ['人类', '矮人', '暗夜精灵', '侏儒', '德莱尼', '熊猫人'],
+        '部落': ['兽人', '亡灵', '牛头人', '巨魔', '血精灵', '熊猫人']
+    }
+    classes = ['死亡骑士', '恶魔猎手', '德鲁伊', '猎人', '法师', '武僧', '圣骑士', '牧师', '盗贼', '萨满祭司', '术士', '战士']
+    colors = {
+        '联盟': '#0078FF',
+        '部落': '#B30000',
+        '死亡骑士': '#C41F3B',
+        '恶魔猎手': '#A330C9',
+        '德鲁伊': '#FF7D0A',
+        '猎人': '#ABD473',
+        '法师': '#69CCF0',
+        '武僧': '#00FF96',
+        '圣骑士': '#F58CBA',
+        '牧师': '#FFFFFF',
+        '盗贼': '#FFF569',
+        '萨满祭司': '#0070DE',
+        '术士': '#9482C9',
+        '战士': '#C79C6E'
+    }
+    avatar = {
+        '死亡骑士': 'death-knight',
+        '恶魔猎手': 'demon-hunter',
+        '德鲁伊': 'druid',
+        '猎人': 'hunter',
+        '法师': 'mage',
+        '武僧': 'monk',
+        '圣骑士': 'paladin',
+        '牧师': 'priest',
+        '盗贼': 'rogue',
+        '萨满祭司': 'shaman',
+        '术士': 'warlock',
+        '战士': 'warrior'
+    }
 
 
 class Role(db.Model):
@@ -41,13 +79,11 @@ class Role(db.Model):
 
     @staticmethod
     def insert_roles():
-        roles = {'User':
-                     (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
-                 'Moderator':
-                     (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES |
-                      Permission.MODERATE_COMMENTS, False),
-                 'Administrator':
-                     (0xff, False)}
+        roles = {
+            'User': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
+            'Moderator': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES | Permission.MODERATE_COMMENTS, False),
+            'Administrator': (0xff, False)
+        }
         for r in roles:
             if not Role.query.filter_by(name=r).first():
                 role = Role(name=r)
@@ -79,6 +115,12 @@ class Follow(db.Model):
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
+    wow_faction = db.Column(db.String())
+    wow_race = db.Column(db.String())
+    wow_class = db.Column(db.String())
+    wow_avatar = db.Column(db.String())
+    faction_color = db.Column(db.String())
+    class_color = db.Column(db.String())
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
@@ -118,6 +160,9 @@ class User(db.Model, UserMixin):
         if self.email and not self.avatar_hash:
             self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
         self.followers.append(Follow(follower=self))
+        self.faction_color = WowConfig.colors[self.wow_faction]
+        self.class_color = WowConfig.colors[self.wow_class]
+        self.wow_avatar = '../static/wow/' + WowConfig.avatar[self.wow_class] + '.jpg'
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -269,14 +314,18 @@ class User(db.Model, UserMixin):
 
     @staticmethod
     def generate_fake(count=100):
-        from random import seed
+        from random import seed, randint
         import forgery_py
 
         seed()
         for i in range(count):
+            faction = WowConfig.factions[randint(0, 1)]
             new_name = forgery_py.internet.user_name()
             if not User.query.filter_by(username=new_name).first():
-                u = User(email=forgery_py.internet.email_address(),
+                u = User(wow_faction=faction,
+                         wow_race=WowConfig.races[faction][randint(0, 5)],
+                         wow_class=WowConfig.classes[randint(0, 11)],
+                         email=forgery_py.internet.email_address(),
                          username=new_name,
                          password=forgery_py.lorem_ipsum.word(),
                          name=forgery_py.name.full_name(),

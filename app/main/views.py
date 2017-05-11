@@ -1,4 +1,3 @@
-# coding=utf-8
 from flask import render_template, send_from_directory, request, \
     redirect, url_for, flash, current_app, abort, make_response
 from . import main
@@ -61,9 +60,8 @@ def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
         f = form.avatar.data
-        filename = '%d_%s.%s' % (current_user.id,
-                                 datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%S'),
-                                 f.filename.rsplit('.')[1])
+        filename = '%d_%s.%s' % (current_user.id, datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%S'), f.filename.rsplit('.')[1])
+        # filename = '%d.%s' % (current_user.id, f.filename.rsplit('.')[1])
         current_user.avatar = os.path.join('../static/uploads', filename)
         f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
         current_user.name = form.name.data
@@ -105,21 +103,6 @@ def edit_profile_admin(id):
     return render_template('edit_profile.html', form=form, user=user)
 
 
-@main.route('/edit-post/<int:id>', methods=['GET', 'POST'])
-@login_required
-def edit_post(id):
-    post = Post.query.get_or_404(id)
-    if current_user != post.author and not current_user.is_administrator():
-        abort(403)
-    form = PostForm()
-    if form.validate_on_submit():
-        post.body = form.body.data
-        db.session.add(post)
-        return redirect(url_for('.post', id=post.id))
-    form.body.data = post.body
-    return render_template('edit_post.html', form=form)
-
-
 @main.route('/post/<int:id>', methods=['GET', 'POST'])
 @login_required
 @permission_required(Permission.COMMENT)
@@ -140,6 +123,30 @@ def post(id):
     comments = pagination.items
     return render_template('post.html', form=form, posts=[post], page=page,
                            comments=comments, pagination=pagination)
+
+
+@main.route('/collect-toggle')
+@login_required
+def collect_toggle():
+    id = request.args.get('id', type=int)
+    post = Post.query.get_or_404(id)
+    current_user.collect_toggle(post)
+    return jsonify()
+
+
+@main.route('/edit-post/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(id):
+    post = Post.query.get_or_404(id)
+    if current_user != post.author and not current_user.is_administrator():
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.body = form.body.data
+        db.session.add(post)
+        return redirect(url_for('.post', id=post.id))
+    form.body.data = post.body
+    return render_template('edit_post.html', form=form)
 
 
 @main.route('/edit-comment/<int:id>')
@@ -163,25 +170,21 @@ def moderate():
     return render_template('moderate.html', page=page, pagination=pagination, comments=comments)
 
 
-@main.route('/comment-show-toggle/<int:id>')
-@permission_required(Permission.MODERATE_COMMENTS)
-def comment_show_toggle(id):
-    page = request.args.get('page', 1, type=int)
-    comment = Comment.query.get_or_404(id)
-    if comment.disabled:
-        comment.disabled = False
-    else:
-        comment.disabled = True
-    db.session.add(comment)
-    return redirect(url_for('.post', id=comment.post_id, page=page))
-
-
-@main.route('/follow/<username>')
+@main.route('/follow-toggle')
 @permission_required(Permission.FOLLOW)
-def follow_toggle(username):
-    user = User.query.filter_by(username=username).first_or_404()
+def follow_toggle():
+    id = request.args.get('id', type=int)
+    user = User.query.filter_by(id=id).first_or_404()
     current_user.follow_toggle(user)
-    return redirect(url_for('.user', username=user.username))
+    if current_user.is_following(user):
+        text = '已 追随'
+    else:
+        text = '追随'
+    if user.followers.count() > 1:
+        href = "/followers/" + user.username
+    else:
+        href = '#'
+    return jsonify(result=user.followers.count() - 1, text=text, href=href)
 
 
 @main.route('/followers/<username>')
@@ -193,7 +196,7 @@ def followers(username):
         error_out=False)
     follows = [{'user': item.follower, 'timestamp': item.timestamp}
                for item in pagination.items]
-    return render_template('followers.html', user=user, follows=follows, title='的关注者',
+    return render_template('followers.html', user=user, follows=follows, title='的追随者',
                            pagination=pagination, endpoint='.followers')
 
 
@@ -206,7 +209,7 @@ def followed_by(username):
         error_out=False)
     follows = [{'user': item.followed, 'timestamp': item.timestamp}
                for item in pagination.items]
-    return render_template('followers.html', user=user, follows=follows, title='的关注',
+    return render_template('followers.html', user=user, follows=follows, title='的追随',
                            pagination=pagination, endpoint='.followed_by')
 
 
@@ -233,22 +236,34 @@ def show_collection():
     return resp
 
 
-@main.route('/like/<int:id>')
+@main.route('/like-toggle')
 @login_required
-def like_toggle(id):
-    page = request.args.get('page', 1, type=int)
+def like_toggle():
+    id = request.args.get('id', type=int)
     comment = Comment.query.get_or_404(id)
     current_user.like_toggle(comment)
-    return redirect(url_for('.post', id=comment.post_id, page=page))
+    if comment not in current_user.comments_like.all():
+        text = 'fa fa-thumbs-o-up'
+    else:
+        text = 'fa fa-thumbs-up'
+    return jsonify(result=comment.likes, text=text)
 
 
-@main.route('/collect/<int:id>')
-@login_required
-def collect_toggle(id):
-    page = request.args.get('page', 1, type=int)
-    post = Post.query.get_or_404(id)
-    current_user.collect_toggle(post)
-    return redirect(url_for('.index', id=id, page=page))
+@main.route('/comment-display-toggle')
+@permission_required(Permission.MODERATE_COMMENTS)
+def comment_display_toggle():
+    id = request.args.get('id', type=int)
+    comment = Comment.query.get_or_404(id)
+    if comment.disabled:
+        comment.disabled = False
+        result = '屏蔽'
+        text = 'btn btn-default btn-xs'
+    else:
+        comment.disabled = True
+        result = '显示'
+        text = 'btn btn-danger btn-xs'
+    db.session.add(comment)
+    return jsonify(result=result, text=text)
 
 
 @main.route('/shutdown')
@@ -323,58 +338,85 @@ def about():
 # @main.app_context_processor
 # def inject():
 #    return dict(read_md=read_md)
-import os
+
+import json
+from flask import session, jsonify
 from app import oauth
-from flask import session
 
-#if os.path.exists('.env'):
-#    for line in open('.env'):
-#        var = line.strip().split('=')
-#        if len(var) == 2 and var[0].startswith('REN2'):
-#            os.environ[var[0]] = var[1]
 
-ren2_id = os.environ.get('REN2_APP_ID', '483347')
-ren2_key = os.environ.get('REN2_APP_KEY', 'cd896ffc91cd43459a7f2eaebe92be1d')
+QQ_APP_ID = os.getenv('QQ_APP_ID')
+QQ_APP_KEY = os.getenv('QQ_APP_KEY')
 
-ren2 = oauth.remote_app(
-    'ren2',
-    consumer_key=ren2_id,
-    consumer_secret=ren2_key,
-    base_url='https://graph.renren.com',
+
+qq = oauth.remote_app(
+    'qq',
+    consumer_key=QQ_APP_ID,
+    consumer_secret=QQ_APP_KEY,
+    base_url='https://graph.qq.com',
     request_token_url=None,
-    access_token_url='/oauth/token',
-    authorize_url='/oauth/authorize'
+    request_token_params={'scope': 'get_user_info'},
+    access_token_url='/oauth2.0/token',
+    authorize_url='/oauth2.0/authorize',
 )
 
 
-@main.route('/user-info')
+def json_to_dict(x):
+    '''OAuthResponse class can't not parse the JSON data with content-type
+    text/html, so we need reload the JSON data manually'''
+    if x.find('callback') > -1:
+        pos_lb = x.find('{')
+        pos_rb = x.find('}')
+        x = x[pos_lb:pos_rb + 1]
+    try:
+        return json.loads(x, encoding='utf-8')
+    except:
+        return x
+
+
+def update_qq_api_request_data(data={}):
+    '''Update some required parameters for OAuth2.0 API calls'''
+    defaults = {
+        'openid': session.get('qq_openid'),
+        'access_token': session.get('qq_token')[0],
+        'oauth_consumer_key': QQ_APP_ID,
+    }
+    defaults.update(data)
+    return defaults
+
+
+@main.route('/user_info')
 def get_user_info():
-    if 'ren2_token' in session:
-        return redirect(session['user']['avatar'][0]['url'])
-    return redirect(url_for('.ren2_login'))
+    if 'qq_token' in session:
+        data = update_qq_api_request_data()
+        resp = qq.get('/user/get_user_info', data=data)
+        return jsonify(status=resp.status, data=resp.data)
+    return redirect(url_for('login'))
 
 
-@main.route('/ren2-login')
+@main.route('/login')
 def login():
-    return ren2.authorize(callback=url_for('.ren2_authorized', _external=True))
+    return qq.authorize(callback=url_for('authorized', _external=True))
 
 
-@main.route('/ren2-authorized')
-def ren2_authorized():
-    resp = ren2.authorized_response()
+@main.route('/login/authorized')
+def authorized():
+    resp = qq.authorized_response()
     if resp is None:
         return 'Access denied: reason=%s error=%s' % (
             request.args['error_reason'],
             request.args['error_description']
         )
-    session['ren2_token'] = (resp['access_token'], '')
+    session['qq_token'] = (resp['access_token'], '')
 
     # Get openid via access_token, openid and access_token are needed for API calls
+    resp = qq.get('/oauth2.0/me', {'access_token': session['qq_token'][0]})
+    resp = json_to_dict(resp.data)
     if isinstance(resp, dict):
-        session['user'] = resp.get('user')
-    return redirect(url_for('.get_user_info'))
+        session['qq_openid'] = resp.get('openid')
+
+    return redirect(url_for('get_user_info'))
 
 
-@ren2.tokengetter
-def get_ren2_token():
-    return session.get('ren2_token')
+@qq.tokengetter
+def get_qq_oauth_token():
+    return session.get('qq_token')

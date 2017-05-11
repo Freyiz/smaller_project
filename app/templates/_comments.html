@@ -6,45 +6,67 @@
                     {% if comment.author.avatar %}
                         <img src="{{ comment.author.avatar }}" width="40" height="40" class="img-rounded profile-thumbnail">
                     {% else %}
-                        <img src="{{ comment.author.gravatar(size=40) }}" class="img-rounded profile-thumbnail">
+                        <img src="{{ comment.author.wow_avatar }}" width="40" height="40" class="img-rounded profile-thumbnail">
                     {% endif %}
                 </a>
             </div>
             <div class="comment-content">
                 <div class="comment-date">{{ moment(comment.timestamp).fromNow() }}</div>
                 <div class="comment-author">
-                    <a href="{{ url_for('.user', username=comment.author.username) }}">
+                    <a style="color: {{ comment.author.class_color }}" href="{{ url_for('.user', username=comment.author.username) }}">
                         {{ comment.author.username }}
                     </a>
                 </div>
                 <div class="post-body">
-                    {% if comment.disabled %}<p><b>此评论已被管理员屏蔽。</b></p> {% endif %}
-                    {% if not comment.disabled or current_user.can(Permission.MODERATE_COMMENTS) %}
-                        {% if comment.body_html %}
-                            {{ comment.body_html | safe }}
-                        {% else %}
-                            {{ comment.body }}
+                    <b id="display_warning{{ comment.id }}" {% if not comment.disabled %}hidden{% endif %}>此评论已被屏蔽。</b>
+                    <div id="comment_color{{ comment.id }}" {% if comment.disabled %}style="color: #857a78" {% endif %}>
+                        {% if not comment.disabled or current_user.can(Permission.MODERATE_COMMENTS) %}
+                            {% if comment.body_html %}
+                                {{ comment.body_html | safe }}
+                            {% else %}
+                                {{ comment.body }}
+                            {% endif %}<br>
+                            <span id="comment{{ comment.id }}">{{ comment.likes }}</span>
+                            <a id="like_icon{{ comment.id }}"{% if comment not in current_user.comments_like.all() %} class="fa fa-thumbs-o-up"{% else %} class="fa fa-thumbs-up"{% endif %} onclick="like_toggle('{{ comment.id }}', '#comment{{ comment.id }}', '#like_icon{{ comment.id }}')"></a>
                         {% endif %}
-                        <br>
-                        <a class={% if comment not in current_user.comments_like.all() %}"glyphicon glyphicon-triangle-top"{% else %}"glyphicon glyphicon-triangle-bottom"{% endif %}
-                        href="{{ url_for('.like_toggle', id=comment.id, page=page) }}#{{ comment.id }}">
-                        </a>
-                        {{ comment.likes }}likes
-                    {% endif %}
+                    </div>
                 </div>
                 <div class="post-footer">
                     {% if current_user == comment.author %}
                         <a class="btn bg-info btn-xs" href="{{ url_for('.delete_comment', id=comment.id, page=page) }}#{{ comment.id }}">删除</a>
                     {% endif %}
                     {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                        {% if not comment.disabled %}
-                            <a class="btn btn-default btn-xs" href="{{ url_for('.comment_show_toggle', id=comment.id, page=page) }}#{{ comment.id }}">屏蔽</a>
-                        {% else %}
-                            <a class="btn btn-danger btn-xs" href="{{ url_for('.comment_show_toggle', id=comment.id, page=page) }}#{{ comment.id }}">解除屏蔽</a>
-                        {% endif %}
+                        <a id="comment_display_toggle{{ comment.id }}"{% if not comment.disabled %} class="btn btn-default btn-xs"{% else %} class="btn btn-danger btn-xs"{% endif %} onclick="display_toggle('{{ comment.id }}', '#comment_display_toggle{{ comment.id }}', '#display_warning{{ comment.id }}', '#comment_color{{ comment.id }}')">
+                            {% if not comment.disabled %}屏蔽{% else %}显示{% endif %}
+                        </a>
+
                     {% endif %}
                 </div>
             </div>
         </li>
     {% endfor %}
 </ul>
+<script type=text/javascript>
+    function like_toggle(comment_id, span_id, a_id) {
+        $.getJSON($SCRIPT_ROOT + '/like-toggle', {
+            id: comment_id
+        }, function(data) {
+            $(span_id).text(data.result);
+            $(a_id).attr('class', data.text);
+        });
+    }
+    function display_toggle(comment_id, a_id, b_id, div_id) {
+        $.getJSON($SCRIPT_ROOT + '/comment-display-toggle', {
+            id: comment_id
+        }, function(data) {
+            $(a_id).text(data.result).attr('class', data.text);
+            if (data.result === '显示') {
+                $(b_id).show();
+                $(div_id).attr('style', 'color: #857a78');
+            } else {
+                $(b_id).hide();
+                $(div_id).attr('style', '');
+            }
+        });
+    }
+</script>

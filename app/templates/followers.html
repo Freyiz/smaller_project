@@ -1,37 +1,38 @@
 {% extends 'base.html' %}
 {% import "_macros.html" as macros %}
 
-{% block title %}互动{% endblock %}
+{% block title %}追随与追随者{% endblock %}
 
 {% block page_content %}
     <div class="jumbotron">
         <a href="{{ url_for('.user', username=user.username) }}">
-            <h1>{{ user.username }}{{ title }}</h1>
+            <h1 class="str-inline">{% if current_user == user %}你{% else %}{{ user.username }}{% endif %} </h1>
         </a>
-    <table class="table table-hover">
-        <thead><tr><th>用户</th><th>关注时间</th></tr></thead>
-        {% for follow in follows %}
-            {% if user != follow.user %}
-            <tr>
-                <td>
-                    <a href="{{ url_for('.user', username=follow.user.username) }}">
-                    {% if follow.user.avatar %}
-                        <img src="{{ follow.user.avatar }}" width="32" height="32" class="img-rounded">
-                    {% else %}
-                        <img src="{{ follow.user.gravatar(size=32) }}" class="img-rounded">
-                    {% endif %}
-                        {{ follow.user.username }}
-                    </a>
-                </td>
-                <td>
-                    {{ moment(follow.timestamp).format('L') }}
-                </td>
-            </tr>
-             {% endif %}
-        {% endfor %}
-    </table>
-    {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, endpoint, username=user.username) }}
-    {% endif %}
+        <h2 class="str-inline">{{ title }}</h2><br><br>
+        <table class="table">
+            <thead><tr><th>用户</th><th>关注时间</th></tr></thead>
+            {% for follow in follows %}
+                {% if user != follow.user %}
+                    <tr>
+                        <td>
+                            <a style="color: {{ follow.user.class_color }}" href="{{ url_for('.user', username=follow.user.username) }}">
+                                {% if follow.user.avatar %}
+                                    <img src="{{ follow.user.avatar }}" width="32" height="32" class="img-rounded">
+                                {% else %}
+                                    <img src="{{ follow.user.wow_avatar }}" width="32" height="32" class="img-rounded">
+                                {% endif %}
+                                {{ follow.user.username }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ moment(follow.timestamp).format('L') }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        {% if pagination.pages > 1 %}
+            {{ macros.pagination_widget(pagination, endpoint, username=user.username) }}
+        {% endif %}
     </div>
 {% endblock %}

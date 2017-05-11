@@ -88,7 +88,7 @@ def reset():
     print('生成角色...')
     Role.insert_roles()
     print('生成我...')
-    u = User(username='Yiz', email='562124140@qq.com', password='1', confirmed=True, name='野蛮角斗士',
+    u = User(wow_faction='联盟', wow_race='暗夜精灵', wow_class='德鲁伊', username='Yiz', email='562124140@qq.com', password='1', confirmed=True, name='野蛮角斗士',
              location='试炼之环', about_me='非著名猫德')
     db.session.add(u)
     db.session.commit()

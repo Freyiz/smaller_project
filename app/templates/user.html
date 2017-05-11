@@ -6,51 +6,36 @@
 {% block page_content %}
     <div class="jumbotron">
         {% if user.avatar %}
-            <img src="{{ user.avatar }}" width="100" height="100" class="img-rounded profile-thumbnail">
+            <img id="avatar" src="{{ user.avatar }}" width="100" height="100" class="img-rounded profile-thumbnail">
         {% else %}
-            <img src="{{ user.gravatar(size=100) }}" class="img-rounded profile-thumbnail">
+            <img src="{{ user.wow_avatar }}" width="100" height="100" class="img-rounded profile-thumbnail">
         {% endif %}
-
-        <h1 class="profile-header">{{ user.username }}
-            {% if user.is_following(current_user) and current_user != user %}<span class="rank">,你的追随者</span>{% endif %}</h1>
-        {% if user.location or user.name %}
-            <p>
-                {% if user.name %}{{ user.name }}{% endif %}
-                {% if user.location %}来自
-                    <a href="http://baike.baidu.com/item/{{ user.location }}" target="_blank">{{ user.location }}</a>
-                {% endif %}
-            </p>
-        {% endif %}
-        {% if current_user.is_administrator() %}
-            <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
-        {% endif %}
+        <h1 class="profile-header">
+            {% if user.name %}{{ user.name }} {% endif %}{{ user.username }}{% if user.is_following(current_user) and current_user != user %} <span class="rank">, 你的追随者</span>{% endif %}</h1>
+        <p>
+            {{ user.wow_faction }} {{ user.wow_race }} {{ user.wow_class }}
+            {% if user.location %}
+                <a href="http://baike.baidu.com/item/{{ user.location }}" target="_blank">{{ user.location }}</a>
+            {% endif %}
+        </p>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
         <p>
             {% if current_user.can(Permission.FOLLOW) and current_user != user %}
-                <a class="btn bg-primary" href="{{ url_for('.follow_toggle', username=user.username) }}">
-                        <span class="glyphicon glyphicon-heart"></span>
-                    {% if current_user.is_following(user) %}已追随{% else %}追随&#12288;{% endif %}
-                </a>&#8194;
-            {% endif %}
-            追随者
-            {% if user.followers.count() > 1 %}
-                <a href="{{ url_for('.followers', username=user.username) }}">
+                <a class="btn bg-primary" onclick="follow_toggle()">
+                    <span id="follow_icon"{% if current_user.is_following(user) %} hidden{% endif %}><i class="fa fa-heart"></i></span>
+                    <span id="is_following">{% if current_user.is_following(user) %}已 追随{% else %}追随{% endif %}</span>
+                </a>
+            {% endif %}追随者
+            <a id="followers"{% if user.followers.count() > 1 %} href="{{ url_for('.followers', username=user.username) }}"{% endif %}>
                 {{ user.followers.count() - 1 }}
-                </a>
-
-            {% else %}
-                0
-            {% endif %}
-            人 | 追随了
-        {% if user.followed.count() > 1 %}
-                <a href="{{ url_for('.followed_by', username=user.username) }}">
+            </a> 人 | 追随了
+            <a{% if user.followed.count() > 1 %} href="{{ url_for('.followed_by', username=user.username) }}"{% endif %}>
                 {{ user.followed.count() - 1 }}
-                </a>
-        {% else %}0
-        {% endif %}
-            人
-
+            </a> 人
         </p>
+            {% if current_user.is_administrator() %}
+            <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        {% endif %}
         <p>出生于 {{ moment(user.member_since).format('L') }} | 最近操作 {{ moment(user.last_seen).fromNow() }}</p>
         <p>
             {% if user == current_user %}
@@ -74,10 +59,21 @@
 
 {% block scripts %}
     {{ super() }}
-    <script>
-    function refresh(){
-        document.getElementById("fff").innerHTML={{ user.followers.count() - 1 }};
-        document.getElementById('ffff').innerHTML={{ user.followed.count() - 1 }};
+    <script type=text/javascript>
+        function follow_toggle() {
+            $.getJSON($SCRIPT_ROOT + '/follow-toggle', {
+                id: {{ user.id }}
+            }, function(data) {
+                $("#followers").text(data.result).attr('href', data.href);
+                $("#is_following").text(data.text);
+                if (data.text === '追随') {
+                    $("#follow_icon").show();
+                                document.getElementById('avatar').show();
+
+                } else {
+                    $("#follow_icon").hide();
+                }
+            });
         }
     </script>
 {% endblock %}

@@ -1,15 +1,11 @@
-import os
 import json
-from flask import Flask, redirect, url_for, session, request, jsonify, Markup
-from flask_oauthlib.client import OAuth
+from flask import session, jsonify
+from app import oauth
+
 
 QQ_APP_ID = os.getenv('QQ_APP_ID')
 QQ_APP_KEY = os.getenv('QQ_APP_KEY')
 
-app = Flask(__name__)
-app.debug = True
-app.secret_key = 'development'
-oauth = OAuth(app)
 
 qq = oauth.remote_app(
     'qq',
@@ -47,14 +43,7 @@ def update_qq_api_request_data(data={}):
     return defaults
 
 
-@app.route('/')
-def index():
-    '''just for verify website owner here.'''
-    return Markup('''<meta property="qc:admins" '''
-                  '''content="226526754150631611006375" />''')
-
-
-@app.route('/user_info')
+@main.route('/user_info')
 def get_user_info():
     if 'qq_token' in session:
         data = update_qq_api_request_data()
@@ -63,18 +52,12 @@ def get_user_info():
     return redirect(url_for('login'))
 
 
-@app.route('/login')
+@main.route('/login')
 def login():
     return qq.authorize(callback=url_for('authorized', _external=True))
 
 
-@app.route('/logout')
-def logout():
-    session.pop('qq_token', None)
-    return redirect(url_for('get_user_info'))
-
-
-@app.route('/login/authorized')
+@main.route('/login/authorized')
 def authorized():
     resp = qq.authorized_response()
     if resp is None:
@@ -96,7 +79,3 @@ def authorized():
 @qq.tokengetter
 def get_qq_oauth_token():
     return session.get('qq_token')
-
-
-if __name__ == '__main__':
-    app.run()

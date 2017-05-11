@@ -4,7 +4,7 @@ from flask import flash, render_template, redirect, url_for, request, session, m
 from . import auth
 from ..models import User, db
 from flask_login import login_user, logout_user, login_required, current_user
-from ..email import send_email
+from .._email import send_email
 
 
 @auth.route('/register', methods=['GET', 'POST'])
@@ -84,7 +84,7 @@ def generate_verification_code():
         return random.randint(1, 240), random.randint(1, 60), random.randint(1, 240), random.randint(1, 60)
 
     img = Image.new('RGBA', (240, 60), (255, 255, 255))
-    font = ImageFont.truetype('fonts/yahei.ttf', 36)
+    font = ImageFont.truetype('app/static/fonts/yahei.ttf', 36)
     draw = ImageDraw.Draw(img)
     for x in range(0, img.size[0], 2):
         for y in range(0, img.size[1]):
@@ -209,7 +209,7 @@ def change_email(token):
 @auth.route('/logout')
 @login_required
 def logout():
-    session.pop('code_text')
+    session.pop('code_text', None)
     logout_user()
     flash('See you again!')
     return redirect(url_for('main.index'))
