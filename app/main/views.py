@@ -29,18 +29,10 @@ def index():
         db.session.add(post)
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
-    show_which = request.cookies.get('show_which', 'all')
-    query = Post.query
-    if current_user.is_authenticated:
-        if show_which == 'followed':
-            query = current_user.followed_posts
-        if show_which == 'collection':
-            query = current_user.posts_collect
-    pagination = query.order_by(Post.timestamp.desc()).paginate(
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
-    return render_template('index.html', form=form, posts=posts,
-                           show_which=show_which, pagination=pagination)
+    return render_template('index.html', form=form, posts=posts, pagination=pagination)
 
 
 @main.route('/user/<username>')
@@ -215,7 +207,7 @@ def followed_by(username):
 
 @main.route('/all')
 def show_all():
-    resp = make_response(redirect(url_for('.index')))
+    resp = make_response(redirect(url_for('.posts')))
     resp.set_cookie('show_which', 'all', max_age=30*24*60*60)
     return resp
 
@@ -223,17 +215,38 @@ def show_all():
 @main.route('/followed')
 @login_required
 def show_followed():
-    resp = make_response(redirect(url_for('.index')))
+    resp = make_response(redirect(url_for('.posts')))
     resp.set_cookie('show_which', 'followed', max_age=30*24*60*60)
     return resp
 
 
-@main.route('/collection')
+@main.route('/collected')
 @login_required
-def show_collection():
-    resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_which', 'collection', max_age=30*24*60*60)
+def show_collected():
+    resp = make_response(redirect(url_for('.posts')))
+    resp.set_cookie('show_which', 'collected', max_age=30*24*60*60)
     return resp
+
+
+@main.route('/posts')
+@login_required
+def posts():
+    page = request.args.get('page', 1, type=int)
+    show_which = request.cookies.get('show_which', 'all')
+    query = Post.query
+    title = '所有公告'
+    if current_user.is_authenticated:
+        if show_which == 'followed':
+            query = current_user.posts_followed
+            title = '我的关注'
+        if show_which == 'collected':
+            query = current_user.posts_collected
+            title = '我的收藏'
+    pagination = query.order_by(Post.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
+    posts = pagination.items
+    return render_template('posts.html', posts=posts, show_which=show_which,
+                           title=title, pagination=pagination)
 
 
 @main.route('/like-toggle')
@@ -308,7 +321,7 @@ def download(filename):
 @main.route('/attack')
 @login_required
 def attack():
-    return render_template('attack.html')
+    return redirect(url_for('auth.register'))
 
 
 @main.route('/about')

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <div class="wow-clause">
+        <h1>声明</h1>
+        <p>本网站所用图片素材皆来自<a href="https://www.wowchina.com/zh-cn/">魔兽世界中文官方网站</a> 。</p>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            $('body').css('background','url("../../static/wow/race/worgen_NPW0DXRYV7BY1472070302459.jpg") repeat');
+        })
+    </script>
+{% endblock %}

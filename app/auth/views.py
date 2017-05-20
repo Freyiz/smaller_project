@@ -1,8 +1,9 @@
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm, \
     PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
-from flask import flash, render_template, redirect, url_for, request, session, make_response
+from flask import flash, render_template, redirect, url_for, request, \
+    session, make_response, jsonify
 from . import auth
-from ..models import User, db
+from ..models import User, db, WowConfig
 from flask_login import login_user, logout_user, login_required, current_user
 from .._email import send_email
 
@@ -11,15 +12,26 @@ from .._email import send_email
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data,
+        if 'code_text' in session and form.verification_code.data.lower() \
+                != session['code_text'].lower():
+            flash('验证码不正确！')
+            return render_template('auth/register.html', form=form)
+        user = User(wow_faction=form.wow_faction.data,
+                    wow_race=form.wow_race.data,
+                    wow_class=form.wow_class.data,
+                    email=form.email.data,
                     username=form.username.data,
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
         token = user.generate_confirmation_token()
         send_email(user.email, '验证邮箱', 'auth/email/confirm', user=user, token=token)
-        flash('注册成功，一封确认邮件已经发往你的邮箱，请注意查收哦！')
+        flash('注册成功，一封确认邮件已经发往你的邮箱，请注意查收！')
         return redirect(url_for('auth.login'))
+    player = WowConfig().random_player()
+    form.wow_faction.data = player[0]
+    form.wow_race.data = player[1]
+    form.wow_class.data = player[2]
     return render_template('auth/register.html', form=form)
 
 
@@ -29,8 +41,6 @@ def before_request():
         current_user.ping()
         if not current_user.confirmed \
                 and request.endpoint != 'main.index' \
-                and request.endpoint != 'main.about' \
-                and request.endpoint != 'main.user' \
                 and request.endpoint[:5] != 'auth.':
             return redirect(url_for('auth.unconfirmed'))
 
@@ -69,40 +79,34 @@ def confirm(token):
 
 def generate_verification_code():
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
-    import random
+    from random import randint, choice
 
-    def rndChar():
-        return chr(random.randint(65, 90))
-
-    def rndColor():
-        return random.randint(64, 255), random.randint(64, 255), random.randint(64, 255)
-
-    def rndColor2():
-        return random.randint(32, 127), random.randint(32, 127), random.randint(32, 127)
+    def char():
+        return chr(choice((randint(48, 57), randint(65, 90), randint(97, 122))))
 
     def line():
-        return random.randint(1, 240), random.randint(1, 60), random.randint(1, 240), random.randint(1, 60)
+        return randint(1, 220), randint(1, 40), randint(1, 220), randint(1, 40)
 
-    img = Image.new('RGBA', (240, 60), (255, 255, 255))
-    font = ImageFont.truetype('app/static/fonts/yahei.ttf', 36)
+    def alliance_or_horde():
+        return choice(((127, 0, 0), (0, 120, 255)))
+
+    img = Image.new('RGBA', (220, 40), (231,231,231))
+    font = ImageFont.truetype('app/static/fonts/yahei.ttf', 30)
     draw = ImageDraw.Draw(img)
-    for x in range(0, img.size[0], 2):
-        for y in range(0, img.size[1]):
-            draw.point((x, y), fill=rndColor())
+
     strs = ''
     for i in range(4):
-        each_str = rndChar()
-        img1 = Image.new('RGBA', (51, 51), (255, 255, 255, 0))
+        each_str = char()
+        img1 = Image.new('RGBA', (50, 40), (0, 0, 0, 0))
         img_font = ImageDraw.Draw(img1)
-        img_font.text((1, 1), each_str, font=font, fill=rndColor2())
-        img1 = img1.rotate(random.randint(-30, 30))
-        img.paste(img1, (10 + i * 60, 10), mask=img1)
+        img_font.text((1, 1), each_str, font=font, fill=alliance_or_horde())
+        img1 = img1.rotate(randint(-30, 30))
+        img.paste(img1, (10 + i * 50, 0), mask=img1)
         strs += each_str
-    draw.line(line(), rndColor2())
-    draw.line(line(), rndColor2())
-    draw.line(line(), rndColor2())
-    draw.line(line(), rndColor2())
-    img = img.filter(ImageFilter.SMOOTH_MORE)
+    draw.line(line(), alliance_or_horde())
+    draw.line(line(), alliance_or_horde())
+    draw.line(line(), alliance_or_horde())
+    img = img.filter(ImageFilter.SMOOTH)
     return img, strs
 
 
@@ -125,12 +129,7 @@ def verification_code():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if 'code_text' in session and form.verification_code.data.lower() \
-                != session['code_text'].lower():
-            flash('验证码不正确！')
-            return render_template('auth/login.html', form=form)
-        user = User.query.filter_by(email=form.username_or_email.data).first() or \
-                 User.query.filter_by(username=form.username_or_email.data).first()
+        user = User.query.filter_by(email=form.email.data).first()
         if user and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             flash('欢迎回来！%s' % user.username)
@@ -213,6 +212,17 @@ def logout():
     logout_user()
     flash('See you again!')
     return redirect(url_for('main.index'))
+
+
+@auth.route('/clause')
+def clause():
+    return render_template('auth/clause.html')
+
+
+@auth.route('/player')
+def player():
+    player = WowConfig().random_player()
+    return  jsonify(wow_faction=player[0], wow_race=player[1], wow_class=player[2])
 
 
 @auth.route('/delete')

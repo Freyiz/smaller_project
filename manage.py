@@ -88,8 +88,8 @@ def reset():
     print('生成角色...')
     Role.insert_roles()
     print('生成我...')
-    u = User(wow_faction='联盟', wow_race='暗夜精灵', wow_class='德鲁伊', username='Yiz', email='562124140@qq.com', password='1', confirmed=True, name='野蛮角斗士',
-             location='试炼之环', about_me='非著名猫德')
+    u = User(wow_faction='联盟', wow_race='暗夜精灵', wow_class='德鲁伊', username='Yiz', email='562124140@qq.com', password='1',
+             confirmed=True, name='野蛮角斗士', location='试炼之环', about_me='非著名猫德')
     db.session.add(u)
     db.session.commit()
     print('生成小弟...')
@@ -114,8 +114,8 @@ def reset():
                 u.comments_like.append(c)
                 c.likes += 1
                 db.session.add(u)
-            if p not in u2.posts_collect:
-                u2.posts_collect.append(p)
+            if p not in u2.posts_collected:
+                u2.posts_collected.append(p)
                 db.session.add(u2)
         db.session.commit()
 
@@ -123,7 +123,6 @@ def reset():
     generate_likes_and_collections()
     print('重置数据库完成，谢谢使用!')
     quit()
-
 
 if __name__ == '__main__':
     manager.run()

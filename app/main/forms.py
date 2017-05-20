@@ -34,8 +34,8 @@ class EditProfileAdminForm(FlaskForm):
     confirmed = BooleanField('邮箱验证')
     role = SelectField('角色权限', coerce=int)
     email = StringField('邮箱', validators=[DataRequired(), Length(1, 64), Email()])
-    username = StringField('角色名', validators=[DataRequired(), Length(2, 20),
-                Regexp(r'^[a-zA-z][\w]*$', 0, '角色名必须以字母开头，只能包含数字、字母或下划线。')])
+    username = StringField('角色名', validators=[DataRequired(),
+                Regexp(r'^[\u4E00-\u9FA5]{2,6}$|^[A-Za-z]{2,12}$', 0, '角色名为2~12位字母或2~6位汉字。')])
     name = StringField('头衔')
     location = StringField('地址')
     about_me = TextAreaField('简介')
@@ -49,8 +49,8 @@ class EditProfileAdminForm(FlaskForm):
 
     def validate_email(self, field):
         if field.data != self.user.email and User.query.filter_by(email=field.data).first():
-            raise ValidationError('哎哟，被别人注册过了~')
+            raise ValidationError('邮箱已被注册。')
 
     def validate_username(self, field):
         if field.data != self.user.username and User.query.filter_by(username=field.data).first():
-            raise ValidationError('名字被征用啦，换一个吧~')
+            raise ValidationError('角色名已存在。')

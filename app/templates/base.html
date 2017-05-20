@@ -4,18 +4,18 @@
 
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font_awesome/css/font-awesome.min.css') }}">
     <!--[if IE]>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font_awesome/css/font-awesome-ie7.min.css') }}">
     <![endif]-->
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='wow/wow_inverse.ico') }}">		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='wow/wow_inverse.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notification/css/ns-default.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notification/css/ns-style-growl.css') }}" />
     <script src="{{ url_for('static', filename='notification/js/modernizr.custom.js') }}"></script>
     <!--[if IE]>
   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 {% endblock %}
 
 {% block navbar %}
@@ -40,8 +40,16 @@
                         <li><a href="{{ url_for('main.moderate') }}">所有议论</a></li>
                     {% endif %}
                     {% if current_user.is_authenticated %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <li class="dropdown dropdown-posts">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">公告<span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('main.show_all') }}">所有</a></li>
+                                <li><a href="{{ url_for('main.show_followed') }}">关注</a></li>
+                                <li><a href="{{ url_for('main.show_collected') }}">收藏</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-account">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                                 {% if current_user.avatar %}
                                     <img src="{{ current_user.avatar }}" width="18" height="18" class="img-rounded">
                                 {% else %}
@@ -49,7 +57,7 @@
                                 {% endif %}
                                 &#8197;账户<span class="glyphicon glyphicon-triangle-bottom"></span>
                             </a>
-                            <ul class="dropdown-menu navbar-inverse navbar-nav">
+                            <ul class="dropdown-menu">
                                 <li><a href="{{ url_for('main.user', username=current_user.username) }}">角色信息</a></li>
                                 <li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
                                 <li><a href="{{ url_for('auth.change_email_request') }}">修改邮箱</a></li>
@@ -81,6 +89,7 @@
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
+    <script src="{{ url_for('static', filename='twitter-bootstrap-hover-dropdown.min.js') }}"></script>
     <script type="text/javascript">
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>
@@ -91,10 +100,10 @@
                 var st2 = $(window).scrollTop();
                 if (st2 < st) {
                     $('#my_nav').addClass('navbar-fixed-top');
-                    $('body').attr('style', 'margin-top: 50px');
+                    $('body').css('margin-top','50px');
                 } else {
                     $('#my_nav').removeClass('navbar-fixed-top');
-                    $('body').attr('style', '');
+                    $('body').css('margin-top','0');
                 }
                 st = st2;
             });

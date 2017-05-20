@@ -1,26 +1,546 @@
 body {
-    background-image: url('wow/bg_wow1.jpg');
+    background-image: url("wow/bg/FS9EDR75BL0H1473302337244.jpg");
+    color: #ffffff;
+}
+.alliance {
+    color: #0078FF;
+}
+.horde {
+    color: #B30000;
+}
+#warrior span,
+.warrior {
+    color: #C79C6E;
+}
+#paladin span,
+.paladin {
+    color: #F58CBA;
+}
+#death-knight span,
+.death-knight {
+    color: #C41F3B;
+}
+#shaman span,
+.shaman {
+    color: #0070DE;
+}
+#hunter span,
+.hunter {
+    color: #ABD473;
+}
+#rogue span,
+.rogue {
+    color: #FFF569;
+}
+#druid span,
+.druid {
+    color: #FF7D0A;
+}
+#monk span,
+.monk {
+    color: #00FF96;
+}
+#demon-hunter span,
+.demon-hunter {
+    color: #A330C9;
+}
+#mage span,
+.mage {
+    color: #69CCF0;
+}
+#warlock span,
+.warlock {
+    color: #9482C9;
+}
+#priest span,
+.priest {
+    color: #FFFFFF;
+}
+#warrior a span:hover {
+    color: rgba(199, 156, 110, 0.6);
+}
+#paladin a span:hover {
+    color: rgba(245, 140, 186, 0.6);
+}
+#death-knight a span:hover {
+    color: rgba(196, 31, 59, 0.6);
+}
+#shaman a span:hover {
+    color: rgba(0, 112, 222, 0.6);
+}
+#hunter a span:hover {
+    color: rgba(171, 212, 115, 0.6);
+}
+#rogue a span:hover {
+    color: rgba(255, 245, 105, 0.6);
+}
+#druid a span:hover {
+    color: rgba(255, 125, 10, 0.6);
+}
+#monk a span:hover {
+    color: rgba(0, 255, 150, 0.6);
+}
+#demon-hunter a span:hover {
+    color: rgba(163, 48, 201, 0.6);
+}
+#mage a span:hover {
+    color: rgba(105, 204, 240, 0.6);
+}
+#warlock a span:hover {
+    color: rgba(148, 130, 201, 0.6);
+}
+#priest a span:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+li.warrior.active span {
+    background-color: rgba(199, 156, 110, 0.5);
+    box-shadow: 0 0 10px 5px rgba(199, 156, 110, 0.5);
+}
+li.paladin.active span {
+    background-color: rgba(245, 140, 186, 0.5);
+    box-shadow: 0 0 10px 5px rgba(245, 140, 186, 0.5);
+}
+li.death-knight.active span {
+    background-color: rgba(196, 31, 59, 0.5);
+    box-shadow: 0 0 10px 5px rgba(196, 31, 59, 0.5);
+}
+li.shaman.active span {
+    background-color: rgba(0, 112, 222, 0.5);
+    box-shadow: 0 0 10px 5px rgba(0, 112, 222, 0.5);
+}
+li.hunter.active span {
+    background-color: rgba(171, 212, 115, 0.5);
+    box-shadow: 0 0 10px 5px rgba(171, 212, 115, 0.5);
+}
+li.rogue.active span {
+    background-color: rgba(255, 245, 105, 0.5);
+    box-shadow: 0 0 10px 5px rgba(255, 245, 105, 0.5);
+}
+li.druid.active span {
+    background-color: rgba(255, 125, 10, 0.5);
+    box-shadow: 0 0 10px 5px rgba(255, 125, 10, 0.5);
+}
+li.monk.active span {
+    background-color: rgba(0, 255, 150, 0.5);
+    box-shadow: 0 0 10px 5px rgba(0, 255, 150, 0.5);
+}
+li.demon-hunter.active span {
+    background-color: rgba(163, 48, 201, 0.5);
+    box-shadow: 0 0 10px 5px rgba(163, 48, 201, 0.5);
+}
+li.mage.active span {
+    background-color: rgba(105, 204, 240, 0.5);
+    box-shadow: 0 0 10px 5px rgba(105, 204, 240, 0.5);
+}
+li.warlock.active span {
+    background-color: rgba(148, 130, 201, 0.5);
+    box-shadow: 0 0 10px 5px rgba(148, 130, 201, 0.5);
+}
+li.priest.active span {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+}
+#warrior {
+    box-shadow: 0 0 10px 5px rgba(199, 156, 110, 0.5);
+    background-image: url("wow/class/warrior_KG94GCECLZOC1472067152655.jpg");
+}
+#paladin {
+    box-shadow: 0 0 10px 5px rgba(245, 140, 186, 0.5);
+    background-image: url("wow/class/paladin_GCV0WDT6NSY31472067094199.jpg");
+}
+#death-knight {
+    box-shadow: 0 0 10px 5px rgba(196, 31, 59, 0.5);
+    background-image: url("wow/class/death-knight_JEPSHRYWFN511472067009474.jpg");
+}
+#shaman {
+    box-shadow: 0 0 10px 5px rgba(0, 112, 222, 0.5);
+    background-image: url("wow/class/shaman_FX4QBWSL0WD91472067127513.jpg");
+}
+#hunter {
+    box-shadow: 0 0 10px 5px rgba(171, 212, 115, 0.5);
+    background-image: url("wow/class/hunter_ZLKEGYUFC1KA1472067042402.jpg");
+}
+#rogue {
+    box-shadow: 0 0 10px 5px rgba(255, 245, 105, 0.5);
+    background-image: url("wow/class/rogue_BODUXAZVLS0Z1472067116019.jpg");
+}
+#druid {
+    box-shadow: 0 0 10px 5px rgba(255, 125, 10, 0.5);
+    background-image: url("wow/class/druid_RQM7BM05E25J1472067032562.jpg");
+}
+#monk {
+    box-shadow: 0 0 10px 5px rgba(0, 255, 150, 0.5);
+    background-image: url("wow/class/monk_H3TKRNNF25HP1472067083466.jpg");
+}
+#demon-hunter {
+    box-shadow: 0 0 10px 5px rgba(163, 48, 201, 0.5);
+    background-image: url("wow/class/demon-hunter_O38LI3APUQ9Z1472067020823.jpg");
+}
+#mage {
+    box-shadow: 0 0 10px 5px rgba(105, 204, 240, 0.5);
+    background-image: url("wow/class/mage_MN0CI55XOJVQ1472067069230.jpg");
+}
+#warlock {
+    box-shadow: 0 0 10px 5px rgba(148, 130, 201, 0.5);
+    background-image: url("wow/class/warlock_T1AQ4ZXXH7ZR1472067141517.jpg");
+}
+#priest {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+    background-image: url("wow/class/priest_YHSWPUPMDWY21472067106229.jpg");
+}
+
+.carousel {
+    left: -10%;
+    width: 120%;
+}
+.carousel .reset {
+    position: absolute;
+    top: 20px;
+    z-index: 1;
+    color: #c4c4c4;
+    right: 5%;
+    font-size: 20px;
+}
+.carousel .reset:hover {
+    color: #ffffff;
+}
+.carousel-inner {
+    overflow: visible;
+}
+.carousel-inner.item > img {
+    width: 100%;
+}
+.carousel-control span:first-child {
+    position: absolute;
+    width: 200px;
+    top: 72%;
+}
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+    top: 73%;
+}
+.carousel-control .text-left {
+    left: 65%;
+}
+.carousel-control .text-right {
+    right: 65%;
+}
+
+.carousel-caption {
+    right: 5%;
+    top: 5%;
+    left: 5%;
+    color: #ffffff;
+    padding: 5px;
+}
+.carousel-caption p {
+    font-size: 110%;
+}
+.carousel-caption-left,
+.carousel-caption-right {
+    float: left;
+    width: 50%;
+    margin-top: -30px;
+}
+.carousel-caption-left img {
+    margin-right: 20%;
+    margin-bottom: -5%;
+    height: 150px;
+    float: right;
+}
+.carousel-caption-right img {
+    margin-left: 20%;
+    margin-bottom: -5%;
+    height: 150px;
+    float: left;
+}
+.carousel-caption-left h1 {
+    text-align: left;
+    margin-top: 110px;
+    padding: 0 20% 0 47%;
+}
+.carousel-caption-right h1 {
+    text-align: left;
+    margin-top: 110px;
+    padding: 0 47% 0 20%;
+}
+.carousel-caption-left span,
+.carousel-caption-right span {
+    font-size: 50%;
+}
+.carousel-caption > div > h2 {
+    margin-top: -4%;
+    padding: 0;
+}
+.carousel-caption-item {
+    float: left;
+    width: 32%;
+}
+.carousel-caption-item .fa-check {
+    color: #008000;
+}
+.carousel-caption-item.orc,
+.carousel-caption-item.undead,
+.carousel-caption-item.human,
+.carousel-caption-item.dwarf {
+    margin-top: 8%;
+}
+.carousel-caption-item img {
+    float: left;
+    width: 60%;
+    margin: -10% 0 0 0;
+}
+.carousel-caption-item div {
+    padding: 0 10px;
+    text-align: left;
+}
+.carousel-caption-item div h3 {
+    color: #FFD700;
+}
+.carousel-caption-item.orc,
+.carousel-caption-item.pandaren,
+.carousel-caption-item.human {
+    margin-left: 17%;
+}
+.carousel-caption-item.tauren,
+.carousel-caption-item.night-elf {
+    margin-left: 2%;
+    clear: both;
+}
+.carousel-caption-item.goblin,
+.carousel-caption-item.undead,
+.carousel-caption-item.worgen,
+.carousel-caption-item.dwarf {
+    width: 39%;
+}
+.carousel-caption-item.orc img,
+.carousel-caption-item.pandaren img,
+.carousel-caption-item.goblin img,
+.carousel-caption-item.blood-elf img,
+.carousel-caption-item.dwarf img,
+.carousel-caption-item.worgen img,
+.carousel-caption-item.undead img,
+.carousel-caption-item.human img {
+    width: 50%;
+}
+.carousel-caption-item.orc img {
+    margin-top: -20%;
+}
+.carousel-caption-item.pandaren img {
+    margin-top: -15%;
+    margin-left: -5%;
+}
+.carousel-caption-item.goblin img {
+    margin-top: -1%;
+}
+.carousel-caption-item.blood-elf img {
+    margin-top: -13%;
+    margin-bottom: -6%;
+}
+.carousel-caption-item.troll img {
+    margin-top: -5%;
+}
+.carousel-caption-item.gnome img,
+.carousel-caption-item.draenei img {
+    width: 45%;
+    margin-top: -5%;
+}
+.carousel-caption-item.human img {
+    margin-top: -15%;
+}
+.carousel-caption-item.dwarf img {
+    margin-top: 0;
+}
+
+.carousel-caption .current-class {
+    font-size: 30px;
+    margin: -20px 0;
+}
+.carousel-caption .nav-pills {
+    margin: 0 0 20px 5px;
+    width: 100%;
+}
+.carousel-caption .nav-pills li {
+    margin: 20px;
+    width: 5%;
+}
+.carousel-caption .nav-pills li.active a,
+.carousel-caption .tab-pane:first-child img:hover,
+.carousel-caption .nav-pills a:hover,
+.carousel-caption .nav-pills a:focus {
+    background-color: transparent;
+    -webkit-transform:scale(1.5,1.5);
+    -moz-transform:scale(1.5,1.5);
+    transform:scale(1.5,1.5);
+}
+.carousel-caption .nav-pills img {
+    height: 100px;
+    margin-left: -95%;
+}
+.carousel-caption .nav-pills span {
+    position: absolute;
+    width: 100%;
+    margin-left: -50%;
+    border-radius: 2px;
+    padding: 0 1px;
+    color: #ffffff;
+}
+.carousel-caption .tab-pane {
+    height: 750px;
+    margin-top: 28px;
     background-size: cover;
+    border-radius: 10px;
+    position: relative;
+}
+.carousel-caption .tab-pane > img {
+    position: absolute;
+    width: 40%;
+    right: 5%;
+    top: 10%;
+}
+.carousel-caption .tab-pane:first-child img {
+    width: 10%;
+    margin: -1%;
+}
+.to-class,
+.carousel-caption .tab-pane .choose {
+    top: 0;
+    position: absolute;
+    font-size: 30px;
+    width: 100%;
+    left: 0;
+    color: #c4c4c4;
+}
+.tab-pane .fa-ban {
+    margin: 5px 0 0 -45px;
+}
+.carousel-caption .tab-pane .choose.zero {
+    z-index: 1000;
+    color: grey;
+}
+.class-desc {
+    float: left;
+    width: 60%;
+    text-align: left;
+    padding: 50px;
+}
+.carousel-caption .tab-pane:first-child .class-desc {
+    font-size: 120%;
+}
+.class-desc h3 {
+    color: #FFD700;
+}
+.class-desc span {
+    font-weight: bold;
+    padding-right: 10px;
+    color: #FFD700;
+}
+
+.carousel-caption p.form-group {
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.carousel-caption .form-group {
+    left: 37%;
+    width: 26%;
+    position: relative;
+}
+.carousel-caption .form-control {
+    border-radius: 2px;
+    border: solid 1px #c4c4c4;
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+}
+.carousel-caption .form-control:hover {
+    outline: solid 1px #ffffff;
+    outline-offset: -1px;
+}
+.carousel-caption .form-group img:hover,
+.carousel-caption .form-control:focus {
+    outline: solid 1px #006dd0;
+    outline-offset: -1px;
+}
+.carousel-caption .help-block {
+    text-align: left;
+    color: rgb(255, 33, 23);
+    left: 37%;
+    width: 25%;
+    position: relative;
+    margin: -10px 0 10px 0;
+}
+.carousel-caption .clause {
+    position: absolute; left: 0;
+}
+.carousel-caption .clause-text {
+    margin-top: -10px;
+}
+.carousel-caption .control-label {
+    position: absolute;
+    left: 5%;
+}
+.carousel-caption .form-group a:hover {
+    color: #0087ff;
+}
+.carousel-caption .form-group img {
+    float: left;
+    border-radius: 2px;
+    border: solid 1px #c4c4c4;
+}
+.carousel-caption .form-group .btn {
+    font-size: 18px;
+    position: relative;
+    color: #ffffff;
+}
+
+.wow-clause {
+    width: 40%;
+    left: 30%;
+    top: 15%;
+    position: absolute;
+    font-size: 20px;
+}
+.wow-clause h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.wow-clause p {
+    text-indent: 42px;
     color: #e7e7e7;
 }
+
 .jumbotron {
     background-color: transparent;
 }
 .dropdown-menu {
-    min-width: 100%;
+    min-width: 72px;
+    background-color: #222;
+}
+.dropdown-menu > li > a {
+    padding: 10px 20px;
+    color: #9d9d9d;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: #fff;
+    background-color: transparent;
 }
 a {
-    color: #89ae96;
     cursor: pointer;
+}
+.posts a,
+.comments a {
+    color: #c4c4c4;
+}
+a:hover {
+    text-decoration: none;
+    color: #ffffff;
 }
 .str-inline {
     display: inline;
 }
 .rank {
     font-size: 30%;
-}
-a:hover {
-    text-decoration: none;
 }
 a:focus {
     outline: none;
@@ -31,7 +551,8 @@ a:focus {
     color: #4cc544;
 }
 .lion {
-    margin: -4%;
+    margin-top: -4%;
+    padding-bottom: 2%;
     float: right;
 }
 .stormwind {
@@ -120,8 +641,8 @@ div.pagination {
 }
 div.flask-pagedown-preview {
     margin: 10px 0px 10px 0px;
-    border: 1px solid #e0e0e0;
     padding: 4px;
+    width: auto;
 }
 div.flask-pagedown-preview h1 {
     font-size: 140%;

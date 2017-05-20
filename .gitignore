@@ -2,10 +2,12 @@ __pycache__
 tmp
 *.sqlite*
 venv
-1.py
+app/ttt.py
 2.py
 1.html
 .env
 os
 uploads
 demo_html
+1.py
+ttt.py
