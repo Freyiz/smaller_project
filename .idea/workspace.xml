@@ -2,277 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="709239c7-83c6-46c4-abe9-83944c7445bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/0N8UJ9ICKB9J1490840550615.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/1OFPRTAABZAA1492419115256.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/1UHW2XZGK9DU1472071194706.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/29MQH9DVENJL1477539853746.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/2NHSZCN3CNFG1475908796903.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/6PJFZ1XKKBBU1472071199824.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/7X1IOV4M65731472071198148.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/833R4VFVHEFS1472073287767.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/93HFDC1R6DNF1485411349169.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/A57C9NEXK0ME1472071199912.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/DMU2OUMTW35O1472073286918.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/FS9EDR75BL0H1473302337244.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/IOP5IDAB9BKE1478774800730.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/IU32F5MG02FG1478774628467.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/JIZNEUM5NBWO1472073287846.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/LMA9FEAWDS9D1492419115248.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/O9LCNC6IN1QQ1490840550451.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/PUVB3J5TH7FN1473401766451.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/R4CYYV11OD531476297532128.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/RL9OFDA3KQO51473302162283.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/RVHO0UA7EI0W1476297532013.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/SV95F8FY63NY1474338219386.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/UG9T3UT3AMD51473401767197.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/UPC5RDT8G5SR1472073286241.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/V81OS6Z493531474338218393.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/WEA51EMAXNFB1474350114687.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/X4DYS3FUX79T1473303783287.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/XVBQWG6CKVH71490321265503.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/night_repeat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/人类与兽人.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/奥格瑞玛毁坏.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/德莱尼与兽人.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/暴风城毁坏.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/death-knight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/death-knight2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/death-knight_JEPSHRYWFN511472067009474.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/death-knight_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/death-knight_repeat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/demon-hunter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/demon-hunter2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/demon-hunter_O38LI3APUQ9Z1472067020823.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/demon-hunter_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/druid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/druid2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/druid_RQM7BM05E25J1472067032562.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/druid_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/hunter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/hunter2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/hunter_ZLKEGYUFC1KA1472067042402.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/hunter_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/mage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/mage2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/mage_MN0CI55XOJVQ1472067069230.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/mage_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/monk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/monk2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/monk_H3TKRNNF25HP1472067083466.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/monk_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/paladin.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/paladin2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/paladin_GCV0WDT6NSY31472067094199.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/paladin_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/priest.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/priest2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/priest_YHSWPUPMDWY21472067106229.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/priest_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/rogue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/rogue2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/rogue_BODUXAZVLS0Z1472067116019.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/rogue_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/shaman.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/shaman2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/shaman_FX4QBWSL0WD91472067127513.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/shaman_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warlock.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warlock2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warlock_T1AQ4ZXXH7ZR1472067141517.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warlock_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warrior.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warrior2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warrior_KG94GCECLZOC1472067152655.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/class/warrior_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/hero/伊利丹.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/hero/阿尔萨斯.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/hero/阿尔萨斯.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/hotel_shanjinzhen.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/BLACK_TEMPLE.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/CATACLYSM.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/alliance.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/assault_on_BLACKWING_LAIR.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/beyond_the_DARK_PORTAL.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/call_of_the_CRUSADE.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/escalation.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/fall_of_the_LICH_KING.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/fury_of_the_SUNWELL.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/horde.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/hour_of_TWILIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/landfall.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/logo_alliance.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/logo_alliance2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/logo_alliance3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/logo_alliance4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/logo_horde.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/logo_horde2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/logo_horde3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/mists_of_PANDARIA.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/orcs_and_humans.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/rage_of_the_FIRELANDS.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/reign_of_chaos.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/rise_of_the_BLOOD_GOD.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/rise_of_the_ZANDALARI.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/rises_of_the_legion.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/secrets_of_ULDUAR.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/shadow_of_the_NECROPOLIS.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/siege_of_ORGRIMMAR.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/the_THUNDER_KING.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/the_burning_crusade.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/the_frozen_throne.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/the_gates_of_AHN'QiRAj.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/the_gods_of_ZUL'AmAn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/tides_of_darkness.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/warlords_of_DRAENOR.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/world_of_warcraft.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/wow.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/wrath_of_the_LICH_KING.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/map_Azeroth.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf_0D2L9LJPSDDE1472070084725.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf_2C7H3AX98RSP1472070090745.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf_IUQ0XZG0MJLE1472070086990.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf_LZH69W0TUN0K1472070088746.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf_XCR35JAEUCDY1472070087032.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/blood-elf_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei_11SCX444H9Q21472070102392.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei_17Y18HQ7I8X41472070104551.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei_PE4JN516NN8C1472070105440.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei_PFQEE8BNKD481472070099454.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei_UFTR77Z54X4R1472070103030.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/draenei_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf_81WJBCPNYZ5F1472070113187.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf_8RKF67GCUCGN1472070116606.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf_EUKOPSH61IGO1472070118275.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf_KJEFX0M5BKQ91472070119932.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf_TZNH50ZQMKOE1472070116587.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/dwarf_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome_8BDX6H58334D1472070133880.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome_E10OOJ5SHVVX1472070135470.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome_LYO22FTPANWP1472070132418.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome_PFXDFH98I9LW1472070128663.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome_YBQ3A93DN0WB1472070130042.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/gnome_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin_EUJII7FLTTXO1472070147418.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin_G3GIVLPO10401472070144854.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin_KXAOLG3EQ9PV1472070143523.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin_NWVFYI2C8E421472070148541.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin_VI6PZQ6W0V4H1472070148919.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/goblin_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human_DCKLMIHOIKEA1472070163834.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human_HZJQRG4GRHFU1472070161324.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human_IAUOR6ZP2ANX1472070176577.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human_NCKVJ8TOQH091472070164629.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human_RD64MPEJDDP21472070159249.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/human_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf_0ZE52L9O2EVE1472070193474.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf_IS0DVFFXL8A91472070190784.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf_LNG7E1A1AZN81472070193334.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf_S28J1GKJX0971472070187827.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf_W3YTIMNXLGEV1472070189489.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/night-elf_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc_9C362D99J92X1472070208880.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc_F6NZ76C2G2RD1472070211038.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc_HKY289DPHCL21472070204666.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc_M26AY5H3WB9O1472070206259.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc_RIUQ5EDLJPYF1472070209757.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/orc_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/padaren-female.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/padaren-male.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/pandaren.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/pandaren_EFXW4OURZQ7F1472070228928.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/pandaren_N7WMYKYS8IYY1472070228604.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/pandaren_OFKSIF5J5TQ01472070221783.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/pandaren_PRWK3EU52VGE1472070224513.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/pandaren_XT5A8AL3UKE51472070226240.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/pandaren_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren_G65BU14819NX1472070245782.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren_OWKJSB3FNVTT1472070257917.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren_T2ZXN8XKAK4J1472070239052.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren_T7F0WTCHNN5D1472070245880.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren_VS2D3WA2WH5N1472070242923.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/tauren_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll_4VN2HZDJE2RI1472070255742.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll_942X6F7XDFB61472070262163.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll_G65BU14819NX1472070245782.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll_OWKJSB3FNVTT1472070257917.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll_SRD3EM7WR1X21472070260354.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/troll_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead_9NUT4DBS4XXO1472070279241.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead_EC8E4F5TSUBR1472070274743.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead_LXF5JV5A2T0V1472070278871.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead_N2A4290RGT5X1472070277045.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead_XQN2FXU0S9JX1472070275983.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/undead_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen_5JHTI7RYEAK11472070303210.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen_DAS0L5F6C3SN1472070306874.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen_FWOU4J4MO9LU1472070306486.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen_NPW0DXRYV7BY1472070302459.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen_VR4N0BK6T5DR1472070304292.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/race/worgen_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/twitter-bootstrap-hover-dropdown.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/twitter-bootstrap-hover-dropdown.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/clause.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/posts.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/ttt.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/wow/battlenet.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/wow/druid.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/wow/wow_inverse.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/templates/attack.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/battlenet.ico" afterPath="$PROJECT_DIR$/app/static/wow/logo/battlenet.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/bg_wow1.jpg" afterPath="$PROJECT_DIR$/app/static/wow/bg/bg_wow1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/death-knight.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/death-knight.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/demon-hunter.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/demon-hunter.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/druid.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/druid.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/hunter.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/hunter.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/mage.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/mage.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/monk.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/monk.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/paladin.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/paladin.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/priest.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/priest.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/rogue.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/rogue.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/shaman.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/shaman.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/warlock.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/warlock.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/warrior.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/warrior.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/wow_class_color.jpg" afterPath="$PROJECT_DIR$/app/static/wow/class/wow_class_color.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/forms.py" afterPath="$PROJECT_DIR$/app/auth/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/views.py" afterPath="$PROJECT_DIR$/app/auth/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/forms.py" afterPath="$PROJECT_DIR$/app/main/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/views.py" afterPath="$PROJECT_DIR$/app/main/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/styles.css" afterPath="$PROJECT_DIR$/app/static/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/_posts.html" afterPath="$PROJECT_DIR$/app/templates/_posts.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/about.html" afterPath="$PROJECT_DIR$/app/templates/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/login.html" afterPath="$PROJECT_DIR$/app/templates/auth/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/register.html" afterPath="$PROJECT_DIR$/app/templates/auth/register.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/index.html" afterPath="$PROJECT_DIR$/app/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -369,50 +103,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/user.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="13" column="159" lean-forward="false" selection-start-line="13" selection-start-column="155" selection-end-line="13" selection-end-column="159" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/static/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/auth/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="893">
               <caret line="47" column="27" lean-forward="true" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
               <folding>
                 <element signature="e#0#134#0" expanded="true" />
@@ -421,47 +115,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="337">
-                <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/main/views.py">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/static/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4541">
-              <caret line="249" column="0" lean-forward="true" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+            <state relative-caret-position="95">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unconfirmed.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/auth/unconfirmed.html">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            <state relative-caret-position="1881">
+              <caret line="99" column="42" lean-forward="false" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="179" column="47" lean-forward="false" selection-start-line="179" selection-start-column="47" selection-end-line="179" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -480,7 +149,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>to</find>
       <find>to-cl</find>
       <find>tab-content</find>
       <find>ta</find>
@@ -508,8 +176,9 @@
       <find>reset</find>
       <find>fa-check</find>
       <find>confirmed</find>
-      <find>rank</find>
       <find>008000</find>
+      <find>rank</find>
+      <find>inverse</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -566,15 +235,15 @@
         <option value="$PROJECT_DIR$/app/templates/auth/clause.html" />
         <option value="$PROJECT_DIR$/app/1.py" />
         <option value="$PROJECT_DIR$/app/ttt.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/templates/auth/register.html" />
-        <option value="$PROJECT_DIR$/app/static/styles.css" />
         <option value="$PROJECT_DIR$/app/templates/auth/unconfirmed.html" />
-        <option value="$PROJECT_DIR$/app/templates/base.html" />
         <option value="$PROJECT_DIR$/app/main/views.py" />
         <option value="$PROJECT_DIR$/app/auth/views.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/app/static/styles.css" />
+        <option value="$PROJECT_DIR$/app/templates/base.html" />
       </list>
     </option>
   </component>
@@ -648,6 +317,74 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smaller_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1289,26 +1026,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/ttt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1345,14 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/_posts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1377,10 +1090,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/unconfirmed.html">
+    <entry file="file://$PROJECT_DIR$/app/ttt.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1395,26 +1116,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/unconfirmed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="13" column="159" lean-forward="false" selection-start-line="13" selection-start-column="155" selection-end-line="13" selection-end-column="159" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        <state relative-caret-position="247">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1427,9 +1132,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="451">
+            <caret line="119" column="34" lean-forward="true" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="13" column="159" lean-forward="false" selection-start-line="13" selection-start-column="155" selection-end-line="13" selection-end-column="159" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/_posts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/auth/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="893">
           <caret line="47" column="27" lean-forward="true" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
           <folding>
             <element signature="e#0#134#0" expanded="true" />
@@ -1437,14 +1169,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="337">
-            <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/app/static/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1881">
+          <caret line="99" column="42" lean-forward="false" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>

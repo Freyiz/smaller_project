@@ -2,6 +2,9 @@ body {
     background-image: url("wow/bg/FS9EDR75BL0H1473302337244.jpg");
     color: #ffffff;
 }
+.hold {
+    height: 50px;
+}
 .alliance {
     color: #0078FF;
 }
