@@ -33,13 +33,12 @@
                 </div>
                 <div class="post-footer">
                     {% if current_user == comment.author %}
-                        <a class="btn bg-info btn-xs" href="{{ url_for('.delete_comment', id=comment.id, page=page) }}#{{ comment.id }}">删除</a>
+                        <a class="btn btn-warning btn-xs" href="{{ url_for('.delete_comment', id=comment.id, page=page) }}#{{ comment.id }}">删除</a>
                     {% endif %}
                     {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                        <a id="comment_display_toggle{{ comment.id }}"{% if not comment.disabled %} class="btn btn-default btn-xs"{% else %} class="btn btn-danger btn-xs"{% endif %} onclick="display_toggle('{{ comment.id }}', '#comment_display_toggle{{ comment.id }}', '#display_warning{{ comment.id }}', '#comment_color{{ comment.id }}')">
+                        <a id="comment_display_toggle{{ comment.id }}"{% if not comment.disabled %} class="btn btn-success btn-xs"{% else %} class="btn btn-danger btn-xs"{% endif %} onclick="display_toggle('{{ comment.id }}', '#comment_display_toggle{{ comment.id }}', '#display_warning{{ comment.id }}', '#comment_color{{ comment.id }}')">
                             {% if not comment.disabled %}屏蔽{% else %}显示{% endif %}
                         </a>
-
                     {% endif %}
                 </div>
             </div>
@@ -62,10 +61,10 @@
             $(a_id).text(data.result).attr('class', data.text);
             if (data.result === '显示') {
                 $(b_id).show();
-                $(div_id).attr('style', 'color: #857a78');
+                $(div_id).css('color', '#857a78');
             } else {
                 $(b_id).hide();
-                $(div_id).attr('style', '');
+                $(div_id).css('color', '#ffffff');
             }
         });
     }

@@ -270,7 +270,7 @@ def comment_display_toggle():
     if comment.disabled:
         comment.disabled = False
         result = '屏蔽'
-        text = 'btn btn-default btn-xs'
+        text = 'btn btn-success btn-xs'
     else:
         comment.disabled = True
         result = '显示'
@@ -408,10 +408,10 @@ def get_user_info():
 
 @main.route('/login')
 def login():
-    return qq.authorize(callback=url_for('authorized', _external=True))
+    return qq.authorize(callback=url_for('.authorized', _external=True))
 
 
-@main.route('/login/authorized')
+@main.route('/authorized')
 def authorized():
     resp = qq.authorized_response()
     if resp is None:

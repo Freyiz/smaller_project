@@ -36,13 +36,9 @@
                     </div>
                     <div class="post-footer">
                         {% if current_user == post.author %}
-                            <a href="{{ url_for('.edit_post', id=post.id) }}">
-                                <span class="label label-default">编辑</span>
-                            </a>
+                            <a href="{{ url_for('.edit_post', id=post.id) }}" class="btn btn-info btn-xs">编辑</a>
                         {% elif current_user.is_administrator() %}
-                            <a href="{{ url_for('.edit_post', id=post.id) }}">
-                                <span class="label label-danger">编辑-管理员</span>
-                            </a>
+                            <a href="{{ url_for('.edit_post', id=post.id) }}" class="btn btn-primary btn-xs">编辑-管理员</a>
                         {% endif %}
                     </div>
                 </div>

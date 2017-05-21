@@ -7,3 +7,12 @@
         </div>
     </div>
 {% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            $('body').css({'background':'url("../../static/wow/race/worgen_VR4N0BK6T5DR1472070304292.jpg")', 'background-size':'cover'});
+        })
+    </script>
+{% endblock %}

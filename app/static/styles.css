@@ -493,9 +493,9 @@ li.priest.active span {
 .carousel-caption .form-group .btn {
     font-size: 18px;
     position: relative;
-    color: #ffffff;
+    background-image: url("wow/bg/alliance_horde.jpg");
+    background-size: cover;
 }
-
 .wow-clause {
     width: 40%;
     left: 30%;
@@ -512,8 +512,38 @@ li.priest.active span {
     color: #e7e7e7;
 }
 
+
 .jumbotron {
     background-color: transparent;
+}
+.alert-success {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+}
+.third-login {
+    margin: 20px 0 ;
+    float: right;
+}
+.login {
+    position: absolute;
+    margin-top: 80px;
+}
+.login .form-group {
+    text-align: left;
+}
+.login h1 {
+    margin: 0 0 20px;
+}
+.login .clause {
+    position: relative;
+}
+.login .clause-text {
+    margin: 0 0 0 5px;
+    position: absolute;
+}
+.login .right {
+    float: right;
 }
 .dropdown-menu {
     min-width: 72px;
@@ -530,10 +560,17 @@ li.priest.active span {
 }
 a {
     cursor: pointer;
+    color: #63a5cc;
 }
 .posts a,
 .comments a {
     color: #c4c4c4;
+}
+a.nice {
+    color: #63a5cc;
+}
+a.btn {
+    color: #000000;
 }
 a:hover {
     text-decoration: none;
@@ -549,9 +586,6 @@ a:focus {
     outline: none;
     text-decoration: none;
     color: rgb(227, 216, 231);
-}
-.page-sayhi {
-    color: #4cc544;
 }
 .lion {
     margin-top: -4%;
