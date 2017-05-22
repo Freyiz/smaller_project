@@ -90,6 +90,7 @@
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
+    {{ moment.lang('zh-cn') }}
     <script src="{{ url_for('static', filename='twitter-bootstrap-hover-dropdown.min.js') }}"></script>
     <script type="text/javascript">
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
