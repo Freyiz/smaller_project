@@ -8,7 +8,7 @@
     <!--[if IE]>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font_awesome/css/font-awesome-ie7.min.css') }}">
     <![endif]-->
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='wow/wow_inverse.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='wow/logo/wow-inverse.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notification/css/ns-default.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notification/css/ns-style-growl.css') }}" />
     <script src="{{ url_for('static', filename='notification/js/modernizr.custom.js') }}"></script>
@@ -33,10 +33,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" >
                     <li><a href="{{ url_for('main.attack') }}">进攻</a></li>
-                    <li><a href="{{ url_for('main.upload') }}">上传</a></li>
                     <li><a href="{{ url_for('main.about') }}">关于</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_administrator() %}
+                        <li><a href="{{ url_for('main.users') }}">所有角色</a></li>
+                    {% endif %}
                     {% if current_user.can(Permission.MODERATE_COMMENTS) %}
                         <li><a href="{{ url_for('main.moderate') }}">所有议论</a></li>
                     {% endif %}

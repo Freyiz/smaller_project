@@ -1,14 +1,15 @@
-from flask import render_template, send_from_directory, request, \
-    redirect, url_for, flash, current_app, abort, make_response
-from . import main
-from flask_login import login_required, current_user
-import os
-from .forms import PostForm, CommentForm, EditProfileForm, EditProfileAdminForm
-from ..models import Post, Comment, User, Role, Permission
-from .. import db
+from flask import render_template, request, jsonify, redirect, \
+    url_for, flash, current_app, abort, make_response
+from .forms import PostForm, CommentForm, EditProfileForm, \
+    EditProfileAdminForm, RecaptchaForm, DemotionForm
 from ..decorators import admin_required, permission_required
+from ..models import Post, Comment, User, Role, Permission
+from flask_login import login_required, current_user
 from flask_sqlalchemy import get_debug_queries
 from datetime import datetime
+from . import main
+from .. import db
+import os
 
 
 @main.after_app_request
@@ -95,7 +96,29 @@ def edit_profile_admin(id):
     return render_template('edit_profile.html', form=form, user=user)
 
 
-@main.route('/post/<int:id>', methods=['GET', 'POST'])
+@main.route('/promote/<id>', methods=['GET', 'POST'])
+@login_required
+def promote(id):
+    user = User.query.get_or_404(id)
+    if current_user != user:
+        abort(404)
+    if user.can(Permission.MODERATE_COMMENTS):
+        form = DemotionForm()
+        if form.validate_on_submit():
+            user.role = Role.query.filter_by(name='民众').first()
+            db.session.add(user)
+            flash('神接受了你的忏悔。')
+            return redirect(url_for('.index'))
+        return render_template('promote_result.html', user=user, form=form, result='demotion')
+    form = RecaptchaForm()
+    if form.validate_on_submit():
+        user.role = Role.query.filter_by(name='官员').first()
+        db.session.add(user)
+        return render_template('promote_result.html', user=user, result='promote')
+    return render_template('promote.html', user=user, form=form)
+
+
+@main.route('/post/<int:id>')
 @login_required
 @permission_required(Permission.COMMENT)
 def post(id):
@@ -152,6 +175,17 @@ def delete_comment(id):
     return redirect(url_for('.post', id=comment.post_id, page=page))
 
 
+@main.route('/users')
+@login_required
+@admin_required
+def users():
+    page = request.args.get('page', 1, type=int)
+    pagination = User.query.order_by(User.id.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
+    users = pagination.items
+    return render_template('users.html', page=page, pagination=pagination, users=users)
+
+
 @main.route('/moderate')
 @permission_required(Permission.MODERATE_COMMENTS)
 def moderate():
@@ -169,7 +203,7 @@ def follow_toggle():
     user = User.query.filter_by(id=id).first_or_404()
     current_user.follow_toggle(user)
     if current_user.is_following(user):
-        text = '已 追随'
+        text = '已追随'
     else:
         text = '追随'
     if user.followers.count() > 1:
@@ -188,7 +222,7 @@ def followers(username):
         error_out=False)
     follows = [{'user': item.follower, 'timestamp': item.timestamp}
                for item in pagination.items]
-    return render_template('followers.html', user=user, follows=follows, title='的追随者',
+    return render_template('follow.html', user=user, follows=follows, title='的追随者',
                            pagination=pagination, endpoint='.followers')
 
 
@@ -201,7 +235,7 @@ def followed_by(username):
         error_out=False)
     follows = [{'user': item.followed, 'timestamp': item.timestamp}
                for item in pagination.items]
-    return render_template('followers.html', user=user, follows=follows, title='的追随',
+    return render_template('follow.html', user=user, follows=follows, title='的追随',
                            pagination=pagination, endpoint='.followed_by')
 
 
@@ -290,34 +324,6 @@ def server_shutdown():
     return '服务器即将关闭...'
 
 
-@main.route('/upload', methods=['GET', 'POST'])
-@login_required
-def upload():
-    text = ''
-    if request.method == 'POST':
-        f = request.files['file']
-        if f:
-            filename = f.filename
-            if f.filename in os.listdir(current_app.config['UPLOAD_FOLDER']):
-                text = '文件已存在！'
-            else:
-                text = '上传成功！'
-            # secure_filename（） 不识别汉字的问题尚未解决
-            # filename = secure_filename(f.filename)
-            # if filename == 'py':
-            # filename = '12345.py'
-            f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-            # return redirect(url_for('upload'), filename=filename)
-        else:
-            text = '未找到文件！'
-    return render_template('upload.html', text=text)
-
-
-@main.route('/download/<filename>')
-def download(filename):
-    return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
-
-
 @main.route('/attack')
 @login_required
 def attack():
@@ -327,109 +333,3 @@ def attack():
 @main.route('/about')
 def about():
     return render_template("about.html")
-
-
-# @main.app_template_filter('md')
-# def markdown_to_html(txt):
-#    from markdown import markdown
-#    return markdown(txt)
-
-
-# @main.app_template_test('current_link')
-#    def is_current_link(href):
-#    return href == request.path
-
-
-# def read_md(filename):
-#    from functools import reduce
-#    with open(filename) as md_file:
-#        # content = md_file.read()!
-#        content = reduce(lambda x, y: x + y, md_file.readlines())
-#    return content.encode('gbk').decode()
-
-
-# @main.app_context_processor
-# def inject():
-#    return dict(read_md=read_md)
-
-import json
-from flask import session, jsonify
-from app import oauth
-
-
-QQ_APP_ID = os.getenv('QQ_APP_ID')
-QQ_APP_KEY = os.getenv('QQ_APP_KEY')
-
-
-qq = oauth.remote_app(
-    'qq',
-    consumer_key=QQ_APP_ID,
-    consumer_secret=QQ_APP_KEY,
-    base_url='https://graph.qq.com',
-    request_token_url=None,
-    request_token_params={'scope': 'get_user_info'},
-    access_token_url='/oauth2.0/token',
-    authorize_url='/oauth2.0/authorize',
-)
-
-
-def json_to_dict(x):
-    '''OAuthResponse class can't not parse the JSON data with content-type
-    text/html, so we need reload the JSON data manually'''
-    if x.find('callback') > -1:
-        pos_lb = x.find('{')
-        pos_rb = x.find('}')
-        x = x[pos_lb:pos_rb + 1]
-    try:
-        return json.loads(x, encoding='utf-8')
-    except:
-        return x
-
-
-def update_qq_api_request_data(data={}):
-    '''Update some required parameters for OAuth2.0 API calls'''
-    defaults = {
-        'openid': session.get('qq_openid'),
-        'access_token': session.get('qq_token')[0],
-        'oauth_consumer_key': QQ_APP_ID,
-    }
-    defaults.update(data)
-    return defaults
-
-
-@main.route('/user_info')
-def get_user_info():
-    if 'qq_token' in session:
-        data = update_qq_api_request_data()
-        resp = qq.get('/user/get_user_info', data=data)
-        return jsonify(status=resp.status, data=resp.data)
-    return redirect(url_for('login'))
-
-
-@main.route('/login')
-def login():
-    return qq.authorize(callback=url_for('.authorized', _external=True))
-
-
-@main.route('/authorized')
-def authorized():
-    resp = qq.authorized_response()
-    if resp is None:
-        return 'Access denied: reason=%s error=%s' % (
-            request.args['error_reason'],
-            request.args['error_description']
-        )
-    session['qq_token'] = (resp['access_token'], '')
-
-    # Get openid via access_token, openid and access_token are needed for API calls
-    resp = qq.get('/oauth2.0/me', {'access_token': session['qq_token'][0]})
-    resp = json_to_dict(resp.data)
-    if isinstance(resp, dict):
-        session['qq_openid'] = resp.get('openid')
-
-    return redirect(url_for('get_user_info'))
-
-
-@qq.tokengetter
-def get_qq_oauth_token():
-    return session.get('qq_token')

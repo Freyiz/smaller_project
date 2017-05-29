@@ -48,6 +48,7 @@ class WowConfig:
     basic = {
         '联盟': '#0078FF',
         '部落': '#B30000',
+        '中立': '#ffa366',
         '死亡骑士': ['#C41F3B', 'death-knight'],
         '恶魔猎手': ['#A330C9', 'demon-hunter'],
         '德鲁伊': ['#FF7D0A', 'druid'],
@@ -95,9 +96,9 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'User': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
-            'Moderator': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES | Permission.MODERATE_COMMENTS, False),
-            'Administrator': (0xff, False)
+            '民众': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
+            '官员': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES | Permission.MODERATE_COMMENTS, False),
+            '神': (0xff, False)
         }
         for r in roles:
             if not Role.query.filter_by(name=r).first():
@@ -112,7 +113,7 @@ class Follow(db.Model):
     __tablename__ = 'follows'
     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     followed_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    timestamp = db.Column(db.TIMESTAMP, default=datetime.utcnow)
+    timestamp = db.Column(db.TIMESTAMP(), default=datetime.utcnow)
 
     @staticmethod
     def generate_fake(x=5, y=20):
@@ -175,6 +176,10 @@ class User(db.Model, UserMixin):
         if self.email and not self.avatar_hash:
             self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
         self.followers.append(Follow(follower=self))
+        if not self.wow_faction:
+            self.wow_faction = '中立'
+            self.wow_race = '食人魔'
+            self.wow_class = '战士'
         self.faction_color = WowConfig.basic[self.wow_faction]
         self.class_color = WowConfig.basic[self.wow_class][0]
         self.wow_avatar = '../static/wow/class/' + WowConfig.basic[self.wow_class][1] + '.jpg'
@@ -369,7 +374,7 @@ login_manager.anonymous_user = AnonymousUser
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
-    timestamp = db.Column(db.TIMESTAMP, default=datetime.utcnow, index=True)
+    timestamp = db.Column(db.TIMESTAMP(), default=datetime.utcnow, index=True)
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -424,7 +429,7 @@ db.event.listen(Post.body, 'set', Post.on_changed_body)
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    timestamp = db.Column(db.TIMESTAMP, default=datetime.utcnow, index=True)
+    timestamp = db.Column(db.TIMESTAMP(), default=datetime.utcnow, index=True)
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     disabled = db.Column(db.Boolean)

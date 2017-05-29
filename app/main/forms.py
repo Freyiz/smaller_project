@@ -1,7 +1,7 @@
 from wtforms import StringField, SubmitField, TextAreaField, \
     BooleanField, SelectField, ValidationError, FileField
 from wtforms.validators import DataRequired, Length, Regexp, Email
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from flask_pagedown.fields import PageDownField
 from ..models import Role, User
 from flask import current_app
@@ -44,7 +44,7 @@ class EditProfileAdminForm(FlaskForm):
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
         self.role.choices = [(role.id, role.name)
-                             for role in  Role.query.order_by(Role.name).all()]
+                             for role in Role.query.order_by(Role.name).all()]
         self.user = user
 
     def validate_email(self, field):
@@ -54,3 +54,12 @@ class EditProfileAdminForm(FlaskForm):
     def validate_username(self, field):
         if field.data != self.user.username and User.query.filter_by(username=field.data).first():
             raise ValidationError('角色名已存在。')
+
+
+class RecaptchaForm(FlaskForm):
+    recaptcha = RecaptchaField()
+    submit = SubmitField('确定')
+
+
+class DemotionForm(FlaskForm):
+    submit = SubmitField('忏悔')

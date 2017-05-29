@@ -192,7 +192,7 @@ li.priest.active span {
     background-image: url("wow/class/priest_YHSWPUPMDWY21472067106229.jpg");
 }
 
-.carousel {
+#carousel-example-generic.carousel {
     left: -10%;
     width: 120%;
 }
@@ -207,8 +207,11 @@ li.priest.active span {
 .carousel .reset:hover {
     color: #ffffff;
 }
-.carousel-inner {
-    overflow: visible;
+
+@media screen and (max-width: 1300px) {
+    .carousel-inner {
+        overflow: visible;
+    }
 }
 .carousel-inner.item > img {
     width: 100%;
@@ -279,6 +282,9 @@ li.priest.active span {
     float: left;
     width: 32%;
 }
+.carousel-caption-item .fa-volume-up:hover {
+    cursor: pointer;
+}
 .carousel-caption-item .fa-check {
     color: #008000;
 }
@@ -292,16 +298,18 @@ li.priest.active span {
     float: left;
     width: 60%;
     margin: -10% 0 0 0;
+
 }
 .carousel-caption-item div {
-    padding: 0 10px;
+    padding: 0 10px 0 170px;
     text-align: left;
 }
 .carousel-caption-item div h3 {
     color: #FFD700;
 }
 .carousel-caption-item.orc,
-.carousel-caption-item.pandaren,
+.carousel-caption-item.pandaren-male,
+.carousel-caption-item.pandaren-female,
 .carousel-caption-item.human {
     margin-left: 17%;
 }
@@ -317,7 +325,8 @@ li.priest.active span {
     width: 39%;
 }
 .carousel-caption-item.orc img,
-.carousel-caption-item.pandaren img,
+.carousel-caption-item.pandaren-male img,
+.carousel-caption-item.pandaren-female img,
 .carousel-caption-item.goblin img,
 .carousel-caption-item.blood-elf img,
 .carousel-caption-item.dwarf img,
@@ -329,9 +338,9 @@ li.priest.active span {
 .carousel-caption-item.orc img {
     margin-top: -20%;
 }
-.carousel-caption-item.pandaren img {
-    margin-top: -15%;
-    margin-left: -5%;
+.carousel-caption-item.pandaren-male img,
+.carousel-caption-item.pandaren-female img {
+    margin: -10% 0 0 -8%;
 }
 .carousel-caption-item.goblin img {
     margin-top: -1%;
@@ -417,7 +426,7 @@ li.priest.active span {
 .tab-pane .fa-ban {
     margin: 5px 0 0 -45px;
 }
-.carousel-caption .tab-pane .choose.zero {
+.carousel-caption .tab-pane .choose.zeroth {
     z-index: 1000;
     color: grey;
 }
@@ -466,7 +475,7 @@ li.priest.active span {
 }
 .carousel-caption .help-block {
     text-align: left;
-    color: rgb(255, 33, 23);
+    color: #FF2117;
     left: 37%;
     width: 25%;
     position: relative;
@@ -510,23 +519,240 @@ li.priest.active span {
 .wow-clause p {
     text-indent: 42px;
     color: #e7e7e7;
+    line-height: 50px;
 }
 
+.promote {
+    position: relative;
+}
+.promote > div {
+    width: 1150px;
+    height: 625px;
+    background-size: cover;
+    position: absolute;
+}
+.black-screen {
+    background-color: #000000;
+}
+.goblin-single {
+      background-image: url("wow/bg/IOP5IDAB9BKE1478774800730.jpg");
+}
+.repatriate {
+    background-image: url("wow/race/goblin_EUJII7FLTTXO1472070147418.jpg");
+}
+.housekeeper {
+    background-image: url("wow/bg/housekeeper.jpg");
+}
+.discuss {
+    background-image: url("wow/bg/93HFDC1R6DNF1485411349169.jpg");
+}
+.envoy {
+    background-image: url("wow/bg/7X1IOV4M65731472071198148.jpg");
+}
+.baine {
+    background-image: url("wow/race/tauren_VS2D3WA2WH5N1472070242923.jpg");
+}
+.lich-king {
+    background-image: url("wow/hero/阿尔萨斯.jpg");
+}
+.promote .choose {
+    color: #5bc2ff;
+}
+.promote .choose.right {
+    float: right;
+}
+.promote > div > div {
+    border-radius: 10px;
+    width: 380px;
+    padding: 10px 15px;
+    font-size: 20px;
+    position: absolute;
+    text-align: left;
+    background-color: rgba(66, 66, 66, 0.71);
+}
+.promote > div > div:before {
+    content:"";
+    border-width:10px 15px;
+    position:absolute;
+    top: 20%;
+    left: -30px;
+    border-style:solid;
+}
+.promote > div > .bottom:before {
+    border-width:15px 10px;
+    bottom: -30px;
+    top: auto;
+    right: 20%;
+    left: auto;
+    border-color: rgba(66, 66, 66, 0.71) transparent transparent;
+}
+.promote > div > .right:before {
+    left: auto;
+    right: -30px;
+    border-color: transparent  transparent transparent rgba(66, 66, 66, 0.71);
+}
+.promote > div > .left:before {
+    border-color: transparent rgba(66, 66, 66, 0.71) transparent transparent;
+}
+.promote > div > .outside {
+    margin: 2% 0 0 5%;
+    width: 300px;
+}
+.promote > div > .outside-right {
+    margin: 2% 0 0 69%;
+    width: 300px;
+}
+.promote-start {
+    font-size: 20px;
+}
+.promote-start h1 {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    margin-top: 5%;
+}
+.promote-start p {
+    text-indent: 42px;
+    width: 50%;
+    margin: 3% 0 0 25%;
+    line-height: 50px;
+}
+.promote-start .btn {
+    background-color: rgba(72, 69, 71, 0.5);
+    border-radius: 4px;
+    height: 55px;
+    font-size: 30px;
+    color: #c4c4c4;
+    letter-spacing: 5px;
+    margin: 5% 0 0 45%;
+    padding-left: 20px;
+}
+.goblin-single div {
+    margin: 12% 0 0 8%;
+}
+.repatriate .zeroth {
+    margin: 20% 0 0 10%;
+    width: 330px;
+}
+.repatriate .first {
+    margin: 20% 0 0 68%;
+    width: 200px;
+}
+.repatriate .second {
+    margin: 15% 0 0 40%;
+    width: 60px;
+}
+.repatriate .third {
+    margin: 23% 0 0 69%;
+    width: 60px;
+}
+.repatriate .fourth {
+    margin: 23% 0 0 38%;
+    width: 60px;
+}
+.repatriate .fifth {
+    margin: 15% 0 0 67%;
+    width: 60px;
+}
+.repatriate .sixth {
+    margin: 10% 0 0 46%;
+    width: 60px;
+}
+.repatriate .seventh {
+    margin: 10% 0 0 58%;
+    width: 90px;
+}
+.housekeeper div {
+    margin: 10% 0 0 58%;
+}
+.discuss .first {
+    margin: 15% 0 0 3%;
+    width: 250px;
+}
+.discuss .second {
+    margin: 16% 0 0 38%;
+}
+.discuss .third {
+    margin: 17% 0 0 7%;
+    width: 200px;
+}
+.discuss .fourth {
+    margin: 15% 0 0 57%;
+}
+.discuss .fifth {
+    margin: 23% 0 0 56%;
+    width: 130px;
+}
+.envoy .first {
+    margin: 12% 0 0 25%;
+    width: 120px;
+}
+.envoy .third {
+    margin: 12% 0 0 7%;
+    width: 340px;
+}
+.envoy .fifth {
+    margin: 12% 0 0 20%;
+    width: 190px;
+}
+.baine div {
+    margin: 20% 0 0 4%;
+}
+.baine .fifth {
+    margin: 20% 0 0 32%;
+    width: 60px;
+}
+.lich-king div {
+    margin: 15% 0 0 5%;
+}
+.promote-finish h1 {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10%;
+}
+.promote-finish form {
+    width: 30%;
+    margin: 3% 0 0 37%;
+}
+.promote-finish .btn,
+.demotion .btn {
+    background-color: rgba(72, 69, 71, 0.5);
+    border-radius: 4px;
+    height: 77px;
+    font-size: 30px;
+    color: #c4c4c4;
+    position: absolute;
+    letter-spacing: 5px;
+    margin-left: -11%;
+    padding-left: 20px;
+}
+.promote-finish .give-up {
+    margin-left: 28%;
+    padding-top: 16px;
+}
+.promote-finish .btn:hover,
+.demotion .btn:hover,
+.promote-start .btn:hover {
+    background-color: rgba(159, 154, 157, 0.5);
+}
+.promote-finish h4 {
+    width: 50%;
+    margin: 0 0 0 26%;
+}
+.demotion .btn {
+    margin: 35% 0 0 40%;
+}
 
 .jumbotron {
     background-color: transparent;
 }
-.alert-success {
-    position: absolute;
-    width: 80%;
-    left: 10%;
-}
 .third-login {
-    margin: 20px 0 ;
+    margin: 20px 0 0 10px;
     float: right;
 }
 .login {
-    position: absolute;
+    position: static;
     margin-top: 80px;
 }
 .login .form-group {

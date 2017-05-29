@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <div class="wow-clause promote-result">
+        {% if result == 'promote' %}
+            <div>
+                <h1>晋升之路：完成</h1>
+                <p>祝贺，{{ user.username }} ！你已经完成了初级晋升。现在，你可以管理其他人的议论了，<a href="{{ url_for('.moderate') }}">试一试。</a></p>
+            </div>
+            <audio class="sound1" src="../static/wow/sound/iQuestComplete.ogg" autoplay></audio>
+        {% elif result == 'demotion' %}
+            <div class="demotion">
+                <h1>忏悔之路</h1>
+                <p>拥有过多的权力使人腐化。勇士，如果你想放弃现有的权力，当一名普通民众，请点击下面的按钮。</p>
+                <form method="post" class="form" role="form">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">{{ form.submit(class="btn") }}</div>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            $('body').css('background','url("../../static/wow/race/troll_4VN2HZDJE2RI1472070255742.jpg") repeat');
+        })
+    </script>
+{% endblock %}

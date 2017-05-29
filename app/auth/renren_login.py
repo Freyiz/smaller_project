@@ -1,21 +1,18 @@
-import os
+from flask_login import login_user
+from flask import session, redirect, url_for, request, flash
+from app import oauth, db
+from ..models import User
+from . import auth
 import json
-from flask import Flask, redirect, url_for, session, request, jsonify, Markup
-from flask_oauthlib.client import OAuth
+import os
 
-if os.path.exists('.env'):
-    for line in open('.env'):
-        var = line.strip().split('=')
-        if len(var) == 2 and var[0].startswith('REN2'):
-            os.environ[var[0]] = var[1]
-
-ren2_id = os.environ.get('REN2_APP_ID')
-ren2_key = os.environ.get('REN2_APP_KEY')
+REN2_APP_ID = os.environ.get('REN2_APP_ID')
+REN2_APP_KEY = os.environ.get('REN2_APP_KEY')
 
 ren2 = oauth.remote_app(
     'ren2',
-    consumer_key=ren2_id,
-    consumer_secret=ren2_key,
+    consumer_key=REN2_APP_ID,
+    consumer_secret=REN2_APP_KEY,
     base_url='https://graph.renren.com',
     request_token_url=None,
     access_token_url='/oauth/token',
@@ -23,19 +20,26 @@ ren2 = oauth.remote_app(
 )
 
 
-@main.route('/user-info')
-def get_user_info():
-    if 'ren2_token' in session:
-        return redirect(session['user']['avatar'][0]['url'])
-    return redirect(url_for('.ren2_login'))
+@auth.route('/ren2-user-info')
+def ren2_user_info():
+    if 'ren2_user' in session:
+        user = User.query.filter_by(username=session['ren2_user']['name']).first()
+        if not user:
+            user = User(username=session['ren2_user']['name'], avatar=session['ren2_user']['avatar'][3]['url'], confirmed=True)
+            db.session.add(user)
+            db.session.commit()
+        login_user(user)
+        flash('欢迎回来！%s' % user.username)
+        return redirect(request.args.get('next') or url_for('main.index'))
+    return redirect(url_for('auth.ren2_login'))
 
 
-@main.route('/ren2-login')
+@auth.route('/ren2-login')
 def ren2_login():
     return ren2.authorize(callback=url_for('.ren2_authorized', _external=True))
 
 
-@main.route('/ren2-authorized')
+@auth.route('/ren2-authorized')
 def ren2_authorized():
     resp = ren2.authorized_response()
     if resp is None:
@@ -43,12 +47,9 @@ def ren2_authorized():
             request.args['error_reason'],
             request.args['error_description']
         )
-    session['ren2_token'] = (resp['access_token'], '')
-
-    # Get openid via access_token, openid and access_token are needed for API calls
     if isinstance(resp, dict):
-        session['user'] = resp.get('user')
-    return redirect(url_for('.get_user_info'))
+        session['ren2_user'] = resp.get('user')
+    return redirect(url_for('.ren2_user_info'))
 
 
 @ren2.tokengetter

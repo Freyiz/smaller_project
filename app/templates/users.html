@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% import "_macros.html" as macros %}
+
+{% block title %}所有角色{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <div class="container">
+            <h1>{{ self.title() }}</h1>
+        </div>
+    </div>
+        <table class="table">
+            <thead><tr><th>ID</th><th>角色</th><th>阵营</th><th>种族</th><th>职业</th><th>邮箱</th><th>权限</th><th>验证</th><th>创建</th><th>上次在线</th></tr></thead>
+            {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>
+                            <a style="color: {{ user.class_color }}" href="{{ url_for('.user', username=user.username) }}">
+                                {% if user.avatar %}
+                                    <img src="{{ user.avatar }}" width="32" height="32" class="img-rounded">
+                                {% else %}
+                                    <img src="{{ user.wow_avatar }}" width="32" height="32" class="img-rounded">
+                                {% endif %}
+                                {{ user.username }}
+                            </a>
+                        </td>
+                        <td>{{ user.wow_faction }}</td>
+                        <td>{{ user.wow_race }}</td>
+                        <td>{{ user.wow_class }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role.name }}</td>
+                        <td>{{ user.confirmed }}</td>
+                        <td>{{ moment(user.member_since).format('L') }}</td>
+                        <td>{{ moment(user.last_seen).format('L') }}</td>
+                    </tr>
+            {% endfor %}
+        </table>
+    {% if pagination.pages > 1 %}
+        {{ macros.pagination_widget(pagination, '.users') }}
+    {% endif %}
+{% endblock %}

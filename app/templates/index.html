@@ -5,6 +5,7 @@
 {% block title %}主页{% endblock %}
 
 {% block page_content %}
+    <audio src="" autoplay loop></audio>
     <div class="jumbotron stormwind">
         <img class="img-rounded lion" src="{{ url_for('static', filename='wow/hotel_shanjinzhen.jpg') }}">
         <h1>欢迎来到暴风城!</h1>
@@ -15,7 +16,7 @@
             {{ wtf.quick_form(form) }}
         {% endif %}
     </div>
-    <div id="asd">{% include '_posts.html' %}</div>
+    <div>{% include '_posts.html' %}</div>
     {% if pagination.pages > 1 %}
         {{ macros.pagination_widget(pagination, '.index') }}
     {% endif %}
