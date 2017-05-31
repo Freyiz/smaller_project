@@ -2,141 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="709239c7-83c6-46c4-abe9-83944c7445bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/bg/housekeeper.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/wow-inverse.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/logo/wow-inverse.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/LootCoinSmall.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/BloodElfFemaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/BloodElfFemaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/BloodElfFemaleTrain01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/NPCBloodElfFemaleMilitaryFarewell05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/NPCBloodElfFemaleMilitaryFarewell06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/NPCBloodElfFemaleMilitaryGreeting02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/NPCBloodElfFemaleNobleFarewell09.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/NPCBloodElfFemaleNobleGreeting05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/NPCBloodElfFemaleNobleGreeting07.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/blood-elf/NPCBloodElfFemaleNobleGreeting08.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/DraeneiFemaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/DraeneiFemaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/DraeneiFemaleTrain01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/NPCDraeneiFemaleMilitaryFarewell03.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/NPCDraeneiFemaleMilitaryGreeting05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/NPCDraeneiFemaleMilitaryGreeting06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/NPCDraeneiFemaleNobleFarewell06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/NPCDraeneiFemaleNobleGreeting03.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/draenei/NPCDraeneiFemaleNobleGreeting08.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleGrimNPCFarewell02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleGrimNPCGreeting01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleGrimNPCGreeting02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleGrimNPCGreeting06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleGuardNPCFarewell02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleGuardNPCGreeting02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/dwarf/DwarfMaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleHappyNPCFarewell04.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleHappyNPCGreeting02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleHappyNPCGreeting06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleNerdyNPCGreeting01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/gnome/GnomeFemaleNerdyNPCGreeting04.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/GoblinMaleZanyNPCFarewell03.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/GoblinMaleZanyNPCFarewell04.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/GoblinMaleZanyNPCGreeting01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/GoblinMaleZanyNPCGreeting02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/GoblinMaleZanyNPCGreeting03.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/GoblinMaleZanyNPCGreeting05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/GoblinMaleZanyNPCGreeting06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/VO_PCGoblinMale_Chicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/VO_PCGoblinMale_Laugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/goblin/VO_PCGoblinMale_Train01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/human/HumanMaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/human/HumanMaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/human/HumanMaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/human/HumanMaleOfficialNPCGreeting05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/human/HumanMaleStandardNPCGreetings02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/human/HumanMaleWarriorNPCFarewell01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/human/HumanMaleWarriorNPCFarewell05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/iAbilitiesTurnPageB.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/iQuestComplete.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/BloodElfNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/DraeneiNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/DwarfNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/GnomeNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/GoblinNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/HumanNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/NightElfNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/OrcNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/PandarenNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/TaurenNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/TrollNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/UndeadNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/narration/WorgenNarration.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/night-elf/NightElfMaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/night-elf/NightElfMaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/night-elf/NightElfMaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/night-elf/NightElfMaleOfficialNPCFarewell05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/night-elf/NightElfMaleStandardNPCFarewell06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/night-elf/NightElfMaleWarriorNPCGreeting03.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/orc/OrcMaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/orc/OrcMaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/orc/OrcMaleGuardNPCGreeting01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/orc/OrcMaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/orc/OrcMaleStandardNPCFarewell02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/orc/OrcMaleStandardNPCFarewell04.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/orc/OrcMaleStandardNPCFarewell05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/tauren/TaurenMaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/tauren/TaurenMaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/tauren/TaurenMaleElderNPCFarewell02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/tauren/TaurenMaleElderNPCFarewell04.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/tauren/TaurenMaleElderNPCGreeting05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/tauren/TaurenMaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/tauren/TaurenMaleWarriorNPCFarewell02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/troll/TrollMaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/troll/TrollMaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/troll/TrollMaleDarkNPCGreeting01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/troll/TrollMaleDarkNPCGreeting02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/troll/TrollMaleDarkNPCGreeting05.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/troll/TrollMaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/undead/UndeadFemaleChicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/undead/UndeadFemaleChooChoo01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/undead/UndeadFemaleLaugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/undead/UndeadFemaleMagicNPCGreeting01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/undead/UndeadFemaleWarriorNPCFarewell04.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/undead/UndeadFemaleWarriorNPCFarewell06.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/undead/UndeadFemaleWarriorNPCFarewell07.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/worgen/VO_PCWorgenMale_Chicken01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/worgen/VO_PCWorgenMale_Laugh01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/worgen/VO_PCWorgenMale_Train01.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/worgen/VO_WorgenGuardM_Farewell08.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/worgen/VO_WorgenGuardM_FarewellAggro02.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/sound/worgen/VO_WorgenGuardM_GreetingAggro03.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/promote.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/promote_result.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/users.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/wow/race/padaren-female.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/wow/race/padaren-male.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/wow/race/pandaren.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/templates/upload.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/templates/followers.html" afterPath="$PROJECT_DIR$/app/templates/follow.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/FotLK.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/Goblin.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/MOP_BR.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_BC.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_CTM.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_LK.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_MOP.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/Worgen.mkv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/Wrathgate.mkv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/movie/WOW_INTRO_1280.mkv" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro.mkv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/forms.py" afterPath="$PROJECT_DIR$/app/auth/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/qq_login.py" afterPath="$PROJECT_DIR$/app/auth/qq_login.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/renren_login.py" afterPath="$PROJECT_DIR$/app/auth/renren_login.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/views.py" afterPath="$PROJECT_DIR$/app/auth/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/forms.py" afterPath="$PROJECT_DIR$/app/main/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/views.py" afterPath="$PROJECT_DIR$/app/main/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/styles.css" afterPath="$PROJECT_DIR$/app/static/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/login.html" afterPath="$PROJECT_DIR$/app/templates/auth/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/register.html" afterPath="$PROJECT_DIR$/app/templates/auth/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/index.html" afterPath="$PROJECT_DIR$/app/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/moderate.html" afterPath="$PROJECT_DIR$/app/templates/moderate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user.html" afterPath="$PROJECT_DIR$/app/templates/user.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/promote_result.html" afterPath="$PROJECT_DIR$/app/templates/promote_result.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -233,59 +111,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="318">
-                <caret line="115" column="9" lean-forward="true" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="promote.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/promote.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="102" column="26" lean-forward="false" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/static/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="339" column="1" lean-forward="true" selection-start-line="339" selection-start-column="1" selection-end-line="339" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/main/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="-837">
+              <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
               <folding>
                 <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="promote_result.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/promote_result.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="27" column="96" lean-forward="false" selection-start-line="27" selection-start-column="96" selection-end-line="27" selection-end-column="96" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -402,11 +245,11 @@
         <option value="$PROJECT_DIR$/app/templates/user.html" />
         <option value="$PROJECT_DIR$/app/main/forms.py" />
         <option value="$PROJECT_DIR$/app/main/views.py" />
-        <option value="$PROJECT_DIR$/app/templates/promote_result.html" />
         <option value="$PROJECT_DIR$/app/templates/promote.html" />
         <option value="$PROJECT_DIR$/app/static/styles.css" />
-        <option value="$PROJECT_DIR$/app/templates/auth/register.html" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/app/templates/auth/register.html" />
+        <option value="$PROJECT_DIR$/app/templates/promote_result.html" />
       </list>
     </option>
   </component>
@@ -471,6 +314,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -600,7 +444,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sound" />
+              <option name="myItemId" value="movie" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -642,7 +486,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -655,19 +498,19 @@
     <property name="add_unversioned_files" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/static/wow/movie" />
+      <recent name="$PROJECT_DIR$/app/static/wow/sound/pandaren-female " />
+      <recent name="$PROJECT_DIR$/app/static/wow/sound/pandaren-male" />
+      <recent name="$PROJECT_DIR$/app/static/wow/sound" />
+      <recent name="$PROJECT_DIR$/app/static/wow/race" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/static/wow/movie" />
       <recent name="$PROJECT_DIR$/app/templates/auth" />
       <recent name="$PROJECT_DIR$/app/templates" />
       <recent name="$PROJECT_DIR$/app/static/wow" />
       <recent name="$PROJECT_DIR$/app/static/wow/bg" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/static/wow/sound/pandaren-female " />
-      <recent name="$PROJECT_DIR$/app/static/wow/sound/pandaren-male" />
-      <recent name="$PROJECT_DIR$/app/static/wow/sound" />
-      <recent name="$PROJECT_DIR$/app/static/wow/race" />
-      <recent name="$PROJECT_DIR$/app/static/wow/sound/narration" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -976,9 +819,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1368" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19863014" sideWeight="0.47790506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21765602" sideWeight="0.47790506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4519685" sideWeight="0.50913423" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10882801" sideWeight="0.5023622" order="3" side_tool="false" content_ui="tabs" />
@@ -986,19 +828,31 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.49394855" order="8" side_tool="false" content_ui="combo" x="10" y="52" width="685" height="716" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27874017" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.49086577" order="11" side_tool="false" content_ui="tabs" x="153" y="104" width="1069" height="571" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4425197" sideWeight="0.49086577" order="11" side_tool="false" content_ui="tabs" x="153" y="104" width="1069" height="571" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17549168" sideWeight="0.5220949" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34246576" sideWeight="0.4976378" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4519685" sideWeight="0.50913423" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34246576" sideWeight="0.5055118" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.49394855" order="8" side_tool="false" content_ui="combo" x="10" y="52" width="685" height="716" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27874017" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.49086577" order="11" side_tool="false" content_ui="tabs" x="153" y="104" width="1069" height="571" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19863014" sideWeight="0.47790506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10882801" sideWeight="0.5023622" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32755905" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17549168" sideWeight="0.5220949" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34246576" sideWeight="0.4976378" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1064,14 +918,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/c2d17511/ba185e7a-95c3-4a30-ae95-afe4bb21f0d1/main.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1200,14 +1054,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/c2d17511/86196cee-e327-4d79-a503-7dfdef2f3419/main.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1302,13 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="130" lean-forward="false" selection-start-line="12" selection-start-column="126" selection-end-line="12" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/auth/unconfirmed.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1358,37 +1205,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/promote_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/promote.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="102" column="26" lean-forward="false" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="339" column="1" lean-forward="true" selection-start-line="339" selection-start-column="1" selection-end-line="339" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="307">
+          <caret line="742" column="16" lean-forward="true" selection-start-line="742" selection-start-column="16" selection-end-line="742" selection-end-column="16" />
           <folding>
-            <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <marker date="1496216825187" expanded="true" signature="16580:16585" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16598:16622" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16629:16652" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16661:16741" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16748:16814" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16826:16851" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16871:16898" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16915:16965" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="16980:17005" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17015:17094" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17118:17160" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17178:17200" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17224:17273" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17288:17309" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17372:17399" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17417:17465" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17482:17508" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17521:17599" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17623:17668" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17705:17709" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17807:17828" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17848:17874" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17897:17924" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="17945:17993" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="18062:18140" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="18168:18237" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="18268:18292" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="18417:18441" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="18456:18480" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="18495:18519" ph="{...}" />
+            <marker date="1496216825187" expanded="true" signature="18530:18571" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1406,9 +1265,34 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="318">
             <caret line="115" column="9" lean-forward="true" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
-            <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-837">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/promote_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="27" column="96" lean-forward="false" selection-start-line="27" selection-start-column="96" selection-end-line="27" selection-end-column="96" />
+          <folding />
         </state>
       </provider>
     </entry>
