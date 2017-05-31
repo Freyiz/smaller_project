@@ -1,0 +1,132 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}时空之门{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font_awesome/css/font-awesome.min.css') }}">
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font_awesome/css/font-awesome-ie7.min.css') }}">
+    <![endif]-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='wow/logo/wow-inverse.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container wow">
+        <div class="home"><a class="fa fa-home fa-2x" href="{{ url_for('.index') }}"></a></div>
+        <div class="wow-tab"><a href="#wow-movie" class="active" data-toggle="tab">动画</a><a href="#wow-music" data-toggle="tab">音乐</a></div>
+        <div class="tab-content wow">
+            <div class="tab-pane active" id="wow-movie">
+                <video id="wow-video" src="../static/wow/movie/WOW_Intro.mkv" controls></video>
+                <span class="wow-control"><img src="../static/wow/logo/world_of_warcraft.png"><a class="fa fa-play fa-3x"></a></span>
+                <div class="wow-60 active">魔兽世界</div>
+                <div class="wow-70">燃烧的远征</div>
+                <div class="wow-80">巫妖王之怒</div>
+                <div class="wow-85">大灾变</div>
+                <div class="wow-90">熊猫人之谜</div>
+                <div class="wow-lichking">巫妖王的陨落</div>
+                <div class="wow-wrathgate">愤怒之门</div>
+                <div class="wow-worgen">狼人</div>
+                <div class="wow-goblin">地精</div>
+                <div class="wow-pandaren">熊猫人</div>
+                        <video width="1000" height="600" src="http://player.youku.com/player.php/sid/XMjc4MTkwMDcwMA==/v.swf"   controls>
+                    </video> <iframe height=498 width=510 src='http://player.youku.com/embed/XMjc4MTkwMDcwMA==' frameborder=0   allowfullscreen'                                                   ></iframe>
+                </d
+                <div class="tab-pane" id="wow-music">
+                    <div>原本想制作一个场景式的 wow 音乐列表，但发现已经有类似的网站了。比如下面这个炫酷无比的<a href="http://www.expoon.com/16074" target="_blank">魔兽世界艾泽拉斯怀旧全景展示</a>，作者是<b>金立方</b>。厉害了我的哥，请收下我的膝盖！</div>
+                    <iframe src=""></iframe>
+                </div>
+                <div class="wow-footer"></div>
+        </div>
+    </div>                                      
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            $('body').css('background','url("../static/wow/race/orc_F6NZ76C2G2RD1472070211038.jpg") repeat');
+            $('.wow-tab a').click(function () {
+                $('.wow-tab a').removeClass('active');
+                $(this).addClass('active');
+                $('#wow-music iframe').attr('src', '');
+            });
+            $('.wow-tab a:last-child').click(function () {
+                $('#wow-music iframe').attr('src', 'http://www.expoon.com/16074/panorama');
+            });
+            var vd = document.getElementById('wow-video');
+            vd.addEventListener('play', function () {
+                $('.wow-control').hide();
+                $('.wow-control a').hide();
+            });
+            vd.addEventListener('pause', function () {
+                $('.wow-control').show();
+                $('.wow-control a').show();
+            });
+            $('#wow-video').click(function () {
+                if (vd.paused) {
+                    vd.play();
+                    $('.wow-control').hide();
+                    $('.wow-control a').hide();
+                } else {
+                    vd.pause();
+                    $('.wow-control').show();
+                    $('.wow-control a').show();
+                }
+            });
+            $('.wow-control').click(function () {
+                vd.play();
+                $('.wow-control').hide();
+                $('.wow-control a').hide();
+                $('.wow-control img').hide();
+            });
+            $('#wow-movie div').click(function () {
+                $('#wow-movie div').removeClass('active');
+                $(this).addClass('active');
+                $('.wow-control').show();
+                $('.wow-control a').show();
+                $('.wow-control img').show();
+            });
+            $('.wow-60').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro.mkv');
+                $('.wow-control img').attr('src', '../static/wow/logo/world_of_warcraft.png');
+            });
+            $('.wow-70').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_BC.mkv');
+                $('.wow-control img').attr('src', '../static/wow/logo/the_burning_crusade.png');
+            });
+            $('.wow-80').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_LK.mkv');
+                $('.wow-control img').attr('src', '../static/wow/logo/wrath_of_the_LICH_KING.png');
+            });
+            $('.wow-85').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_CTM.mkv');
+                $('.wow-control img').attr('src', '../static/wow/logo/CATACLYSM.png');
+            });
+            $('.wow-90').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_MOP.mkv');
+                $('.wow-control img').attr('src', '../static/wow/logo/mists_of_PANDARIA.png');
+            });
+            $('.wow-lichking').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/FotLK.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-wrathgate').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/Wrathgate.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-worgen').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/Worgen.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-goblin').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/Goblin.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-pandaren').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/Pandaren.mkv');
+                $('.wow-control img').hide();
+            });
+        });
+    </script>
+{% endblock %}

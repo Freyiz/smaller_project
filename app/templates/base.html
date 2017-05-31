@@ -1,6 +1,6 @@
 {% extends 'bootstrap/base.html' %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}WOW{% endblock %}
 
 {% block head %}
     {{ super() }}
@@ -32,8 +32,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" >
-                    <li><a href="{{ url_for('main.attack') }}">进攻</a></li>
-                    <li><a href="{{ url_for('main.about') }}">关于</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">创建角色</a></li>
+                    {% if current_user.is_authenticated %}<li><a href="{{ url_for('main.promote', id=current_user.id) }}">晋升忏悔</a></li>{% endif %}
+                    <li><a href="{{ url_for('main.wow_memory') }}">时空之门</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_administrator() %}

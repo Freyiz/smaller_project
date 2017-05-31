@@ -330,6 +330,6 @@ def attack():
     return redirect(url_for('auth.register'))
 
 
-@main.route('/about')
-def about():
-    return render_template("about.html")
+@main.route('/wow-memory')
+def wow_memory():
+    return render_template("wow_memory.html")

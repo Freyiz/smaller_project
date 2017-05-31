@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="709239c7-83c6-46c4-abe9-83944c7445bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/FotLK.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/Goblin.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/MOP_BR.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_BC.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_CTM.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_LK.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro_MOP.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/Worgen.mkv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/wow/movie/Wrathgate.mkv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/movie/WOW_INTRO_1280.mkv" afterPath="$PROJECT_DIR$/app/static/wow/movie/WOW_Intro.mkv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/wow/logo/rises_of_the_legion.png" afterPath="$PROJECT_DIR$/app/static/wow/logo/rise_of_the_legion.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/templates/about.html" afterPath="$PROJECT_DIR$/app/templates/wow_memory.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/wow/logo/CATACLYSM.png" afterPath="$PROJECT_DIR$/app/static/wow/logo/CATACLYSM.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/wow/logo/mists_of_PANDARIA.png" afterPath="$PROJECT_DIR$/app/static/wow/logo/mists_of_PANDARIA.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/wow/logo/the_burning_crusade.png" afterPath="$PROJECT_DIR$/app/static/wow/logo/the_burning_crusade.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/wow/logo/warlords_of_DRAENOR.png" afterPath="$PROJECT_DIR$/app/static/wow/logo/warlords_of_DRAENOR.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/wow/logo/world_of_warcraft.png" afterPath="$PROJECT_DIR$/app/static/wow/logo/world_of_warcraft.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/wow/logo/wrath_of_the_LICH_KING.png" afterPath="$PROJECT_DIR$/app/static/wow/logo/wrath_of_the_LICH_KING.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/register.html" afterPath="$PROJECT_DIR$/app/templates/auth/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/promote_result.html" afterPath="$PROJECT_DIR$/app/templates/promote_result.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/views.py" afterPath="$PROJECT_DIR$/app/main/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/styles.css" afterPath="$PROJECT_DIR$/app/static/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,23 +110,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/static/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-837">
-              <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+            <state relative-caret-position="307">
+              <caret line="824" column="14" lean-forward="false" selection-start-line="824" selection-start-column="14" selection-end-line="824" selection-end-column="14" />
               <folding>
-                <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <marker date="1496225843743" expanded="true" signature="18006:18011" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="promote_result.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/promote_result.html">
+      <file leaf-file-name="wow_memory.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/wow_memory.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="27" column="96" lean-forward="false" selection-start-line="27" selection-start-column="96" selection-end-line="27" selection-end-column="96" />
+            <state relative-caret-position="292">
+              <caret line="41" column="48" lean-forward="false" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -147,8 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>first</find>
-      <find>zero</find>
       <find>bookman</find>
       <find>house</find>
       <find>next</find>
@@ -177,6 +174,8 @@
       <find>float: right</find>
       <find>pandaren</find>
       <find>restart</find>
+      <find>../.</find>
+      <find>home</find>
     </findStrings>
     <replaceStrings>
       <replace>zeroth</replace>
@@ -185,6 +184,7 @@
       <replace>promote-start</replace>
       <replace>promote-finish</replace>
       <replace>sound1</replace>
+      <replace>.</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -199,7 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/static/notification/css/demo.css" />
         <option value="$PROJECT_DIR$/app/static/notification/css/ns-default.css" />
         <option value="$PROJECT_DIR$/app/static/notification/css/ns-style-growl.css" />
         <option value="$PROJECT_DIR$/app/static/notification/demo_html/attached-bouncyflip.html" />
@@ -232,7 +231,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/app/templates/moderate.html" />
-        <option value="$PROJECT_DIR$/app/templates/base.html" />
         <option value="$PROJECT_DIR$/app/auth/qq_login.py" />
         <option value="$PROJECT_DIR$/app/templates/index.html" />
         <option value="$PROJECT_DIR$/.env" />
@@ -244,12 +242,14 @@
         <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/templates/user.html" />
         <option value="$PROJECT_DIR$/app/main/forms.py" />
-        <option value="$PROJECT_DIR$/app/main/views.py" />
         <option value="$PROJECT_DIR$/app/templates/promote.html" />
-        <option value="$PROJECT_DIR$/app/static/styles.css" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/templates/auth/register.html" />
         <option value="$PROJECT_DIR$/app/templates/promote_result.html" />
+        <option value="$PROJECT_DIR$/app/main/views.py" />
+        <option value="$PROJECT_DIR$/app/templates/base.html" />
+        <option value="$PROJECT_DIR$/app/static/styles.css" />
+        <option value="$PROJECT_DIR$/app/templates/wow_memory.html" />
       </list>
     </option>
   </component>
@@ -499,11 +499,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/static/wow/logo" />
       <recent name="$PROJECT_DIR$/app/static/wow/movie" />
       <recent name="$PROJECT_DIR$/app/static/wow/sound/pandaren-female " />
       <recent name="$PROJECT_DIR$/app/static/wow/sound/pandaren-male" />
       <recent name="$PROJECT_DIR$/app/static/wow/sound" />
-      <recent name="$PROJECT_DIR$/app/static/wow/race" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/static/wow/movie" />
@@ -819,8 +819,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1368" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21765602" sideWeight="0.47790506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21765602" sideWeight="0.47790506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4519685" sideWeight="0.50913423" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10882801" sideWeight="0.5023622" order="3" side_tool="false" content_ui="tabs" />
@@ -828,7 +829,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.49394855" order="8" side_tool="false" content_ui="combo" x="10" y="52" width="685" height="716" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27874017" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4425197" sideWeight="0.49086577" order="11" side_tool="false" content_ui="tabs" x="153" y="104" width="1069" height="571" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43464568" sideWeight="0.49086577" order="11" side_tool="false" content_ui="tabs" x="153" y="104" width="1069" height="571" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17549168" sideWeight="0.5220949" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34246576" sideWeight="0.4976378" order="5" side_tool="false" content_ui="tabs" />
@@ -889,20 +890,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/requirements/heroku.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/flask/json.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-937">
-          <caret line="197" column="4" lean-forward="false" selection-start-line="197" selection-start-column="4" selection-end-line="197" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/flask/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -1149,13 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/auth/unconfirmed.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1167,13 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1482">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="35" column="57" lean-forward="false" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -1191,72 +1164,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/clause.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="42" column="69" lean-forward="false" selection-start-line="42" selection-start-column="69" selection-end-line="42" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/promote.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="102" column="26" lean-forward="false" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="742" column="16" lean-forward="true" selection-start-line="742" selection-start-column="16" selection-end-line="742" selection-end-column="16" />
-          <folding>
-            <marker date="1496216825187" expanded="true" signature="16580:16585" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16598:16622" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16629:16652" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16661:16741" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16748:16814" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16826:16851" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16871:16898" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16915:16965" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="16980:17005" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17015:17094" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17118:17160" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17178:17200" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17224:17273" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17288:17309" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17372:17399" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17417:17465" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17482:17508" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17521:17599" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17623:17668" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17705:17709" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17807:17828" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17848:17874" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17897:17924" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="17945:17993" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="18062:18140" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="18168:18237" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="18268:18292" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="18417:18441" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="18456:18480" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="18495:18519" ph="{...}" />
-            <marker date="1496216825187" expanded="true" signature="18530:18571" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1278,20 +1189,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-837">
-          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-          <folding>
-            <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
+        <state relative-caret-position="551">
+          <caret line="105" column="31" lean-forward="true" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="334" column="38" lean-forward="false" selection-start-line="334" selection-start-column="38" selection-end-line="334" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/promote.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1938">
+          <caret line="102" column="26" lean-forward="false" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/promote_result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="27" column="96" lean-forward="false" selection-start-line="27" selection-start-column="96" selection-end-line="27" selection-end-column="96" />
+        <state relative-caret-position="304">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/clause.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="80" column="50" lean-forward="false" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/wow/logo/rise_of_the_legion.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/wow/logo/rise_of_the_ZANDALARI.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="824" column="14" lean-forward="false" selection-start-line="824" selection-start-column="14" selection-end-line="824" selection-end-column="14" />
+          <folding>
+            <marker date="1496225843743" expanded="true" signature="18006:18011" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/wow_memory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="41" column="48" lean-forward="false" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
           <folding />
         </state>
       </provider>
