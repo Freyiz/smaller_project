@@ -6,6 +6,7 @@
 {% block page_content %}
     <div class="third-login"><a href="{{ url_for('auth.qq_login') }}" class="fa fa-qq fa-2x"></a></div>
     <div class="third-login"><a href="{{ url_for('auth.ren2_login') }}" class="fa fa-renren fa-2x"></a></div>
+    <div class="third-login"><a href="{{ url_for('auth.sina_login') }}" class="fa fa-weibo fa-2x"></a></div>
     <div class="carousel-caption login">
         <h1>登录</h1>
         <form method="post" class="form" role="form">
@@ -22,7 +23,6 @@
             <span>忘记密码?<a href="{{ url_for('auth.password_reset_request') }}" class="nice">重置</a></span>
             <span class="right">没有角色?<a href="{{ url_for('auth.register') }}" class="nice">创建</a></span>
         </h4>
-    <video src="../../static/wow/movie/WOW_INTRO_1280.mkv" controls></video>
 {% endblock %}
 
 {% block scripts %}

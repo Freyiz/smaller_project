@@ -33,7 +33,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" >
                     <li><a href="{{ url_for('auth.register') }}">创建角色</a></li>
-                    {% if current_user.is_authenticated %}<li><a href="{{ url_for('main.promote', id=current_user.id) }}">晋升忏悔</a></li>{% endif %}
+                    {% if current_user.is_authenticated %}<li><a href="{{ url_for('main.promote', id=current_user.id) }}">{% if current_user.role.name == '民众' %}晋升之路{% else %}忏悔之路{% endif %}</a></li>{% endif %}
                     <li><a href="{{ url_for('main.wow_memory') }}">时空之门</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

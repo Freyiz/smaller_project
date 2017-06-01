@@ -109,16 +109,16 @@ def promote(id):
             db.session.add(user)
             flash('神接受了你的忏悔。')
             return redirect(url_for('.index'))
-        return render_template('promote_result.html', user=user, form=form, result='demotion')
+        return render_template('promote_result.html', user=user, form=form, result='demotion', title='忏悔之路')
     form = RecaptchaForm()
     if form.validate_on_submit():
         user.role = Role.query.filter_by(name='官员').first()
         db.session.add(user)
-        return render_template('promote_result.html', user=user, result='promote')
+        return render_template('promote_result.html', user=user, result='promote', title='晋升之路')
     return render_template('promote.html', user=user, form=form)
 
 
-@main.route('/post/<int:id>')
+@main.route('/post/<int:id>', methods=['GET', 'POST'])
 @login_required
 @permission_required(Permission.COMMENT)
 def post(id):
@@ -172,6 +172,7 @@ def delete_comment(id):
     if current_user != comment.author:
         abort(403)
     db.session.delete(comment)
+    flash('删除成功！')
     return redirect(url_for('.post', id=comment.post_id, page=page))
 
 
@@ -322,12 +323,6 @@ def server_shutdown():
         abort(500)
     shutdown()
     return '服务器即将关闭...'
-
-
-@main.route('/attack')
-@login_required
-def attack():
-    return redirect(url_for('auth.register'))
 
 
 @main.route('/wow-memory')

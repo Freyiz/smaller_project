@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block title %}晋升{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block page_content %}
     <div class="promote">
@@ -122,6 +122,7 @@
                 setTimeout("fadeout_in('.housekeeper .zeroth')", 21000);
         }
         $(function () {
+            $('body').css({'background':'url("../../static/wow/race/dwarf_81WJBCPNYZ5F1472070113187.jpg")', 'background-size':'cover'});
             $('.promote-start .next').click(function () {
                 to_black();
                 setTimeout("to_light('.goblin-single')", 3000);

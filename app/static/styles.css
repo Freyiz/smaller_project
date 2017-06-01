@@ -391,8 +391,10 @@ li.priest.active span {
 }
 .carousel-caption .nav-pills span {
     position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100%;
-    margin-left: -50%;
+    margin-bottom: -17%;
     border-radius: 2px;
     padding: 0 1px;
     color: #ffffff;
@@ -767,13 +769,13 @@ li.priest.active span {
 }
 #wow-video {
     float: right;
-    width: 1000px;
+    width: 950px;
     border-radius: 4px;
     box-shadow: 0 0 10px 5px rgba(255, 125, 10, 0.5);
 }
 .wow-control {
     position: absolute;
-    width: 1000px;
+    width: 950px;
     height: 390px;
     right: 0;
     text-align: center;
@@ -789,12 +791,11 @@ li.priest.active span {
     color: #c4c4c4;
 }
 #wow-movie div {
-    width: 125px;
+    width: 170px;
     font-style: italic;
     color: #c4c4c4;
-    margin: 5px;
-    padding: 5px 0 ;
     font-size: 15px;
+    margin-bottom: 11px;
     text-align: center;
 }
 #wow-movie div:hover {

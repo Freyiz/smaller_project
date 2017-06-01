@@ -20,24 +20,29 @@
             <div class="tab-pane active" id="wow-movie">
                 <video id="wow-video" src="../static/wow/movie/WOW_Intro.mkv" controls></video>
                 <span class="wow-control"><img src="../static/wow/logo/world_of_warcraft.png"><a class="fa fa-play fa-3x"></a></span>
-                <div class="wow-60 active">魔兽世界</div>
-                <div class="wow-70">燃烧的远征</div>
-                <div class="wow-80">巫妖王之怒</div>
-                <div class="wow-85">大灾变</div>
-                <div class="wow-90">熊猫人之谜</div>
-                <div class="wow-lichking">巫妖王的陨落</div>
-                <div class="wow-wrathgate">愤怒之门</div>
-                <div class="wow-worgen">狼人</div>
-                <div class="wow-goblin">地精</div>
-                <div class="wow-pandaren">熊猫人</div>
-                        <video width="1000" height="600" src="http://player.youku.com/player.php/sid/XMjc4MTkwMDcwMA==/v.swf"   controls>
-                    </video> <iframe height=498 width=510 src='http://player.youku.com/embed/XMjc4MTkwMDcwMA==' frameborder=0   allowfullscreen'                                                   ></iframe>
-                </d
-                <div class="tab-pane" id="wow-music">
-                    <div>原本想制作一个场景式的 wow 音乐列表，但发现已经有类似的网站了。比如下面这个炫酷无比的<a href="http://www.expoon.com/16074" target="_blank">魔兽世界艾泽拉斯怀旧全景展示</a>，作者是<b>金立方</b>。厉害了我的哥，请收下我的膝盖！</div>
-                    <iframe src=""></iframe>
-                </div>
-                <div class="wow-footer"></div>
+                <div class="wow-60 intro active">魔兽世界</div>
+                <div class="wow-70 intro">燃烧的远征</div>
+                <div class="wow-80 intro">巫妖王之怒</div>
+                <div class="wow-85 intro">大地的裂变</div>
+                <div class="wow-90 intro">熊猫人之谜</div>
+                <div class="wow-100 intro">德拉诺之王</div>
+                <div class="wow-110 intro">军团再临</div>
+                <div class="wow-wrathgate nointro">愤怒之门</div>
+                <div class="wow-lichking nointro">巫妖王的陨落</div>
+                <div class="wow-worgen nointro">狼人</div>
+                <div class="wow-goblin nointro">地精</div>
+                <div class="wow-deathwing nointro">死亡之翼的陨落</div>
+                <div class="wow-pandaren nointro">熊猫人</div>
+                <div class="wow-wra nointro">进军潘达莉亚·联盟</div>
+                <div class="wow-wrh nointro">进军潘达莉亚·部落</div>
+                <div class="wow-jade nointro">翡翠林</div>
+                <div class="wow-ghellscream nointro">加尔鲁什·地狱咆哮</div>
+            </div>
+            <div class="tab-pane" id="wow-music">
+                <div>原本想制作一个场景式的 wow 音乐列表，但发现已经有类似的网站了。比如下面这个炫酷无比的<a href="http://www.expoon.com/16074" target="_blank">魔兽世界艾泽拉斯怀旧全景展示</a>，作者是<b>金立方</b>。厉害了我的哥，请收下我的膝盖！</div>
+                <iframe src=""></iframe>
+            </div>
+            <div class="wow-footer"></div>
         </div>
     </div>                                      
 {% endblock %}
@@ -45,7 +50,7 @@
     {{ super() }}
     <script type="text/javascript">
         $(function () {
-            $('body').css('background','url("../static/wow/race/orc_F6NZ76C2G2RD1472070211038.jpg") repeat');
+            $('body').css({'background':'url("../../static/wow/race/orc_F6NZ76C2G2RD1472070211038.jpg")', 'background-size':'cover'});
             $('.wow-tab a').click(function () {
                 $('.wow-tab a').removeClass('active');
                 $(this).addClass('active');
@@ -107,6 +112,14 @@
                 $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_MOP.mkv');
                 $('.wow-control img').attr('src', '../static/wow/logo/mists_of_PANDARIA.png');
             });
+            $('.wow-100').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_WOD_1280.mkv');
+                $('.wow-control img').attr('src', '../static/wow/logo/warlords_of_DRAENOR.png');
+            });
+            $('.wow-110').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_ROL_1280.mkv');
+                $('.wow-control img').attr('src', '../static/wow/logo/rise_of_the_legion.png');
+            });
             $('.wow-lichking').click(function () {
                 $('#wow-video').attr('src', '../static/wow/movie/FotLK.mkv');
                 $('.wow-control img').hide();
@@ -123,9 +136,35 @@
                 $('#wow-video').attr('src', '../static/wow/movie/Goblin.mkv');
                 $('.wow-control img').hide();
             });
-            $('.wow-pandaren').click(function () {
-                $('#wow-video').attr('src', '../static/wow/movie/Pandaren.mkv');
+            $('.wow-deathwing').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/DSI_Act4.mkv');
                 $('.wow-control img').hide();
+            });
+            $('.wow-pandaren').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/MOP_BR.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-wra').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/MOP_WRA.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-wrh').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/MOP_WRH.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-jade').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/MOP_JADE.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.wow-ghellscream').click(function () {
+                $('#wow-video').attr('src', '../static/wow/movie/ORO_Horde.mkv');
+                $('.wow-control img').hide();
+            });
+            $('.intro').click(function () {
+                $('.wow-control a').css('margin-top', '19%');
+            });
+            $('.nointro').click(function () {
+                $('.wow-control a').css('margin-top', '25%');
             });
         });
     </script>
