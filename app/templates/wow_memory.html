@@ -18,7 +18,7 @@
         <div class="wow-tab"><a href="#wow-movie" class="active" data-toggle="tab">动画</a><a href="#wow-music" data-toggle="tab">音乐</a></div>
         <div class="tab-content wow">
             <div class="tab-pane active" id="wow-movie">
-                <video id="wow-video" src="../static/wow/movie/WOW_Intro.mkv" controls></video>
+                <video id="wow-video" src="../static/wow/movie/WOW_Intro_BC.m4v" controls></video>
                 <span class="wow-control"><img src="../static/wow/logo/world_of_warcraft.png"><a class="fa fa-play fa-3x"></a></span>
                 <div class="wow-60 intro active">魔兽世界</div>
                 <div class="wow-70 intro">燃烧的远征</div>
@@ -97,7 +97,7 @@
                 $('.wow-control img').attr('src', '../static/wow/logo/world_of_warcraft.png');
             });
             $('.wow-70').click(function () {
-                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_BC.mkv');
+                $('#wow-video').attr('src', '../static/wow/movie/WOW_Intro_BC.m4v');
                 $('.wow-control img').attr('src', '../static/wow/logo/the_burning_crusade.png');
             });
             $('.wow-80').click(function () {
@@ -141,11 +141,11 @@
                 $('.wow-control img').hide();
             });
             $('.wow-pandaren').click(function () {
-                $('#wow-video').attr('src', '../static/wow/movie/MOP_BR.mkv');
+                $('#wow-video').attr('src', '../static/wow/movie/MOP_BR.m4v');
                 $('.wow-control img').hide();
             });
             $('.wow-wra').click(function () {
-                $('#wow-video').attr('src', '../static/wow/movie/MOP_WRA.mkv');
+                $('#wow-video').attr('src', 'http://wow-movie.herokuapp.com/static/MOP_BR.m4v');
                 $('.wow-control img').hide();
             });
             $('.wow-wrh').click(function () {
