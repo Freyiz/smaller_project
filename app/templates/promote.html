@@ -10,7 +10,7 @@
             <div hidden class="left outside first">等一下，前面是谁？</div>
             <div hidden class="left outside second">看，我们到了！</div>
         </div>
-        <div hidden class="promote-start">
+        <div class="promote-start">
             <h1>晋升之路：开始</h1>
             <p>欢迎，{{ user.username }} ！在艾泽拉斯，不断的晋升可以使勇士们获得更多的能力。如果你想参加晋升，需要先见一见晋升特使拉兹登克，听说他现在锈水港。准备好了就出发吧！</p>
             <a class="choose next btn">出发</a>
@@ -75,7 +75,7 @@
             <div hidden class="left outside sixth">是，大人！（拉兹登克朝你耸了耸肩。）</div>
             <div hidden class="right seventh">很好，还剩最后一个——终极考验，也是我见过最奇怪的考验，没几个人能顺利通过。勇士，准备好了就出发吧。<br><br><a class="choose next">准备好了。</a></div>
         </div>
-        <div  class="promote-finish">
+        <div hidden class="promote-finish">
             <h1>晋升之路：终极考验</h1>
             <form method="post" class="form" role="form">
                 {{ form.hidden_tag() }}
