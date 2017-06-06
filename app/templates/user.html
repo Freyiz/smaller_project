@@ -22,8 +22,8 @@
         <p>
             {% if current_user.can(Permission.FOLLOW) and current_user != user %}
                 <a class="btn bg-primary" onclick="follow_toggle()">
-                    <span id="follow_icon"{% if current_user.is_following(user) %} hidden{% endif %}><i class="fa fa-heart-o"></i></span>
-                    <span id="is_following">{% if current_user.is_following(user) %}已追随{% else %}追随{% endif %}</span>
+                    <span id="follow_icon"{% if current_user.is_following(user) %} hidden{% endif %}><i class="fa fa-heart"></i></span>
+                    <span id="is_following">{% if current_user.is_following(user) %}取消追随{% else %}追随{% endif %}</span>
                 </a>
             {% endif %}追随者
             <a id="followers"{% if user.followers.count() > 1 %} href="{{ url_for('.followers', username=user.username) }}"{% endif %}>
@@ -34,7 +34,7 @@
             </a> 人
         </p>
             {% if current_user.is_administrator() and user.email %}
-            <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+            <p><a href="{{ email_address }}" target="_blank">{{ user.email }}</a></p>
         {% endif %}
         <p>出生于 {{ moment(user.member_since).format('L') }} | 上次在线 {{ moment(user.last_seen).fromNow() }}</p>
         <p>
@@ -58,6 +58,7 @@
 
 {% block scripts %}
     {{ super() }}
+    <script src="{{ url_for('static', filename='text_toggle.js') }}"></script>
     <script type=text/javascript>
         function follow_toggle() {
             $.getJSON($SCRIPT_ROOT + '/follow-toggle', {
@@ -68,7 +69,6 @@
                 if (data.text === '追随') {
                     $("#follow_icon").show();
                                 document.getElementById('avatar').show();
-
                 } else {
                     $("#follow_icon").hide();
                 }

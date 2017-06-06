@@ -324,8 +324,12 @@ class User(db.Model, UserMixin):
     def collect_toggle(self, post):
         if post not in self.posts_collected.all():
             self.posts_collected.append(post)
+            post.collects += 1
+            db.session.add(post)
         else:
             self.posts_collected.remove(post)
+            post.collects -= 1
+            db.session.add(post)
 
     @property
     def posts_followed(self):
@@ -379,6 +383,8 @@ class Post(db.Model):
     body_html = db.Column(db.Text)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
+    comments_count = db.Column(db.Integer, default=0, index=True)
+    collects = db.Column(db.Integer, default=0, index=True)
 
     @staticmethod
     def generate_fake(count=100):
@@ -448,7 +454,9 @@ class Comment(db.Model):
                 comment = Comment(body=forgery_py.lorem_ipsum.sentence(),
                                   author=User.query.get(u),
                                   post=post)
+                post.comments_count += 1
                 db.session.add(comment)
+                db.session.add(post)
         db.session.commit()
 
     @staticmethod

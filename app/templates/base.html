@@ -23,7 +23,7 @@
     <div class="nav navbar-inverse" id="my_nav" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button  class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -38,27 +38,23 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_administrator() %}
-                        <li><a href="{{ url_for('main.users') }}">所有角色</a></li>
+                        <li><a href="{{ url_for('main.users', text='re_id') }}">所有角色</a></li>
                     {% endif %}
                     {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                        <li><a href="{{ url_for('main.moderate') }}">所有议论</a></li>
+                        <li><a href="{{ url_for('main.comments', text='re_timestamp') }}">议政厅</a></li>
                     {% endif %}
                     {% if current_user.is_authenticated %}
                         <li class="dropdown dropdown-posts">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">公告<span class="fa fa-chevron-down"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url_for('main.show_all') }}">所有</a></li>
-                                <li><a href="{{ url_for('main.show_followed') }}">关注</a></li>
+                                <li><a href="{{ url_for('main.show_followed') }}">追随</a></li>
                                 <li><a href="{{ url_for('main.show_collected') }}">收藏</a></li>
                             </ul>
                         </li>
                         <li class="dropdown dropdown-account">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                                {% if current_user.avatar %}
-                                    <img src="{{ current_user.avatar }}" width="18" height="18" class="img-rounded">
-                                {% else %}
-                                    <img src="{{ current_user.wow_avatar }}" width="18" height="18" class="img-rounded">
-                                {% endif %}
+                                    <img src="{% if current_user.avatar %}{{ current_user.avatar }}{% else %}{{ current_user.wow_avatar }}{% endif %}" width="18" height="18" class="img-rounded">
                                 &#8197;账户<span class="fa fa-chevron-down"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -88,6 +84,7 @@
         {% endfor %}
         {% block page_content %}{% endblock %}
     </div>
+    <a class="fa fa-arrow-circle-up fa-3x to-top"></a>
 {% endblock %}
 
 {% block scripts %}
@@ -100,6 +97,7 @@
     </script>
     <script type="text/javascript">
         $(function () {
+            $(".to-top").hide();
             var st = 0;
             $(window).scroll(function () {
                 var st2 = $(window).scrollTop();
@@ -109,9 +107,17 @@
                 } else {
                     $('#my_nav').removeClass('navbar-fixed-top');
                     $('.hold').hide();
-                    }
+                }
                 st = st2;
+                if( st2 > 500){
+                    $(".to-top").fadeIn(200);
+                }else{
+                    $(".to-top").fadeOut(200);
+                }
             });
+            $(".to-top").click(function(){
+                $('html,body').animate({scrollTop:0},500);
+            })
         });
     </script>
 {% endblock %}

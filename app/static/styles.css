@@ -2,14 +2,29 @@ body {
     background-image: url("wow/bg/FS9EDR75BL0H1473302337244.jpg");
     color: #ffffff;
 }
+.to-top {
+    position:fixed;
+    bottom:5%;
+    right:4%;
+    color: rgba(196, 196, 196, 0.5);
+}
+.to-top:hover {
+    color: rgb(196, 196, 196);
+}
 .hold {
     height: 50px;
 }
 .alliance {
     color: #0078FF;
 }
+.alliance:hover {
+    color: #005dc3;
+}
 .horde {
     color: #B30000;
+}
+.horde:hover {
+    color: #ef0000;
 }
 #warrior span,
 .warrior {
@@ -196,17 +211,6 @@ li.priest.active span {
     left: -10%;
     width: 120%;
 }
-.carousel .reset {
-    position: absolute;
-    top: 20px;
-    z-index: 1;
-    color: #c4c4c4;
-    right: 5%;
-    font-size: 20px;
-}
-.carousel .reset:hover {
-    color: #ffffff;
-}
 
 @media screen and (max-width: 1300px) {
     .carousel-inner {
@@ -343,7 +347,7 @@ li.priest.active span {
     margin: -10% 0 0 -8%;
 }
 .carousel-caption-item.goblin img {
-    margin-top: -1%;
+    margin-top: 0;
 }
 .carousel-caption-item.blood-elf img {
     margin-top: -13%;
@@ -804,7 +808,17 @@ li.priest.active span {
     margin-top: 19%;
     color: #c4c4c4;
 }
-#wow-movie div {
+.youku {
+    position: absolute;
+    right: 0;
+    width: 950px;
+    height: 540px;
+    box-shadow: 0 0 10px 5px rgba(255, 125, 10, 0.5);
+}
+.movie-tab {
+    height: 560px;
+}
+.movie-tab div {
     width: 170px;
     font-style: italic;
     color: #c4c4c4;
@@ -812,21 +826,24 @@ li.priest.active span {
     margin-bottom: 11px;
     text-align: center;
 }
-#wow-movie div:hover {
+.movie-tab div:hover {
     cursor: pointer;
     font-size: 20px;
     color: rgba(255, 215, 0, 0.8);
 }
-#wow-movie div.active {
+.movie-tab div.active {
     font-size: 20px;
     color: #FFD700;
+}
+.youku-toggle {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
 }
 #wow-music div {
     font-size: 20px;
     margin: 0 70px;
-}
-#wow-music a:hover {
-    color: #006dd0;
 }
 #wow-music iframe {
     width: 1000px;
@@ -880,34 +897,46 @@ li.priest.active span {
     color: #fff;
     background-color: transparent;
 }
-a {
-    cursor: pointer;
-    color: #63a5cc;
-}
 .posts a,
 .comments a {
     color: #c4c4c4;
 }
+a {
+    cursor: pointer;
+    color: #63a5cc;
+}
+a.fa-heart.default {
+    cursor: default;
+}
+a.text-toggle {
+    color: #ffffff;
+}
 a.btn {
-    color: #000000;
+    color: rgb(255, 254, 190);
 }
 a:focus {
     outline: none;
     text-decoration: none;
     color: rgb(227, 216, 231);
 }
-a:hover {
-    text-decoration: none;
+.posts a:hover,
+.comments a:hover,
+.to-class:hover,
+.home a:hover {
     color: #ffffff;
 }
-.nice:hover {
-    color: #0087ff;
+a:hover {
+    text-decoration: none;
+    color: #0078FF;
+}
+a.text-toggle:hover {
+    color: #c4c4c4;
 }
 .str-inline {
     display: inline;
 }
 .rank {
-    font-size: 30%;
+    font-size: 20px;
 }
 .lion {
     margin-top: -4%;
@@ -929,12 +958,12 @@ div.post-tabs {
 }
 ul.posts {
     list-style-type: none;
-    padding: 0px;
-    margin: 16px 0px 0px 0px;
+    padding: 0;
+    margin: 16px 0 0 0;
 
 }
 div.post-tabs ul.posts {
-    margin: 0px;
+    margin: 0;
     border-top: none;
 }
 ul.posts li.post {
@@ -962,8 +991,8 @@ div.post-footer {
 }
 ul.comments {
     list-style-type: none;
-    padding: 0px;
-    margin: 16px 0px 0px 0px;
+    padding: 0;
+    margin: 16px 0 0 0;
 }
 ul.comments li.comment {
     margin-left: 32px;
@@ -990,16 +1019,16 @@ div.comment-content {
     min-height: 48px;
 }
 div.comment-form {
-    margin: 16px 0px 16px 32px;
+    margin: 16px 0 16px 32px;
 }
 div.pagination {
     width: 100%;
     text-align: right;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 div.flask-pagedown-preview {
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
     padding: 4px;
     width: auto;
 }
@@ -1028,3 +1057,4 @@ div.flask-pagedown-preview h3 {
 .table tr:hover {
     background-color:  rgba(77, 83, 82, 0.26);
 }
+

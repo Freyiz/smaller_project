@@ -9,33 +9,51 @@
             <h1>{{ self.title() }}</h1>
         </div>
     </div>
-        <table class="table">
-            <thead><tr><th>ID</th><th>角色</th><th>阵营</th><th>种族</th><th>职业</th><th>邮箱</th><th>权限</th><th>验证</th><th>创建</th><th>上次在线</th></tr></thead>
-            {% for user in users %}
-                    <tr>
-                        <td>{{ user.id }}</td>
-                        <td>
-                            <a style="color: {{ user.class_color }}" href="{{ url_for('.user', username=user.username) }}">
-                                {% if user.avatar %}
-                                    <img src="{{ user.avatar }}" width="32" height="32" class="img-rounded">
-                                {% else %}
-                                    <img src="{{ user.wow_avatar }}" width="32" height="32" class="img-rounded">
-                                {% endif %}
-                                {{ user.username }}
-                            </a>
-                        </td>
-                        <td>{{ user.wow_faction }}</td>
-                        <td>{{ user.wow_race }}</td>
-                        <td>{{ user.wow_class }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.role.name }}</td>
-                        <td>{{ user.confirmed }}</td>
-                        <td>{{ moment(user.member_since).format('L') }}</td>
-                        <td>{{ moment(user.last_seen).format('L') }}</td>
-                    </tr>
-            {% endfor %}
-        </table>
+    <table class="table">
+        <thead><tr><th>
+            <a href="{% if text == 'id' %}{{ url_for('main.users', text='re_id') }}{% else %}{{ url_for('main.users', text='id') }}{% endif %}">ID</a>
+        </th><th>
+            <a href="{% if text == 'username' %}{{ url_for('main.users', text='re_username') }}{% else %}{{ url_for('main.users', text='username') }}{% endif %}">角色</a>
+        </th><th>
+            <a href="{% if text == 'wow_faction' %}{{ url_for('main.users', text='re_wow_faction') }}{% else %}{{ url_for('main.users', text='wow_faction') }}{% endif %}">阵营</a>
+        </th><th>
+            <a href="{% if text == 'wow_race' %}{{ url_for('main.users', text='re_wow_race') }}{% else %}{{ url_for('main.users', text='wow_race') }}{% endif %}">种族</a>
+        </th><th>
+            <a href="{% if text == 'wow_class' %}{{ url_for('main.users', text='re_wow_class') }}{% else %}{{ url_for('main.users', text='wow_class') }}{% endif %}">职业</a>
+        </th><th>邮箱</th><th>
+            <a href="{% if text == 'role_id' %}{{ url_for('main.users', text='re_role_id') }}{% else %}{{ url_for('main.users', text='role_id') }}{% endif %}">权限</a>
+        </th><th>
+            <a href="{% if text == 'confirmed' %}{{ url_for('main.users', text='re_confirmed') }}{% else %}{{ url_for('main.users', text='confirmed') }}{% endif %}">验证</a>
+        </th><th>
+            <a href="{% if text == 'member_since' %}{{ url_for('main.users', text='re_member_since') }}{% else %}{{ url_for('main.users', text='member_since') }}{% endif %}">创建</a>
+        </th><th>
+            <a href="{% if text == 'last_seen' %}{{ url_for('main.users', text='re_last_seen') }}{% else %}{{ url_for('main.users', text='last_seen') }}{% endif %}">上次在线</a>
+        </th></tr></thead>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>
+                    <a style="color: {{ user.class_color }}" href="{{ url_for('.user', username=user.username) }}">
+                        {% if user.avatar %}
+                            <img src="{{ user.avatar }}" width="32" height="32" class="img-rounded">
+                        {% else %}
+                            <img src="{{ user.wow_avatar }}" width="32" height="32" class="img-rounded">
+                        {% endif %}
+                        {{ user.username }}
+                    </a>
+                </td>
+                <td>{{ user.wow_faction }}</td>
+                <td>{{ user.wow_race }}</td>
+                <td>{{ user.wow_class }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role.name }}</td>
+                <td>{{ user.confirmed }}</td>
+                <td>{{ moment(user.member_since).format('L') }}</td>
+                <td>{{ moment(user.last_seen).format('L') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
     {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.users') }}
+        {{ macros.pagination_widget(pagination, '.users', text=text) }}
     {% endif %}
 {% endblock %}

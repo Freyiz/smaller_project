@@ -2,7 +2,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "_macros.html" as macros %}
 
-{% block title %}主页{% endblock %}
+{% block title %}艾泽拉斯{% endblock %}
 
 {% block page_content %}
     <audio src="" autoplay loop></audio>
@@ -25,4 +25,5 @@
 {% block scripts %}
     {{ super() }}
     {{ pagedown.include_pagedown() }}
+    <script src="{{ url_for('static', filename='text_toggle.js') }}"></script>
 {% endblock %}

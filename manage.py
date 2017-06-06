@@ -116,7 +116,9 @@ def reset():
                 db.session.add(u)
             if p not in u2.posts_collected:
                 u2.posts_collected.append(p)
+                p.collects += 1
                 db.session.add(u2)
+                db.session.add(p)
         db.session.commit()
 
     print('生成点赞和收藏...')

@@ -18,27 +18,26 @@
                     </a>
                 </div>
                 <div class="post-body">
-                    <a href="{{ url_for('.post', id=post.id) }}">
-                        {% if post.body_html %}
-                            {{ post.body_html | safe }}
-                        {% else %}
-                            {{ post.body }}
-                        {% endif %}
-                    </a>
+                    <a href="{{ url_for('.post', id=post.id) }}" class="post-text">{% if post.body_html %}{{ post.body_html | safe }}{% else %}{{ post.body }}{% endif %}</a>
                     <div>
-                        {{ post.comments.count() }}
+                        {{ post.comments_count }}
                         <a class="fa fa-comments" href="{{ url_for('.post', id=post.id) }}"></a>
+                        <span id="collects{{ post.id }}">{{ post.collects }}</span>
                         {% if current_user.is_authenticated %}
                             {% if post not in current_user.posts_collected.all() %}
-                                <a class="fa fa-heart-o" id="post_collect{{ post.id }}" onclick="post_collect('{{ post.id }}', '#post_collect{{ post.id }}', '收藏成功！<a href=\'{{ url_for('.post', id=post.id) }}\'>查看</a>')"></a>
+                                <a class="fa fa-heart-o" id="post_collect{{ post.id }}" onclick="post_collect('{{ post.id }}', '#collects{{ post.id }}', '#post_collect{{ post.id }}', '收藏成功！<a href=\'{{ url_for('.post', id=post.id) }}\'>查看</a>')"></a>
+                            {% else %}
+                                <a class="fa fa-heart default"></a>
                             {% endif %}
+                        {% else %}
+                            <a class="fa fa-heart default"></a>
                         {% endif %}
                     </div>
                     <div class="post-footer">
                         {% if current_user == post.author %}
                             <a href="{{ url_for('.edit_post', id=post.id) }}" class="btn btn-info btn-xs">编辑</a>
                         {% elif current_user.is_administrator() %}
-                            <a href="{{ url_for('.edit_post', id=post.id) }}" class="btn btn-primary btn-xs">编辑-管理员</a>
+                            <a href="{{ url_for('.edit_post', id=post.id) }}" class="btn btn-primary btn-xs">编辑-官员</a>
                         {% endif %}
                     </div>
                 </div>
@@ -48,12 +47,14 @@
 </ul>
 <script src="{{ url_for('static', filename='notification/js/classie.js') }}"></script>
 <script src="{{ url_for('static', filename='notification/js/notificationFx.js') }}"></script>
+<script src="{{ url_for('static', filename='text-toggle.js') }}"></script>
 <script type="text/javascript">
-    function post_collect(post_id, a_id, message) {
+    function post_collect(post_id, span_id, a_id, message) {
         $.getJSON($SCRIPT_ROOT + '/collect-toggle', {
             id: post_id
         }, function(data) {
-            $(a_id).hide();
+            $(span_id).text(data.result);
+            $(a_id).attr({'class':'fa fa-heart', 'onclick': ''}).css('cursor','default');
         });
         var notification = new NotificationFx({
             message : message,
