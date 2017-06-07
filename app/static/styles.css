@@ -1105,8 +1105,10 @@ div.flask-pagedown-preview h3 {
     border-radius: 4px;
     background-color: transparent;
 }
-.page_num:focus {
+.page_num:focus,
+.jump:focus {
     border-color: #006dd0;
+    outline: none;
 }
 .jump {
     background-color: transparent;
