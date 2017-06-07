@@ -445,7 +445,7 @@
                 $(this).attr('src', "{{ url_for('auth.verification_code') }}?" + now.getTime());
             });
             $('.form-group .fa-refresh').click(function () {
-                now = new Date()
+                now = new Date();
                 $('.form-group img').attr('src', "{{ url_for('auth.verification_code') }}?" + now.getTime());
                 $(this).addClass('fa-spin');
                 setTimeout("fa_refresh()",1000);

@@ -1,7 +1,7 @@
 from flask import render_template, request, jsonify, redirect, \
     url_for, flash, current_app, abort, make_response
 from .forms import PostForm, CommentForm, EditProfileForm, \
-    EditProfileAdminForm, RecaptchaForm, DemotionForm
+    EditProfileAdminForm, RecaptchaForm, DemotionForm, JumpForm
 from ..decorators import admin_required, permission_required
 from ..models import Post, Comment, User, Role, Permission
 from flask_login import login_required, current_user
@@ -30,23 +30,33 @@ def index():
         db.session.add(post)
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
+    form2 = JumpForm()
+    if form2.validate_on_submit():
+        page = form2.page_num.data
+        return redirect(url_for('.index', page=page))
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
-    return render_template('index.html', form=form, posts=posts, pagination=pagination)
+    return render_template('index.html', form=form, form2=form2,
+                           posts=posts, pages=pagination.pages, pagination=pagination)
 
 
-@main.route('/user/<username>')
+@main.route('/user/<username>', methods=['GET', 'POST'])
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     email_address = 'http://mail.%s' % current_user.email.rsplit('@')[-1]
     page = request.args.get('page', 1, type=int)
+    form = JumpForm()
+    if form.validate_on_submit():
+        page = form.page_num.data
+        return redirect(url_for('.user', page=page, username=username))
     pagination = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
-    return render_template('user.html', user=user, posts=posts,
-                           pagination=pagination, email_address=email_address)
+    return render_template('user.html', user=user, form=form, posts=posts,
+                           pagination=pagination, pages=pagination.pages,
+                           email_address=email_address)
 
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
@@ -136,15 +146,19 @@ def post(id):
         post.comments_count += 1
         db.session.add(comment)
         db.session.add(post)
-        return redirect(url_for('.post', id=post.id, page=-1))
+        return redirect(url_for('.post', id=id, page=-1))
     page = request.args.get('page', 1, type=int)
     if page == -1:
         page = (post.comments_count - 1) // current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
+    form2 = JumpForm()
+    if form2.validate_on_submit():
+        page = form2.page_num.data
+        return redirect(url_for('.post', page=page, id=id))
     pagination = post.comments.order_by(Comment.likes.desc(), Comment.timestamp.asc()).paginate(
         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
-    return render_template('post.html', form=form, posts=[post], page=page,
-                           comments=comments, pagination=pagination)
+    return render_template('post.html', form=form, form2=form2, posts=[post],
+                           comments=comments, pagination=pagination, pages=pagination.pages)
 
 
 @main.route('/collect-toggle')
@@ -185,70 +199,81 @@ def delete_comment(id):
     return redirect(url_for('.post', id=comment.post_id, page=page))
 
 
-@main.route('/users/<string:text>')
+@main.route('/users', methods=['GET', 'POST'])
 @login_required
 @admin_required
-def users(text):
+def users():
     page = request.args.get('page', 1, type=int)
-    if text == 're_id':
+    sort = request.args.get('sort', 're_id', type=str)
+    form = JumpForm()
+    if form.validate_on_submit():
+        page = form.page_num.data
+        return redirect(url_for('.users', page=page, sort=sort))
+    if sort == 're_id':
         order = User.id.desc()
-    elif text == 'username':
+    elif sort == 'username':
         order = User.username.asc()
-    elif text == 're_username':
+    elif sort == 're_username':
         order = User.username.desc()
-    elif text == 'wow_faction':
+    elif sort == 'wow_faction':
         order = User.wow_faction.asc()
-    elif text == 're_wow_faction':
+    elif sort == 're_wow_faction':
         order = User.wow_faction.desc()
-    elif text == 'wow_race':
+    elif sort == 'wow_race':
         order = User.wow_race.asc()
-    elif text == 're_wow_race':
+    elif sort == 're_wow_race':
         order = User.wow_race.desc()
-    elif text == 'wow_class':
+    elif sort == 'wow_class':
         order = User.wow_class.asc()
-    elif text == 're_wow_class':
+    elif sort == 're_wow_class':
         order = User.wow_class.desc()
-    elif text == 'role_id':
+    elif sort == 'role_id':
         order = User.role_id.asc()
-    elif text == 're_role_id':
+    elif sort == 're_role_id':
         order = User.role_id.desc()
-    elif text == 'confirmed':
+    elif sort == 'confirmed':
         order = User.confirmed.asc()
-    elif text == 're_confirmed':
+    elif sort == 're_confirmed':
         order = User.confirmed.desc()
-    elif text == 'member_since':
+    elif sort == 'member_since':
         order = User.member_since.asc()
-    elif text == 're_member_since':
+    elif sort == 're_member_since':
         order = User.member_since.desc()
-    elif text == 'last_seen':
+    elif sort == 'last_seen':
         order = User.last_seen.asc()
-    elif text == 're_last_seen':
+    elif sort == 're_last_seen':
         order = User.last_seen.desc()
     else:
         order = User.id.asc()
     pagination = User.query.order_by(order).paginate(
         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
     users = pagination.items
-    return render_template('users.html', page=page, pagination=pagination, users=users, text=text)
+    return render_template('users.html', form=form, pages=pagination.pages,
+                           pagination=pagination, users=users, sort=sort)
 
 
-@main.route('/comments/<string:text>')
+@main.route('/comments', methods=['GET', 'POST'])
 @permission_required(Permission.MODERATE_COMMENTS)
-def comments(text):
+def comments():
     page = request.args.get('page', 1, type=int)
-    if text == 're_timestamp':
+    sort = request.args.get('sort', 're_timestamp', type=str)
+    form = JumpForm()
+    if form.validate_on_submit():
+        page = form.page_num.data
+        return redirect(url_for('.comments', page=page, sort=sort))
+    if sort == 're_timestamp':
         order = Comment.timestamp.desc()
-    elif text == 'likes':
+    elif sort == 'likes':
         order = Comment.likes.asc()
-    elif text == 're_likes':
+    elif sort == 're_likes':
         order = Comment.likes.desc()
     else:
         order = Comment.timestamp.asc()
     pagination = Comment.query.order_by(order).paginate(
         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
-    return render_template('comments.html', page=page, pagination=pagination,
-                           comments=comments, text=text)
+    return render_template('comments.html', form=form, pages=pagination.pages,
+                           pagination=pagination, comments=comments, sort=sort)
 
 
 @main.route('/follow-toggle')
@@ -268,35 +293,45 @@ def follow_toggle():
     return jsonify(result=user.followers.count() - 1, text=text, href=href)
 
 
-@main.route('/followers/<username>')
+@main.route('/followers/<username>', methods=['GET', 'POST'])
 def followers(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
+    form = JumpForm()
+    if form.validate_on_submit():
+        page = form.page_num.data
+        return redirect(url_for('.followers', page=page, username=username))
     pagination = user.followers.paginate(
         page, per_page=current_app.config['FLASKY_FOLLOWERS_PER_PAGE'],
         error_out=False)
     follows = [{'user': item.follower, 'timestamp': item.timestamp}
                for item in pagination.items]
     return render_template('follow.html', user=user, follows=follows, title='的追随者',
-                           pagination=pagination, endpoint='.followers')
+                           pages=pagination.pages, pagination=pagination,
+                           endpoint='.followers', form=form)
 
 
-@main.route('/followed-by/<username>')
+@main.route('/followed-by/<username>', methods=['GET', 'POST'])
 def followed_by(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
+    form = JumpForm()
+    if form.validate_on_submit():
+        page = form.page_num.data
+        return redirect(url_for('.followed_by', page=page, username=username))
     pagination = user.followed.paginate(
         page, per_page=current_app.config['FLASKY_FOLLOWERS_PER_PAGE'],
         error_out=False)
     follows = [{'user': item.followed, 'timestamp': item.timestamp}
                for item in pagination.items]
     return render_template('follow.html', user=user, follows=follows, title='的追随',
-                           pagination=pagination, endpoint='.followed_by')
+                           pages=pagination.pages, pagination=pagination,
+                           endpoint='.followed_by', form=form)
 
 
 @main.route('/all')
 def show_all():
-    resp = make_response(redirect(url_for('.posts', text='re_timestamp')))
+    resp = make_response(redirect(url_for('.posts')))
     resp.set_cookie('show_which', 'all', max_age=30*24*60*60)
     return resp
 
@@ -304,7 +339,7 @@ def show_all():
 @main.route('/followed')
 @login_required
 def show_followed():
-    resp = make_response(redirect(url_for('.posts', text='re_timestamp')))
+    resp = make_response(redirect(url_for('.posts')))
     resp.set_cookie('show_which', 'followed', max_age=30*24*60*60)
     return resp
 
@@ -312,14 +347,14 @@ def show_followed():
 @main.route('/collected')
 @login_required
 def show_collected():
-    resp = make_response(redirect(url_for('.posts', text='re_timestamp')))
+    resp = make_response(redirect(url_for('.posts')))
     resp.set_cookie('show_which', 'collected', max_age=30*24*60*60)
     return resp
 
 
-@main.route('/posts/<string:text>')
+@main.route('/posts', methods=['GET', 'POST'])
 @login_required
-def posts(text):
+def posts():
     page = request.args.get('page', 1, type=int)
     show_which = request.cookies.get('show_which', 'all')
     query = Post.query
@@ -331,15 +366,20 @@ def posts(text):
         if show_which == 'collected':
             query = current_user.posts_collected
             title = '我的收藏'
-    if text == 're_timestamp':
+    sort = request.args.get('sort', 're_timestamp', type=str)
+    form = JumpForm()
+    if form.validate_on_submit():
+        page = form.page_num.data
+        return redirect(url_for('.posts', page=page, sort=sort))
+    if sort == 're_timestamp':
         order = Post.timestamp.desc()
-    elif text == 'comments_count':
+    elif sort == 'comments_count':
         order = Post.comments_count.asc()
-    elif text == 're_comments_count':
+    elif sort == 're_comments_count':
         order = Post.comments_count.desc()
-    elif text == 'collects':
+    elif sort == 'collects':
         order = Post.collects.asc()
-    elif text == 're_collects':
+    elif sort == 're_collects':
         order = Post.collects.desc()
     else:
         order = Post.timestamp.asc()
@@ -347,8 +387,9 @@ def posts(text):
     pagination = query.order_by(order, order2).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
-    return render_template('posts.html', posts=posts, show_which=show_which,
-                           title=title, pagination=pagination, text=text)
+    return render_template('posts.html', form=form, pages=pagination.pages,
+                           posts=posts, show_which=show_which,
+                           title=title, pagination=pagination, sort=sort)
 
 
 @main.route('/like-toggle')

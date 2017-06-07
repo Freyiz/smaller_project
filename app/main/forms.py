@@ -63,3 +63,8 @@ class RecaptchaForm(FlaskForm):
 
 class DemotionForm(FlaskForm):
     submit = SubmitField('忏悔')
+
+
+class JumpForm(FlaskForm):
+    page_num = StringField()
+    submit = SubmitField('传送')

@@ -5,20 +5,21 @@
 {% block title %}艾泽拉斯{% endblock %}
 
 {% block page_content %}
-    <audio src="" autoplay loop></audio>
     <div class="jumbotron stormwind">
         <img class="img-rounded lion" src="{{ url_for('static', filename='wow/hotel_shanjinzhen.jpg') }}">
         <h1>欢迎来到暴风城!</h1>
         <p>{% if current_user.is_authenticated %}{{ current_user.username }}{% else %}旅行者{% endif %}，在狮王之傲旅店放松放松吧！</p>
     </div>
-    <div>
-        {% if current_user.can(Permission.WRITE_ARTICLES) and current_user.confirmed%}
-            {{ wtf.quick_form(form) }}
-        {% endif %}
-    </div>
-    <div>{% include '_posts.html' %}</div>
+    {% if current_user.can(Permission.WRITE_ARTICLES) and current_user.confirmed%}
+        {{ wtf.quick_form(form) }}
+    {% endif %}
+    {% include '_posts.html' %}
     {% if pagination.pages > 1 %}
         {{ macros.pagination_widget(pagination, '.index') }}
+        <form method="post" class="form" role="form">
+            {{ form2.hidden_tag() }}
+            <div class="form-group">{{ form2.page_num(class="page_num") }}{{ form2.submit(class="jump", disabled='disabled') }}</div>
+        </form>
     {% endif %}
 {% endblock %}
 
@@ -26,4 +27,25 @@
     {{ super() }}
     {{ pagedown.include_pagedown() }}
     <script src="{{ url_for('static', filename='text_toggle.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.page_num').bind('input propertychange', function() {
+                var val = $(this).val();
+                if((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= {{ pages }}) {
+                    $('.jump').removeAttr('disabled').css('color', '#ffffff');
+                } else {
+                    $('.jump').attr('disabled', 'disabled').css('color', 'gray');
+                }
+                if (val > 99) {
+                    $(this).css('padding-left', '6px');
+                }
+                else if (val > 9) {
+                    $(this).css('padding-left', '10px');
+                }
+                else {
+                    $(this).css('padding-left', '14px')
+                }
+            });
+        });
+    </script>
 {% endblock %}

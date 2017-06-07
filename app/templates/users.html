@@ -1,38 +1,37 @@
 {% extends 'base.html' %}
 {% import "_macros.html" as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %}所有角色{% endblock %}
 
 {% block page_content %}
-    <div class="page-header">
-        <div class="container">
-            <h1>{{ self.title() }}</h1>
-        </div>
+    <div class="page-header container">
+        <h1>{{ self.title() }}</h1>
     </div>
     <table class="table">
         <thead><tr><th>
-            <a href="{% if text == 'id' %}{{ url_for('main.users', text='re_id') }}{% else %}{{ url_for('main.users', text='id') }}{% endif %}">ID</a>
+            <a href="{% if sort == 'id' %}{{ url_for('.users', sort='re_id') }}{% else %}{{ url_for('.users', sort='id') }}{% endif %}">ID</a>
         </th><th>
-            <a href="{% if text == 'username' %}{{ url_for('main.users', text='re_username') }}{% else %}{{ url_for('main.users', text='username') }}{% endif %}">角色</a>
+            <a href="{% if sort == 'username' %}{{ url_for('.users', sort='re_username') }}{% else %}{{ url_for('.users', sort='username') }}{% endif %}">角色</a>
         </th><th>
-            <a href="{% if text == 'wow_faction' %}{{ url_for('main.users', text='re_wow_faction') }}{% else %}{{ url_for('main.users', text='wow_faction') }}{% endif %}">阵营</a>
+            <a href="{% if sort == 'wow_faction' %}{{ url_for('.users', sort='re_wow_faction') }}{% else %}{{ url_for('.users', sort='wow_faction') }}{% endif %}">阵营</a>
         </th><th>
-            <a href="{% if text == 'wow_race' %}{{ url_for('main.users', text='re_wow_race') }}{% else %}{{ url_for('main.users', text='wow_race') }}{% endif %}">种族</a>
+            <a href="{% if sort == 'wow_race' %}{{ url_for('.users', sort='re_wow_race') }}{% else %}{{ url_for('.users', sort='wow_race') }}{% endif %}">种族</a>
         </th><th>
-            <a href="{% if text == 'wow_class' %}{{ url_for('main.users', text='re_wow_class') }}{% else %}{{ url_for('main.users', text='wow_class') }}{% endif %}">职业</a>
+            <a href="{% if sort == 'wow_class' %}{{ url_for('.users', sort='re_wow_class') }}{% else %}{{ url_for('.users', sort='wow_class') }}{% endif %}">职业</a>
         </th><th>邮箱</th><th>
-            <a href="{% if text == 'role_id' %}{{ url_for('main.users', text='re_role_id') }}{% else %}{{ url_for('main.users', text='role_id') }}{% endif %}">权限</a>
+            <a href="{% if sort == 'role_id' %}{{ url_for('.users', sort='re_role_id') }}{% else %}{{ url_for('.users', sort='role_id') }}{% endif %}">权限</a>
         </th><th>
-            <a href="{% if text == 'confirmed' %}{{ url_for('main.users', text='re_confirmed') }}{% else %}{{ url_for('main.users', text='confirmed') }}{% endif %}">验证</a>
+            <a href="{% if sort == 'confirmed' %}{{ url_for('.users', sort='re_confirmed') }}{% else %}{{ url_for('.users', sort='confirmed') }}{% endif %}">验证</a>
         </th><th>
-            <a href="{% if text == 'member_since' %}{{ url_for('main.users', text='re_member_since') }}{% else %}{{ url_for('main.users', text='member_since') }}{% endif %}">创建</a>
+            <a href="{% if sort == 'member_since' %}{{ url_for('.users', sort='re_member_since') }}{% else %}{{ url_for('.users', sort='member_since') }}{% endif %}">创建</a>
         </th><th>
-            <a href="{% if text == 'last_seen' %}{{ url_for('main.users', text='re_last_seen') }}{% else %}{{ url_for('main.users', text='last_seen') }}{% endif %}">上次在线</a>
+            <a href="{% if sort == 'last_seen' %}{{ url_for('.users', sort='re_last_seen') }}{% else %}{{ url_for('.users', sort='last_seen') }}{% endif %}">上次在线</a>
         </th></tr></thead>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>
+                <td class="row1">{{ user.id }}</td>
+                <td class="row2">
                     <a style="color: {{ user.class_color }}" href="{{ url_for('.user', username=user.username) }}">
                         {% if user.avatar %}
                             <img src="{{ user.avatar }}" width="32" height="32" class="img-rounded">
@@ -42,18 +41,47 @@
                         {{ user.username }}
                     </a>
                 </td>
-                <td>{{ user.wow_faction }}</td>
-                <td>{{ user.wow_race }}</td>
-                <td>{{ user.wow_class }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.role.name }}</td>
-                <td>{{ user.confirmed }}</td>
-                <td>{{ moment(user.member_since).format('L') }}</td>
-                <td>{{ moment(user.last_seen).format('L') }}</td>
+                <td class="row3">{{ user.wow_faction }}</td>
+                <td class="row4">{{ user.wow_race }}</td>
+                <td class="row5">{{ user.wow_class }}</td>
+                <td class="row6">{{ user.email }}</td>
+                <td class="row7">{{ user.role.name }}</td>
+                <td class="row8">{{ user.confirmed }}</td>
+                <td class="row9">{{ moment(user.member_since).format('L') }}</td>
+                <td class="row10">{{ moment(user.last_seen).format('L') }}</td>
             </tr>
         {% endfor %}
     </table>
     {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.users', text=text) }}
+        {{ macros.pagination_widget(pagination, '.users', sort=sort) }}
+        <form method="post" class="form" role="form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">{{ form.page_num(class="page_num") }}{{ form.submit(class="jump", disabled='disabled') }}</div>
+        </form>
     {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            $('.page_num').bind('input propertychange', function() {
+                var val = $(this).val();
+                if((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= {{ pages }}) {
+                    $('.jump').removeAttr('disabled').css('color', '#ffffff');
+                } else {
+                    $('.jump').attr('disabled', 'disabled').css('color', 'gray');
+                }
+                if (val > 99) {
+                    $(this).css('padding-left', '6px');
+                }
+                else if (val > 9) {
+                    $(this).css('padding-left', '10px');
+                }
+                else {
+                    $(this).css('padding-left', '14px')
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% macro pagination_widget(pagination, endpoint) %}
-<ul class="pagination">
+<ul class="pagination str-inline">
     <li>
         <a {% if pagination.has_prev %}href="{{ url_for(endpoint,
             page=pagination.page - 1, **kwargs) }}"{% endif %}>&laquo;

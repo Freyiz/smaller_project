@@ -960,7 +960,6 @@ ul.posts {
     list-style-type: none;
     padding: 0;
     margin: 16px 0 0 0;
-
 }
 div.post-tabs ul.posts {
     margin: 0;
@@ -968,7 +967,6 @@ div.post-tabs ul.posts {
 }
 ul.posts li.post {
     padding: 8px;
-
 }
 ul.posts li.post:hover {
     background-color: rgba(77, 83, 82, 0.26);
@@ -1057,4 +1055,61 @@ div.flask-pagedown-preview h3 {
 .table tr:hover {
     background-color:  rgba(77, 83, 82, 0.26);
 }
-
+.table .row1 {
+    width: 50px;
+}
+.table .row2 {
+    width: 150px;
+}
+.table .row6 {
+    width: 200px;
+}
+.table .row3,
+.table .row4,
+.table .row5,
+.table .row7,
+.table .row8,
+.table .row9,
+.table .row10 {
+    width: 100px;
+}
+.pagination > li > a {
+    color: #c4c4c4;
+    border: hidden;
+    border-top: #c4c4c4 solid 1px;
+    border-bottom: #c4c4c4 solid 1px;
+    padding: 5px 13px;
+    background-color: transparent;
+}
+.pagination > li > a:hover,
+.pagination > li > a:focus {
+    color: #ffffff;
+    background-color: rgba(196, 196, 196, 0.15);
+}
+.pagination > .active > a {
+    background-color: rgba(140, 140, 140, 0.5);
+    border-color: #c4c4c4;
+}
+.pagination > .active > a:hover {
+    background-color: rgba(196, 196, 196, 0.5);
+    border-color: #c4c4c4;
+}
+.page_num {
+    width: 35px;
+    height: 32px;
+    margin: 0 5px 0 15px;
+    padding-left: 14px;
+    border: hidden;
+    border-top: #c4c4c4 solid 1px;
+    border-bottom: #c4c4c4 solid 1px;
+    border-radius: 4px;
+    background-color: transparent;
+}
+.page_num:focus {
+    border-color: #006dd0;
+}
+.jump {
+    background-color: transparent;
+    border: hidden;
+    color: grey;
+}

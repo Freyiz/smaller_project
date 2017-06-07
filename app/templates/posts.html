@@ -4,23 +4,46 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block page_content %}
-    <div class="page-header">
-        <div class="container posts">
-            <h1>
-                {{ self.title() }}
-                <a class="rank" href="{% if text == 're_timestamp' %}{{ url_for('main.posts', text='timestamp') }}{% else %}{{ url_for('main.posts', text='re_timestamp') }}{% endif %}">时间线</a>
-                <a class="rank" href="{% if text == 're_comments_count' %}{{ url_for('main.posts', text='comments_count') }}{% else %}{{ url_for('main.posts', text='re_comments_count') }}{% endif %}">议论数</a>
-                <a class="rank" href="{% if text == 're_collects' %}{{ url_for('main.posts', text='collects') }}{% else %}{{ url_for('main.posts', text='re_collects') }}{% endif %}">收藏量</a>
-            </h1>
-        </div>
+    <div class="page-header container posts">
+        <h1>
+            {{ self.title() }}
+            <a class="rank" href="{% if sort == 're_timestamp' %}{{ url_for('.posts', sort='timestamp') }}{% else %}{{ url_for('.posts', sort='re_timestamp') }}{% endif %}">时间线</a>
+            <a class="rank" href="{% if sort == 're_comments_count' %}{{ url_for('.posts', sort='comments_count') }}{% else %}{{ url_for('.posts', sort='re_comments_count') }}{% endif %}">议论数</a>
+            <a class="rank" href="{% if sort == 're_collects' %}{{ url_for('.posts', sort='collects') }}{% else %}{{ url_for('.posts', sort='re_collects') }}{% endif %}">收藏量</a>
+        </h1>
     </div>
     {% include '_posts.html' %}
     {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.posts', text=text) }}
+        {{ macros.pagination_widget(pagination, '.posts', sort=sort) }}
+        <form method="post" class="form" role="form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">{{ form.page_num(class="page_num") }}{{ form.submit(class="jump", disabled='disabled') }}</div>
+        </form>
     {% endif %}
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
     <script src="{{ url_for('static', filename='text_toggle.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.page_num').bind('input propertychange', function() {
+                var val = $(this).val();
+                if((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= {{ pages }}) {
+                    $('.jump').removeAttr('disabled').css('color', '#ffffff');
+                } else {
+                    $('.jump').attr('disabled', 'disabled').css('color', 'gray');
+                }
+                if (val > 99) {
+                    $(this).css('padding-left', '6px');
+                }
+                else if (val > 9) {
+                    $(this).css('padding-left', '10px');
+                }
+                else {
+                    $(this).css('padding-left', '14px')
+                }
+            });
+        });
+    </script>
 {% endblock %}

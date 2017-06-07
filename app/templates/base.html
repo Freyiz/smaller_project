@@ -38,10 +38,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_administrator() %}
-                        <li><a href="{{ url_for('main.users', text='re_id') }}">所有角色</a></li>
+                        <li><a href="{{ url_for('main.users') }}">所有角色</a></li>
                     {% endif %}
                     {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                        <li><a href="{{ url_for('main.comments', text='re_timestamp') }}">议政厅</a></li>
+                        <li><a href="{{ url_for('main.comments') }}">议政厅</a></li>
                     {% endif %}
                     {% if current_user.is_authenticated %}
                         <li class="dropdown dropdown-posts">

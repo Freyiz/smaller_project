@@ -8,13 +8,42 @@
         <div class="container comments">
             <h1>
                 {{ self.title() }}
-                <a class="rank" href="{% if text == 're_timestamp' %}{{ url_for('main.comments', text='timestamp') }}{% else %}{{ url_for('main.comments', text='re_timestamp') }}{% endif %}">时间线</a>
-                <a class="rank" href="{% if text == 're_likes' %}{{ url_for('main.comments', text='likes') }}{% else %}{{ url_for('main.comments', text='re_likes') }}{% endif %}">点赞数</a>
+                <a class="rank" href="{% if sort == 're_timestamp' %}{{ url_for('.comments', sort='timestamp') }}{% else %}{{ url_for('.comments', sort='re_timestamp') }}{% endif %}">时间线</a>
+                <a class="rank" href="{% if sort == 're_likes' %}{{ url_for('.comments', sort='likes') }}{% else %}{{ url_for('.comments', sort='re_likes') }}{% endif %}">点赞数</a>
             </h1>
         </div>
     </div>
     {% include '_comments.html' %}
     {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.comments', text=text) }}
+        {{ macros.pagination_widget(pagination, '.comments', sort=sort) }}
+        <form method="post" class="form" role="form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">{{ form.page_num(class="page_num") }}{{ form.submit(class="jump", disabled='disabled') }}</div>
+        </form>
     {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            $('.page_num').bind('input propertychange', function() {
+                var val = $(this).val();
+                if((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= {{ pages }}) {
+                    $('.jump').removeAttr('disabled').css('color', '#ffffff');
+                } else {
+                    $('.jump').attr('disabled', 'disabled').css('color', 'gray');
+                }
+                if (val > 99) {
+                    $(this).css('padding-left', '6px');
+                }
+                else if (val > 9) {
+                    $(this).css('padding-left', '10px');
+                }
+                else {
+                    $(this).css('padding-left', '14px')
+                }
+            });
+        });
+    </script>
 {% endblock %}

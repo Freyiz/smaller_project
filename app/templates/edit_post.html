@@ -4,17 +4,13 @@
 {% block title %}变更公告{% endblock %}
 
 {% block page_content %}
-    <div class="page-header">
-        <div class="container">
-            <h1>{{ self.title() }}</h1>
-        </div>
+    <div class="page-header container">
+        <h1>{{ self.title() }}</h1>
     </div>
-    <div>
-        {{ wtf.quick_form(form) }}
-    </div>
+    {{ wtf.quick_form(form) }}
 {% endblock %}
 
 {% block scripts %}
-{{ super() }}
-{{ pagedown.include_pagedown() }}
+    {{ super() }}
+    {{ pagedown.include_pagedown() }}
 {% endblock %}
