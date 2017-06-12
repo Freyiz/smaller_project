@@ -46,7 +46,7 @@ $(function () {
     });
     $('.goblin-single .zeroth .right').click(function () {
         fadeout_in('.goblin-single .first');
-        $('.goblin-single .first span').text('嘿，伙计，我知道你要说什么。刚才都是误会，我发誓！每天来我这的客人成千上百，有时候一不留神就没招待好其中几个。你不会怪我吧？好了，还是谈正事吧。你需要支付2个金币40个银币。（拉兹登克看着你。）');
+        $('.goblin-single .first span').text('嘿，伙计，我知道你要说什么。刚才都是误会，我发誓！每天来我这的客人成千上百，有时候一不留神就没招待好其中几个。你不会怪我吧？好了，还是谈正事儿吧。你需要支付2个金币40个银币。（拉兹登克看着你。）');
     });
     $('.goblin-single .first .left').click(function () {
         to_repatriate();
@@ -62,7 +62,7 @@ $(function () {
         $('.goblin-single .zeroth .right').show();
         $('.goblin-single .first span').text('拉兹登克最喜欢和明白人做生意！一共需要3个金币。');
         $('.repatriate .zeroth').text('又是这个倒霉鬼！伙计们，打起精神来！');
-        $('.housekeeper .zeroth span').text('嘿，又是你！如果你还想找拉兹登克，恐怕得自己想办法了。我可以派人送你到暴风城。')
+        $('.housekeeper .zeroth span').text('嘿，又是你！如果你还想找拉兹登克，恐怕得自己想办法了。我可以派人送你到暴风城。');
         $('.housekeeper .zeroth .left').text('好。');
         $('.housekeeper .zeroth .right').hide();
         setTimeout("to_light('.goblin-single')", 3000);

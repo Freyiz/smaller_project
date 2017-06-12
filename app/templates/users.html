@@ -2,12 +2,12 @@
 {% import "_macros.html" as macros %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}英雄榜{% endblock %}
 
 {% block page_content %}
     <div class="page-header container blue">
         <h1>
-            {{ self.title() }}
+            {{ title }}
             <form method="post" class="form form-search" role="form">
                 {{ form_search.hidden_tag() }}
                 <div class="form-group">
@@ -26,50 +26,52 @@
             </form>
         </h1>
     </div>
-    <table class="table blue">
-        <thead><tr><th>
-            <a class="{% if sort == 're_id' or sort == 'id' %}active{% endif %}" href="{% if sort == 're_id' %}{{ url_for('.users', sort='id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_id', accord=accord, keywords=keywords) }}{% endif %}">ID</a>
-        </th><th>
-            <a class="{% if sort == 're_username' or sort == 'username' %}active{% endif %}" href="{% if sort == 'username' %}{{ url_for('.users', sort='re_username', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='username', accord=accord, keywords=keywords) }}{% endif %}">角色</a>
-        </th><th>
-            <a class="{% if sort == 're_wow_faction' or sort == 'wow_faction' %}active{% endif %}" href="{% if sort == 'wow_faction' %}{{ url_for('.users', sort='re_wow_faction', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_faction', accord=accord, keywords=keywords) }}{% endif %}">阵营</a>
-        </th><th>
-            <a class="{% if sort == 're_wow_race' or sort == 'wow_race' %}active{% endif %}" href="{% if sort == 'wow_race' %}{{ url_for('.users', sort='re_wow_race', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_race', accord=accord, keywords=keywords) }}{% endif %}">种族</a>
-        </th><th>
-            <a class="{% if sort == 're_wow_class' or sort == 'wow_class' %}active{% endif %}" href="{% if sort == 'wow_class' %}{{ url_for('.users', sort='re_wow_class', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_class', accord=accord, keywords=keywords) }}{% endif %}">职业</a>
-        </th><th>邮箱</th><th>
-            <a class="{% if sort == 're_role_id' or sort == 'role_id' %}active{% endif %}" href="{% if sort == 'role_id' %}{{ url_for('.users', sort='re_role_id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='role_id', accord=accord, keywords=keywords) }}{% endif %}">权限</a>
-        </th><th>
-            <a class="{% if sort == 're_confirmed' or sort == 'confirmed' %}active{% endif %}" href="{% if sort == 'confirmed' %}{{ url_for('.users', sort='re_confirmed', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='confirmed', accord=accord, keywords=keywords) }}{% endif %}">验证</a>
-        </th><th>
-            <a class="{% if sort == 're_member_since' or sort == 'member_since' %}active{% endif %}" href="{% if sort == 'member_since' %}{{ url_for('.users', sort='re_member_since', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='member_since', accord=accord, keywords=keywords) }}{% endif %}">创建</a>
-        </th><th>
-            <a class="{% if sort == 're_last_seen' or sort == 'last_seen' %}active{% endif %}" href="{% if sort == 're_last_seen' %}{{ url_for('.users', sort='last_seen', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_last_seen', accord=accord, keywords=keywords) }}{% endif %}">上次在线</a>
-        </th></tr></thead>
-        {% for user in users %}
-            <tr>
-                <td class="row1">{{ user.id }}</td>
-                <td class="row2">
-                    <a style="color: {{ user.class_color }}" href="{{ url_for('.user', username=user.username) }}">
-                        {% if user.avatar %}
-                            <img src="{{ user.avatar }}" width="32" height="32" class="img-rounded">
-                        {% else %}
-                            <img src="{{ user.wow_avatar }}" width="32" height="32" class="img-rounded">
-                        {% endif %}
-                        {{ user.username }}
-                    </a>
-                </td>
-                <td class="row3">{{ user.wow_faction }}</td>
-                <td class="row4">{{ user.wow_race }}</td>
-                <td class="row5">{{ user.wow_class }}</td>
-                <td class="row6">{{ user.email }}</td>
-                <td class="row7">{{ user.role.name }}</td>
-                <td class="row8">{% if user.confirmed %}是{% else %}否{% endif %}</td>
-                <td class="row9">{{ moment(user.member_since).format('L') }}</td>
-                <td class="row10">{{ moment(user.last_seen).format('L') }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    {% if users %}
+        <table class="table blue">
+            <thead><tr><th>
+                <a class="{% if sort == 're_id' or sort == 'id' %}active{% endif %}" href="{% if sort == 're_id' %}{{ url_for('.users', sort='id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_id', accord=accord, keywords=keywords) }}{% endif %}">ID</a>
+            </th><th>
+                <a class="{% if sort == 're_username' or sort == 'username' %}active{% endif %}" href="{% if sort == 'username' %}{{ url_for('.users', sort='re_username', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='username', accord=accord, keywords=keywords) }}{% endif %}">角色</a>
+            </th><th>
+                <a class="{% if sort == 're_wow_faction' or sort == 'wow_faction' %}active{% endif %}" href="{% if sort == 'wow_faction' %}{{ url_for('.users', sort='re_wow_faction', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_faction', accord=accord, keywords=keywords) }}{% endif %}">阵营</a>
+            </th><th>
+                <a class="{% if sort == 're_wow_race' or sort == 'wow_race' %}active{% endif %}" href="{% if sort == 'wow_race' %}{{ url_for('.users', sort='re_wow_race', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_race', accord=accord, keywords=keywords) }}{% endif %}">种族</a>
+            </th><th>
+                <a class="{% if sort == 're_wow_class' or sort == 'wow_class' %}active{% endif %}" href="{% if sort == 'wow_class' %}{{ url_for('.users', sort='re_wow_class', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_class', accord=accord, keywords=keywords) }}{% endif %}">职业</a>
+            </th><th>邮箱</th><th>
+                <a class="{% if sort == 're_role_id' or sort == 'role_id' %}active{% endif %}" href="{% if sort == 'role_id' %}{{ url_for('.users', sort='re_role_id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='role_id', accord=accord, keywords=keywords) }}{% endif %}">权限</a>
+            </th><th>
+                <a class="{% if sort == 're_confirmed' or sort == 'confirmed' %}active{% endif %}" href="{% if sort == 'confirmed' %}{{ url_for('.users', sort='re_confirmed', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='confirmed', accord=accord, keywords=keywords) }}{% endif %}">验证</a>
+            </th><th>
+                <a class="{% if sort == 're_member_since' or sort == 'member_since' %}active{% endif %}" href="{% if sort == 'member_since' %}{{ url_for('.users', sort='re_member_since', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='member_since', accord=accord, keywords=keywords) }}{% endif %}">创建</a>
+            </th><th>
+                <a class="{% if sort == 're_last_seen' or sort == 'last_seen' %}active{% endif %}" href="{% if sort == 're_last_seen' %}{{ url_for('.users', sort='last_seen', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_last_seen', accord=accord, keywords=keywords) }}{% endif %}">上次在线</a>
+            </th></tr></thead>
+            {% for user in users %}
+                <tr>
+                    <td class="row1">{{ user.id }}</td>
+                    <td class="row2">
+                        <a style="color: {{ user.class_color }}" href="{{ url_for('.user', username=user.username) }}">
+                            {% if user.avatar %}
+                                <img src="{{ user.avatar }}" width="32" height="32" class="img-rounded">
+                            {% else %}
+                                <img src="{{ user.wow_avatar }}" width="32" height="32" class="img-rounded">
+                            {% endif %}
+                            {{ user.username }}
+                        </a>
+                    </td>
+                    <td class="row3">{{ user.wow_faction }}</td>
+                    <td class="row4">{{ user.wow_race }}</td>
+                    <td class="row5">{{ user.wow_class }}</td>
+                    <td class="row6">{{ user.email }}</td>
+                    <td class="row7">{{ user.role.name }}</td>
+                    <td class="row8"><i class="fa{% if user.confirmed %} fa-check{%else %} fa-close{% endif %}"></i></td>
+                    <td class="row9">{{ moment(user.member_since).format('L') }}</td>
+                    <td class="row10">{{ moment(user.last_seen).format('L') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
     {% if pagination.pages > 1 %}
         {{ macros.pagination_widget(pagination, '.users', sort=sort, accord=accord, keywords=keywords) }}
         <form method="post" class="form" role="form">

@@ -558,8 +558,14 @@ li.priest.active span {
 .lich-king {
     background-image: url("wow/hero/阿尔萨斯.jpg");
 }
+.promote .btn:hover {
+    color: #ffffff;
+}
 .promote .choose {
     color: #5bc2ff;
+}
+.promote .choose:hover {
+    color: #006dd0;
 }
 .promote .choose.right {
     float: right;
@@ -775,12 +781,13 @@ li.priest.active span {
     margin: 0 10px;
     font-style: italic;
 }
-.wow-tab a:hover {
-    color: rgba(255, 215, 0, 0.8);
-}
 .wow-tab a.active {
     font-size: 40px;
     color: #FFD700;
+}
+.wow-tab a:hover,
+.wow-tab a:focus {
+    color: rgba(255, 215, 0, 0.5);
 }
 #wow-movie {
     position: relative;
@@ -826,14 +833,15 @@ li.priest.active span {
     margin-bottom: 11px;
     text-align: center;
 }
-.movie-tab div:hover {
-    cursor: pointer;
-    font-size: 20px;
-    color: rgba(255, 215, 0, 0.8);
-}
 .movie-tab div.active {
     font-size: 20px;
     color: #FFD700;
+}
+.movie-tab div:hover,
+.movie-tab div:focus {
+    cursor: pointer;
+    font-size: 20px;
+    color: rgba(255, 215, 0, 0.5);
 }
 .youku-toggle {
     width: 100%;
@@ -912,12 +920,19 @@ a.text-toggle {
     color: #ffffff;
 }
 a.btn {
-    color: rgb(255, 254, 190);
+    border: none;
+    color: #ffffff;
 }
-a:focus {
+a.btn-info {
+    background-color: rgba(42, 171, 210, 0.7);
+}
+a.btn-warning {
+    background-color: rgba(235, 147, 22, 0.7);
+}
+a.btn:hover,
+a.btn:focus {
+    color: #ffffff;
     outline: none;
-    text-decoration: none;
-    color: rgb(227, 216, 231);
 }
 .posts a:hover,
 .posts a:focus,
@@ -925,12 +940,15 @@ a:focus {
 .comments a:focus,
 .to-class:hover,
 .to-class:focus,
-.home a:hover {
+.home a:hover,
+.home a:focus {
     color: #ffffff;
 }
-a:hover {
+a:hover,
+a:focus {
     text-decoration: none;
     color: #0078FF;
+    outline: none;
 }
 a.text-toggle:hover {
     color: #c4c4c4;
