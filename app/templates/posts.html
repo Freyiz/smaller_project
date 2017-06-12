@@ -4,46 +4,42 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block page_content %}
-    <div class="page-header container posts">
+    <div class="page-header container blue">
         <h1>
             {{ self.title() }}
-            <a class="rank" href="{% if sort == 're_timestamp' %}{{ url_for('.posts', sort='timestamp') }}{% else %}{{ url_for('.posts', sort='re_timestamp') }}{% endif %}">时间线</a>
-            <a class="rank" href="{% if sort == 're_comments_count' %}{{ url_for('.posts', sort='comments_count') }}{% else %}{{ url_for('.posts', sort='re_comments_count') }}{% endif %}">议论数</a>
-            <a class="rank" href="{% if sort == 're_collects' %}{{ url_for('.posts', sort='collects') }}{% else %}{{ url_for('.posts', sort='re_collects') }}{% endif %}">收藏量</a>
+            <a class="{% if sort == 're_timestamp' or sort == 'timestamp' %}active{% endif %}" href="{% if sort == 're_timestamp' %}{{ url_for('.posts', sort='timestamp', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.posts', sort='re_timestamp', accord=accord, keywords=keywords) }}{% endif %}">时间线</a>
+            <a class="{% if sort == 're_comments_count' or sort == 'comments_count' %}active{% endif %}" href="{% if sort == 're_comments_count' %}{{ url_for('.posts', accord=accord, sort='comments_count', keywords=keywords) }}{% else %}{{ url_for('.posts', sort='re_comments_count', accord=accord, keywords=keywords) }}{% endif %}">议论数</a>
+            <a class="{% if sort == 're_collects' or sort == 'collects' %}active{% endif %}" href="{% if sort == 're_collects' %}{{ url_for('.posts', sort='collects', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.posts', sort='re_collects', accord=accord, keywords=keywords) }}{% endif %}">收藏量</a>
+            <a class="{% if sort == 're_username' or sort == 'username' %}active{% endif %}" href="{% if sort == 'username' %}{{ url_for('.posts', sort='re_username', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.posts', sort='username', accord=accord, keywords=keywords) }}{% endif %}">角色名</a>
+            {% if show_which == 'all' %}
+                <form method="post" class="form form-search" role="form">
+                    {{ form_search.hidden_tag() }}
+                    <div class="form-group">
+                        {% if accord == '内容' %}
+                            <span class="accord-tab"><a class="left active" name="内容">按内容</a><a class="right" name="角色名">按角色</a></span>
+                        {% else %}
+                            <span class="accord-tab"><a class="left" name="内容">按内容</a><a class="right active" name="角色名">按角色</a></span>
+                        {% endif %}
+                        {{ form_search.keywords(class="keywords", placeholder='内容') }}
+                        {{ form_search.submit(class="search", disabled='disabled') }}
+                    </div>
+                </form>
+            {% endif %}
         </h1>
     </div>
     {% include '_posts.html' %}
     {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.posts', sort=sort) }}
+        {{ macros.pagination_widget(pagination, '.posts', sort=sort, accord=accord, keywords=keywords) }}
         <form method="post" class="form" role="form">
-            {{ form.hidden_tag() }}
-            <div class="form-group">{{ form.page_num(class="page_num") }}{{ form.submit(class="jump", disabled='disabled') }}</div>
+            {{ form_jump.hidden_tag() }}
+            <div class="form-group">{{ form_jump.page_num(class="page-num") }}{{ form_jump.submit(class="jump", disabled='disabled') }}</div>
         </form>
     {% endif %}
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
+    <script id="search" src="{{ url_for('static', filename='search.js') }}" arg="{{ accord }}"></script>
     <script src="{{ url_for('static', filename='text_toggle.js') }}"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('.page_num').bind('input propertychange', function() {
-                var val = $(this).val();
-                if((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= {{ pages }}) {
-                    $('.jump').removeAttr('disabled').css('color', '#ffffff');
-                } else {
-                    $('.jump').attr('disabled', 'disabled').css('color', 'gray');
-                }
-                if (val > 99) {
-                    $(this).css('padding-left', '6px');
-                }
-                else if (val > 9) {
-                    $(this).css('padding-left', '10px');
-                }
-                else {
-                    $(this).css('padding-left', '14px')
-                }
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})"></script>
 {% endblock %}

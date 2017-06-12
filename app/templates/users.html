@@ -2,31 +2,49 @@
 {% import "_macros.html" as macros %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block title %}所有角色{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block page_content %}
-    <div class="page-header container">
-        <h1>{{ self.title() }}</h1>
+    <div class="page-header container blue">
+        <h1>
+            {{ self.title() }}
+            <form method="post" class="form form-search" role="form">
+                {{ form_search.hidden_tag() }}
+                <div class="form-group">
+                    {% if accord == '角色名' %}
+                        <span class="accord-tab"><a class="left active" name="角色名">按角色</a><a name="阵营">按阵营</a><a name="种族">按种族</a><a class="right" name="职业">按职业</a></span>
+                    {% elif accord == '阵营' %}
+                        <span class="accord-tab"><a class="left" name="角色名">按角色</a><a class="active" name="阵营">按阵营</a><a name="种族">按种族</a><a class="right" name="职业">按职业</a></span>
+                    {% elif accord == '种族' %}
+                        <span class="accord-tab"><a class="left" name="角色名">按角色</a><a name="阵营">按阵营</a><a class="active" name="种族">按种族</a><a class="right" name="职业">按职业</a></span>
+                    {% else %}
+                        <span class="accord-tab"><a class="left" name="角色名">按角色</a><a name="阵营">按阵营</a><a name="种族">按种族</a><a class="right active" name="职业">按职业</a></span>
+                    {% endif %}
+                    {{ form_search.keywords(class="keywords", placeholder='角色名') }}
+                    {{ form_search.submit(class="search", disabled='disabled') }}
+                </div>
+            </form>
+        </h1>
     </div>
-    <table class="table">
+    <table class="table blue">
         <thead><tr><th>
-            <a href="{% if sort == 'id' %}{{ url_for('.users', sort='re_id') }}{% else %}{{ url_for('.users', sort='id') }}{% endif %}">ID</a>
+            <a class="{% if sort == 're_id' or sort == 'id' %}active{% endif %}" href="{% if sort == 're_id' %}{{ url_for('.users', sort='id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_id', accord=accord, keywords=keywords) }}{% endif %}">ID</a>
         </th><th>
-            <a href="{% if sort == 'username' %}{{ url_for('.users', sort='re_username') }}{% else %}{{ url_for('.users', sort='username') }}{% endif %}">角色</a>
+            <a class="{% if sort == 're_username' or sort == 'username' %}active{% endif %}" href="{% if sort == 'username' %}{{ url_for('.users', sort='re_username', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='username', accord=accord, keywords=keywords) }}{% endif %}">角色</a>
         </th><th>
-            <a href="{% if sort == 'wow_faction' %}{{ url_for('.users', sort='re_wow_faction') }}{% else %}{{ url_for('.users', sort='wow_faction') }}{% endif %}">阵营</a>
+            <a class="{% if sort == 're_wow_faction' or sort == 'wow_faction' %}active{% endif %}" href="{% if sort == 'wow_faction' %}{{ url_for('.users', sort='re_wow_faction', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_faction', accord=accord, keywords=keywords) }}{% endif %}">阵营</a>
         </th><th>
-            <a href="{% if sort == 'wow_race' %}{{ url_for('.users', sort='re_wow_race') }}{% else %}{{ url_for('.users', sort='wow_race') }}{% endif %}">种族</a>
+            <a class="{% if sort == 're_wow_race' or sort == 'wow_race' %}active{% endif %}" href="{% if sort == 'wow_race' %}{{ url_for('.users', sort='re_wow_race', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_race', accord=accord, keywords=keywords) }}{% endif %}">种族</a>
         </th><th>
-            <a href="{% if sort == 'wow_class' %}{{ url_for('.users', sort='re_wow_class') }}{% else %}{{ url_for('.users', sort='wow_class') }}{% endif %}">职业</a>
+            <a class="{% if sort == 're_wow_class' or sort == 'wow_class' %}active{% endif %}" href="{% if sort == 'wow_class' %}{{ url_for('.users', sort='re_wow_class', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_class', accord=accord, keywords=keywords) }}{% endif %}">职业</a>
         </th><th>邮箱</th><th>
-            <a href="{% if sort == 'role_id' %}{{ url_for('.users', sort='re_role_id') }}{% else %}{{ url_for('.users', sort='role_id') }}{% endif %}">权限</a>
+            <a class="{% if sort == 're_role_id' or sort == 'role_id' %}active{% endif %}" href="{% if sort == 'role_id' %}{{ url_for('.users', sort='re_role_id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='role_id', accord=accord, keywords=keywords) }}{% endif %}">权限</a>
         </th><th>
-            <a href="{% if sort == 'confirmed' %}{{ url_for('.users', sort='re_confirmed') }}{% else %}{{ url_for('.users', sort='confirmed') }}{% endif %}">验证</a>
+            <a class="{% if sort == 're_confirmed' or sort == 'confirmed' %}active{% endif %}" href="{% if sort == 'confirmed' %}{{ url_for('.users', sort='re_confirmed', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='confirmed', accord=accord, keywords=keywords) }}{% endif %}">验证</a>
         </th><th>
-            <a href="{% if sort == 'member_since' %}{{ url_for('.users', sort='re_member_since') }}{% else %}{{ url_for('.users', sort='member_since') }}{% endif %}">创建</a>
+            <a class="{% if sort == 're_member_since' or sort == 'member_since' %}active{% endif %}" href="{% if sort == 'member_since' %}{{ url_for('.users', sort='re_member_since', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='member_since', accord=accord, keywords=keywords) }}{% endif %}">创建</a>
         </th><th>
-            <a href="{% if sort == 'last_seen' %}{{ url_for('.users', sort='re_last_seen') }}{% else %}{{ url_for('.users', sort='last_seen') }}{% endif %}">上次在线</a>
+            <a class="{% if sort == 're_last_seen' or sort == 'last_seen' %}active{% endif %}" href="{% if sort == 're_last_seen' %}{{ url_for('.users', sort='last_seen', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_last_seen', accord=accord, keywords=keywords) }}{% endif %}">上次在线</a>
         </th></tr></thead>
         {% for user in users %}
             <tr>
@@ -46,42 +64,23 @@
                 <td class="row5">{{ user.wow_class }}</td>
                 <td class="row6">{{ user.email }}</td>
                 <td class="row7">{{ user.role.name }}</td>
-                <td class="row8">{{ user.confirmed }}</td>
+                <td class="row8">{% if user.confirmed %}是{% else %}否{% endif %}</td>
                 <td class="row9">{{ moment(user.member_since).format('L') }}</td>
                 <td class="row10">{{ moment(user.last_seen).format('L') }}</td>
             </tr>
         {% endfor %}
     </table>
     {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.users', sort=sort) }}
+        {{ macros.pagination_widget(pagination, '.users', sort=sort, accord=accord, keywords=keywords) }}
         <form method="post" class="form" role="form">
-            {{ form.hidden_tag() }}
-            <div class="form-group">{{ form.page_num(class="page_num") }}{{ form.submit(class="jump", disabled='disabled') }}</div>
+            {{ form_jump.hidden_tag() }}
+            <div class="form-group">{{ form_jump.page_num(class="page-num") }}{{ form_jump.submit(class="jump", disabled='disabled') }}</div>
         </form>
     {% endif %}
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
-    <script type="text/javascript">
-        $(function () {
-            $('.page_num').bind('input propertychange', function() {
-                var val = $(this).val();
-                if((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= {{ pages }}) {
-                    $('.jump').removeAttr('disabled').css('color', '#ffffff');
-                } else {
-                    $('.jump').attr('disabled', 'disabled').css('color', 'gray');
-                }
-                if (val > 99) {
-                    $(this).css('padding-left', '6px');
-                }
-                else if (val > 9) {
-                    $(this).css('padding-left', '10px');
-                }
-                else {
-                    $(this).css('padding-left', '14px')
-                }
-            });
-        });
-    </script>
+    <script id="search" src="{{ url_for('static', filename='search.js') }}" arg="{{ accord }}"></script>
+    <script src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})"></script>
 {% endblock %}

@@ -218,6 +218,8 @@ def logout():
     session.pop('qq_openid', None)
     session.pop('ren2_token', None)
     session.pop('ren2_user', None)
+    session.pop('sina_token', None)
+    session.pop('accord', None)
     logout_user()
     flash('See you again!')
     return redirect(url_for('main.index'))

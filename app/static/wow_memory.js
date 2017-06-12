@@ -44,7 +44,6 @@
         $('.wow-control a').show();
         $('.wow-control img').show();
     });
-    $('.youku').hide();
     var youku = 'off';
     $('.to-youku a').click(function () {
         youku = 'on';
@@ -53,7 +52,7 @@
         $('.movie-tab div').removeClass('active');
         $('.wow-60').addClass('active');
         vd.src = '';
-        $('.youku').show().attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3MTMzMg==/v.swf');
+        $('.youku.yk1').show();
     });
     $('.quit-youku').click(function () {
         youku = 'off';
@@ -62,12 +61,14 @@
         $('.movie-tab div').removeClass('active');
         $('.wow-60').addClass('active');
         vd.src = 'http://wow-movie.herokuapp.com/static/WOW_Intro.m4v';
-        $('.youku').hide().attr('src', '');
+        $('.youku').hide();
+        $('.wow-control a').css('margin-top', '19%');
         $('.wow-control img').attr('src', '../static/wow/logo/world_of_warcraft.png');
     });
     $('.wow-60').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3MTMzMg==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk1').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/WOW_Intro.m4v';
             $('.wow-control img').attr('src', '../static/wow/logo/world_of_warcraft.png');
@@ -75,7 +76,8 @@
     });
     $('.wow-70').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3MjI3Ng==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk2').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/WOW_Intro_BC.m4v';
             $('.wow-control img').attr('src', '../static/wow/logo/the_burning_crusade.png');
@@ -83,7 +85,8 @@
     });
     $('.wow-80').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3NDc1Mg==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk3').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/WOW_Intro_LK.m4v';
             $('.wow-control img').attr('src', '../static/wow/logo/wrath_of_the_LICH_KING.png');
@@ -91,7 +94,8 @@
     });
     $('.wow-85').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3Mjc0OA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk4').show();
         } else {
             vd.src = 'http://wow-movie2.herokuapp.com/static/WOW_Intro_CTM.m4v';
             $('.wow-control img').attr('src', '../static/wow/logo/CATACLYSM.png');
@@ -99,7 +103,8 @@
     });
     $('.wow-90').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3NDk2MA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk5').show();
         } else {
             vd.src = 'http://wow-movie2.herokuapp.com/static/WOW_Intro_MOP.m4v';
             $('.wow-control img').attr('src', '../static/wow/logo/mists_of_PANDARIA.png');
@@ -107,7 +112,8 @@
     });
     $('.wow-100').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMjMwMzY1Ng==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk6').show();
         } else {
             vd.src = 'http://wow-movie2.herokuapp.com/static/WOW_Intro_WOD_1280.m4v';
             $('.wow-control img').attr('src', '../static/wow/logo/warlords_of_DRAENOR.png');
@@ -115,7 +121,8 @@
     });
     $('.wow-110').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3NTg4MA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk7').show();
         } else {
             vd.src = 'http://wow-movie2.herokuapp.com/static/WOW_Intro_ROL_1280.m4v';
             $('.wow-control img').attr('src', '../static/wow/logo/rise_of_the_legion.png');
@@ -123,7 +130,8 @@
     });
     $('.wow-lichking').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc2Njg2NA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk8').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/FotLK.m4v';
             $('.wow-control img').hide();
@@ -131,7 +139,8 @@
     });
     $('.wow-wrathgate').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc4MzI4NA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk9').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/Wrathgate.m4v';
             $('.wow-control img').hide();
@@ -139,7 +148,8 @@
     });
     $('.wow-worgen').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3MDk2MA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk10').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/Worgen.m4v';
             $('.wow-control img').hide();
@@ -147,7 +157,8 @@
     });
     $('.wow-goblin').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc2Njg1Ng==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk11').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/Goblin.m4v';
             $('.wow-control img').hide();
@@ -155,7 +166,8 @@
     });
     $('.wow-deathwing').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc2Njg0MA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk12').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/DSI_Act4.m4v';
             $('.wow-control img').hide();
@@ -163,7 +175,8 @@
     });
     $('.wow-pandaren').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc2ODc2MA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk13').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/MOP_BR.m4v';
             $('.wow-control img').hide();
@@ -171,7 +184,8 @@
     });
     $('.wow-wra').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc2OTgyOA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk14').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/MOP_WRA.m4v';
             $('.wow-control img').hide();
@@ -179,7 +193,8 @@
     });
     $('.wow-wrh').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3MDA0NA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk15').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/MOP_WRH.m4v';
             $('.wow-control img').hide();
@@ -187,7 +202,8 @@
     });
     $('.wow-jade').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc2ODk2NA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk16').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/MOP_JADE.m4v';
             $('.wow-control img').hide();
@@ -195,7 +211,8 @@
     });
     $('.wow-ghellscream').click(function () {
         if (youku === 'on') {
-            $('.youku').attr('src', 'http://player.youku.com/player.php/sid/XMjgwMTc3MDkwMA==/v.swf');
+            $('.youku').hide();
+            $('.youku.yk17').show();
         } else {
             vd.src = 'http://wow-movie.herokuapp.com/static/ORO_Horde.m4v';
             $('.wow-control img').hide();

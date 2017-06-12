@@ -53,8 +53,8 @@
         {% if pagination.pages > 1 %}
             {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
             <form method="post" class="form" role="form">
-                {{ form.hidden_tag() }}
-                <div class="form-group">{{ form.page_num(class="page_num") }}{{ form.submit(class="jump", disabled='disabled') }}</div>
+                {{ form_jump.hidden_tag() }}
+                <div class="form-group">{{ form_jump.page_num(class="page-num") }}{{ form_jump.submit(class="jump", disabled='disabled') }}</div>
             </form>
         {% endif %}
     {% endif %}
@@ -78,24 +78,6 @@
                 }
             });
         }
-        $(function () {
-            $('.page_num').bind('input propertychange', function() {
-                var val = $(this).val();
-                if((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= {{ pages }}) {
-                    $('.jump').removeAttr('disabled').css('color', '#ffffff');
-                } else {
-                    $('.jump').attr('disabled', 'disabled').css('color', 'gray');
-                }
-                if (val > 99) {
-                    $(this).css('padding-left', '6px');
-                }
-                else if (val > 9) {
-                    $(this).css('padding-left', '10px');
-                }
-                else {
-                    $(this).css('padding-left', '14px')
-                }
-            });
-        });
-        </script>
+    </script>
+    <script src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})"></script>
 {% endblock %}

@@ -382,9 +382,14 @@ class Post(db.Model):
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    author_username = db.Column(db.String, index=True)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
     comments_count = db.Column(db.Integer, default=0, index=True)
     collects = db.Column(db.Integer, default=0, index=True)
+
+    def __init__(self, **kwargs):
+        super(Post, self).__init__(**kwargs)
+        self.author_username = self.author.username
 
     @staticmethod
     def generate_fake(count=100):
@@ -441,7 +446,12 @@ class Comment(db.Model):
     disabled = db.Column(db.Boolean)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    author_username = db.Column(db.String, index=True)
     likes = db.Column(db.Integer, default=0, index=True)
+
+    def __init__(self, **kwargs):
+        super(Comment, self).__init__(**kwargs)
+        self.author_username = self.author.username
 
     @staticmethod
     def generate_fake(x=5, y=15):

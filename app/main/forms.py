@@ -66,5 +66,10 @@ class DemotionForm(FlaskForm):
 
 
 class JumpForm(FlaskForm):
-    page_num = StringField()
+    page_num = StringField(validators=[DataRequired()])
     submit = SubmitField('传送')
+
+
+class SearchForm(FlaskForm):
+    keywords = StringField(validators=[DataRequired()])
+    submit = SubmitField('查找')
