@@ -783,7 +783,7 @@ li.priest.active span {
 }
 .wow-tab a.active {
     font-size: 40px;
-    color: #FFD700;
+    color: #FFD700 !important;
 }
 .wow-tab a:hover,
 .wow-tab a:focus {
