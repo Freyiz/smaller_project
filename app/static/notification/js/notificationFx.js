@@ -9,7 +9,7 @@
  * http://www.codrops.com
  */
 ;( function( window ) {
-	
+    var faction_en = document.getElementById('notification').getAttribute('arg');
 	'use strict';
 
 	var docElem = window.document.documentElement,
@@ -83,7 +83,13 @@
 		var strinner = '<div class="ns-box-inner">';
 		strinner += this.options.message;
 		strinner += '</div>';
-		strinner += '<span class="ns-close"></span></div>';
+		if (faction_en === 'alliance') {
+			strinner += '<span class="ns-close alliance"></span></div>';
+		} else if (faction_en === 'horde') {
+			strinner += '<span class="ns-close horde"></span></div>';
+		} else {
+			strinner += '<span class="ns-close neutral"></span></div>';
+		}
 		this.ntf.innerHTML = strinner;
 
 		// append to body or the element specified in options.wrapper

@@ -12,8 +12,8 @@
             </div>
             <div class="comment-content">
                 <div class="comment-date">{{ moment(comment.timestamp).fromNow() }}</div>
-                <div class="comment-author">
-                    <a style="color: {{ comment.author.class_color }}" href="{{ url_for('.user', username=comment.author.username) }}">
+                <div class="comment-author 角色名">
+                    <a class="{{ comment.author.wow_class_en() }}" href="{{ url_for('.user', username=comment.author.username) }}">
                         {{ comment.author.username }}
                     </a>
                 </div>
@@ -21,11 +21,7 @@
                     <b id="display_warning{{ comment.id }}" {% if not comment.disabled %}hidden{% endif %}>此议论已被屏蔽。</b>
                     <div id="comment_color{{ comment.id }}" {% if comment.disabled %}style="color: #857a78" {% endif %}>
                         {% if not comment.disabled or current_user.can(Permission.MODERATE_COMMENTS) %}
-                            {% if comment.body_html %}
-                                {{ comment.body_html | safe }}
-                            {% else %}
-                                {{ comment.body }}
-                            {% endif %}<br>
+                            <span class="内容">{% if comment.body_html %}{{ comment.body_html | safe }}{% else %}{{ comment.body }}{% endif %}<br></span>
                             <span id="comment{{ comment.id }}">{{ comment.likes }}</span>
                             <a id="like_icon{{ comment.id }}"{% if comment not in current_user.comments_like.all() %} class="fa fa-thumbs-o-up"{% else %} class="fa fa-thumbs-up"{% endif %} onclick="like_toggle('{{ comment.id }}', '#comment{{ comment.id }}', '#like_icon{{ comment.id }}')"></a>
                         {% endif %}

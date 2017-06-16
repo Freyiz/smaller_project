@@ -18,7 +18,7 @@
         {{ macros.pagination_widget(pagination, '.index') }}
         <form method="post" class="form" role="form">
             {{ form_jump.hidden_tag() }}
-            <div class="form-group">{{ form_jump.page_num(class="page-num") }}{{ form_jump.submit(class="jump", disabled='disabled') }}</div>
+            <div class="form-group">{{ form_jump.page_num(class="page-num " + current_user.wow_faction_en()) }}{{ form_jump.submit(class="jump " + current_user.wow_faction_en(), disabled='disabled') }}</div>
         </form>
     {% endif %}
 {% endblock %}
@@ -27,5 +27,5 @@
     {{ super() }}
     {{ pagedown.include_pagedown() }}
     <script src="{{ url_for('static', filename='text_toggle.js') }}"></script>
-    <script src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})"></script>
+    <script id="jump" src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})" arg="{{ current_user.wow_faction_color() }}"></script>
 {% endblock %}

@@ -1,4 +1,3 @@
-# coding=utf-8
 import os
 CDV = None
 if os.environ.get('FLASK_COVERAGE'):
@@ -90,7 +89,11 @@ def reset():
     print('生成我...')
     u = User(wow_faction='联盟', wow_race='暗夜精灵', wow_class='德鲁伊', username='Yiz', email='562124140@qq.com', password='1',
              confirmed=True, name='野蛮角斗士', location='试炼之环', about_me='非著名猫德')
-    db.session.add(u)
+    u2 = User(wow_faction='部落', wow_race='兽人', wow_class='萨满祭司', username='萨尔', email='181826029@qq.com', password='1',
+              role=Role.query.filter_by(name='官员').first(), confirmed=True, name='神出鬼没的', location='奥格瑞玛', about_me='部落精神领袖，世界萨')
+    u3 = User(username='冬泉信使', email='freyizg@gmail.com', password='1',
+              role=Role.query.filter_by(name='官员').first(), confirmed=True, name='游荡的', location='冬泉谷', about_me='这封信上写的什么？')
+    db.session.add_all((u, u2, u3))
     db.session.commit()
     print('生成小弟...')
     User.generate_fake(200)

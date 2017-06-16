@@ -5,7 +5,7 @@
 {% block title %}英雄榜{% endblock %}
 
 {% block page_content %}
-    <div class="page-header container blue">
+    <div class="page-header container {{ current_user.wow_faction_en() }}">
         <h1>
             {{ title }}
             <form method="post" class="form form-search" role="form">
@@ -20,14 +20,14 @@
                     {% else %}
                         <span class="accord-tab"><a class="left" name="角色名">按角色</a><a name="阵营">按阵营</a><a name="种族">按种族</a><a class="right active" name="职业">按职业</a></span>
                     {% endif %}
-                    {{ form_search.keywords(class="keywords", placeholder='角色名') }}
-                    {{ form_search.submit(class="search", disabled='disabled') }}
+                    {{ form_search.keywords(class="keywords " + current_user.wow_faction_en() , placeholder='内容') }}
+                    {{ form_search.submit(class="search " + current_user.wow_faction_en(), disabled='disabled') }}
                 </div>
             </form>
         </h1>
     </div>
     {% if users %}
-        <table class="table blue">
+        <table class="table {{ current_user.wow_faction_en() }}">
             <thead><tr><th>
                 <a class="{% if sort == 're_id' or sort == 'id' %}active{% endif %}" href="{% if sort == 're_id' %}{{ url_for('.users', sort='id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_id', accord=accord, keywords=keywords) }}{% endif %}">ID</a>
             </th><th>
@@ -38,7 +38,13 @@
                 <a class="{% if sort == 're_wow_race' or sort == 'wow_race' %}active{% endif %}" href="{% if sort == 'wow_race' %}{{ url_for('.users', sort='re_wow_race', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_race', accord=accord, keywords=keywords) }}{% endif %}">种族</a>
             </th><th>
                 <a class="{% if sort == 're_wow_class' or sort == 'wow_class' %}active{% endif %}" href="{% if sort == 'wow_class' %}{{ url_for('.users', sort='re_wow_class', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='wow_class', accord=accord, keywords=keywords) }}{% endif %}">职业</a>
-            </th><th>邮箱</th><th>
+            </th><th>
+                <a class="{% if sort == 're_location' or sort == 'location' %}active{% endif %}" href="{% if sort == 'location' %}{{ url_for('.users', sort='re_location', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='location', accord=accord, keywords=keywords) }}{% endif %}">服务器</a>
+            </th><th>
+                <a class="{% if sort == 're_followed' or sort == 'followed' %}active{% endif %}" href="{% if sort == 're_followed' %}{{ url_for('.users', sort='followed', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_followed', accord=accord, keywords=keywords) }}{% endif %}">已追随</a>
+            </th><th>
+                <a class="{% if sort == 're_followers' or sort == 'followers' %}active{% endif %}" href="{% if sort == 're_followers' %}{{ url_for('.users', sort='followers', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_followers', accord=accord, keywords=keywords) }}{% endif %}">追随者</a>
+            </th><th>
                 <a class="{% if sort == 're_role_id' or sort == 'role_id' %}active{% endif %}" href="{% if sort == 'role_id' %}{{ url_for('.users', sort='re_role_id', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='role_id', accord=accord, keywords=keywords) }}{% endif %}">权限</a>
             </th><th>
                 <a class="{% if sort == 're_confirmed' or sort == 'confirmed' %}active{% endif %}" href="{% if sort == 'confirmed' %}{{ url_for('.users', sort='re_confirmed', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='confirmed', accord=accord, keywords=keywords) }}{% endif %}">验证</a>
@@ -48,26 +54,28 @@
                 <a class="{% if sort == 're_last_seen' or sort == 'last_seen' %}active{% endif %}" href="{% if sort == 're_last_seen' %}{{ url_for('.users', sort='last_seen', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_last_seen', accord=accord, keywords=keywords) }}{% endif %}">上次在线</a>
             </th></tr></thead>
             {% for user in users %}
-                <tr>
+                <tr class="users-profile">
                     <td class="row1">{{ user.id }}</td>
                     <td class="row2">
-                        <a style="color: {{ user.class_color }}" href="{{ url_for('.user', username=user.username) }}">
+                        <a class="{{ user.wow_class_en() }}" href="{{ url_for('.user', username=user.username) }}">
                             {% if user.avatar %}
                                 <img src="{{ user.avatar }}" width="32" height="32" class="img-rounded">
                             {% else %}
                                 <img src="{{ user.wow_avatar }}" width="32" height="32" class="img-rounded">
                             {% endif %}
-                            {{ user.username }}
+                            <span class="角色名">{{ user.username }}<br></span>
                         </a>
                     </td>
-                    <td class="row3">{{ user.wow_faction }}</td>
-                    <td class="row4">{{ user.wow_race }}</td>
-                    <td class="row5">{{ user.wow_class }}</td>
-                    <td class="row6">{{ user.email }}</td>
-                    <td class="row7">{{ user.role.name }}</td>
-                    <td class="row8"><i class="fa{% if user.confirmed %} fa-check{%else %} fa-close{% endif %}"></i></td>
-                    <td class="row9">{{ moment(user.member_since).format('L') }}</td>
-                    <td class="row10">{{ moment(user.last_seen).format('L') }}</td>
+                    <td class="row3 阵营">{{ user.wow_faction }}<br></td>
+                    <td class="row4 种族">{{ user.wow_race }}<br></td>
+                    <td class="row5 职业">{{ user.wow_class }}<br></td>
+                    <td class="row6"><a href="http://baike.baidu.com/item/{{ user.location }}" target="_blank">{{ user.location }}</a></td>
+                    <td class="row7"><a{% if user.followed.count() > 1 %} href="{{ url_for('.followed_by', username=user.username) }}"{% endif %}>{{ user.followed.count() - 1 }}</a></td>
+                    <td class="row8"><a{% if user.followers.count() > 1 %} href="{{ url_for('.followers', username=user.username) }}"{% endif %}>{{ user.followers.count() - 1 }}</a></td>
+                    <td class="row9">{{ user.role.name }}</td>
+                    <td class="row10"><i class="fa{% if user.confirmed %} fa-check{%else %} fa-close{% endif %}"></i></td>
+                    <td class="row11">{{ moment(user.member_since).format('L') }}</td>
+                    <td class="row12">{{ moment(user.last_seen).format('L') }}</td>
                 </tr>
             {% endfor %}
         </table>
@@ -76,13 +84,13 @@
         {{ macros.pagination_widget(pagination, '.users', sort=sort, accord=accord, keywords=keywords) }}
         <form method="post" class="form" role="form">
             {{ form_jump.hidden_tag() }}
-            <div class="form-group">{{ form_jump.page_num(class="page-num") }}{{ form_jump.submit(class="jump", disabled='disabled') }}</div>
+            <div class="form-group">{{ form_jump.page_num(class="page-num " + current_user.wow_faction_en()) }}{{ form_jump.submit(class="jump " + current_user.wow_faction_en(), disabled='disabled') }}</div>
         </form>
     {% endif %}
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
-    <script id="search" src="{{ url_for('static', filename='search.js') }}" arg="{{ accord }}"></script>
-    <script src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})"></script>
+    <script id="search" src="{{ url_for('static', filename='search.js') }}" arg="{{ accord }}" arg2="{{ keywords }}" arg3="{{ current_user.wow_faction_color() }}"></script>
+    <script id="jump" src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})" arg="{{ current_user.wow_faction_color() }}"></script>
 {% endblock %}

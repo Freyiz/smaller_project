@@ -2,111 +2,196 @@ body {
     background-image: url("wow/bg/FS9EDR75BL0H1473302337244.jpg");
     color: #ffffff;
 }
-.to-top {
+a {
+    cursor: pointer;
+    color: #c4c4c4;
+}
+a:hover,
+a:focus {
+    text-decoration: none;
+    outline: none;
+    color: #ffffff;
+}
+a.fa-heart.default {
+    cursor: default;
+}
+
+a.btn {
+    border: none;
+    color: #ffffff;
+}
+a.btn-info {
+    background-color: rgba(42, 171, 210, 0.7);
+}
+a.btn-warning {
+    background-color: rgba(235, 147, 22, 0.7);
+}
+a.btn:hover,
+a.btn:focus {
+    color: #ffffff;
+    outline: none;
+}
+a.text-toggle {
+    color: #ffffff;
+}
+a.text-toggle:hover {
+    color: #c4c4c4;
+}
+a.to-top {
     position:fixed;
     bottom:5%;
     right:4%;
     color: rgba(196, 196, 196, 0.5);
 }
-.to-top:hover {
+a.to-top:hover {
     color: rgb(196, 196, 196);
 }
-.hold {
-    height: 50px;
-}
-.alliance {
+a.alliance,
+span.alliance,
+.register.alliance a,
+.alliance a.active {
     color: #0078FF;
+    border-color: #0078FF;
 }
-.alliance:hover {
-    color: #005dc3;
+a.alliance:hover,
+a.alliance:focus,
+.alliance a:hover,
+.alliance a:focus {
+    color: rgba(0, 120, 255, 0.5);
 }
-.horde {
+a.horde,
+span.horde,
+.register.horde a,
+.horde a.active {
     color: #B30000;
 }
-.horde:hover {
-    color: #ef0000;
+a.horde:hover,
+a.horde:focus,
+.horde a:hover,
+.horde a:focus {
+    color: rgba(179, 0, 0, 0.5);
+}
+a.neutral,
+span.neutral,
+.third-login a,
+.login.neutral a,
+.register.neutral a,
+.neutral a.active {
+    color: #74ff41;
+}
+a.neutral:hover,
+a.neutral:focus,
+.third-login a:hover,
+.third-login a:focus,
+.neutral a:hover,
+.neutral a:focus {
+    color: rgba(116, 255, 65, 0.5);
 }
 #warrior span,
-.warrior {
+a.warrior {
     color: #C79C6E;
 }
 #paladin span,
-.paladin {
+a.paladin {
     color: #F58CBA;
 }
 #death-knight span,
-.death-knight {
+a.death-knight {
     color: #C41F3B;
 }
 #shaman span,
-.shaman {
+a.shaman {
     color: #0070DE;
 }
 #hunter span,
-.hunter {
+a.hunter {
     color: #ABD473;
 }
 #rogue span,
-.rogue {
+a.rogue {
     color: #FFF569;
 }
 #druid span,
-.druid {
+a.druid {
     color: #FF7D0A;
 }
 #monk span,
-.monk {
+a.monk {
     color: #00FF96;
 }
 #demon-hunter span,
-.demon-hunter {
+a.demon-hunter {
     color: #A330C9;
 }
 #mage span,
-.mage {
+a.mage {
     color: #69CCF0;
 }
 #warlock span,
-.warlock {
+a.warlock {
     color: #9482C9;
 }
 #priest span,
-.priest {
+a.priest {
     color: #FFFFFF;
 }
+a.warrior:hover,
+a.warrior:focus,
 #warrior a span:hover {
     color: rgba(199, 156, 110, 0.6);
 }
+a.paladin:hover,
+a.paladin:focus,
 #paladin a span:hover {
     color: rgba(245, 140, 186, 0.6);
 }
+a.death-knight:hover,
+a.death-knight:focus,
 #death-knight a span:hover {
     color: rgba(196, 31, 59, 0.6);
 }
+a.shaman:hover,
+a.shaman:focus,
 #shaman a span:hover {
     color: rgba(0, 112, 222, 0.6);
 }
+a.hunter:hover,
+a.hunter:focus,
 #hunter a span:hover {
     color: rgba(171, 212, 115, 0.6);
 }
+a.rogue:hover,
+a.rogue:focus,
 #rogue a span:hover {
     color: rgba(255, 245, 105, 0.6);
 }
+a.druid:hover,
+a.druid:focus,
 #druid a span:hover {
     color: rgba(255, 125, 10, 0.6);
 }
+a.monk:hover,
+a.monk:focus,
 #monk a span:hover {
     color: rgba(0, 255, 150, 0.6);
 }
+a.demon-hunter:hover,
+a.demon-hunter:focus,
 #demon-hunter a span:hover {
     color: rgba(163, 48, 201, 0.6);
 }
+a.mage:hover,
+a.mage:focus,
 #mage a span:hover {
     color: rgba(105, 204, 240, 0.6);
 }
+a.warlock:hover,
+a.warlock:focus,
 #warlock a span:hover {
     color: rgba(148, 130, 201, 0.6);
 }
+a.priest:hover,
+a.priest:focus,
 #priest a span:hover {
     color: rgba(255, 255, 255, 0.6);
 }
@@ -427,7 +512,6 @@ li.priest.active span {
     font-size: 30px;
     width: 100%;
     left: 0;
-    color: #c4c4c4;
 }
 .tab-pane .fa-ban {
     margin: 5px 0 0 -45px;
@@ -471,13 +555,22 @@ li.priest.active span {
     color: #ffffff;
 }
 .carousel-caption .form-control:hover {
-    outline: solid 1px #ffffff;
-    outline-offset: -1px;
+    border-color: #ffffff;
 }
-.carousel-caption .form-group img:hover,
-.carousel-caption .form-control:focus {
-    outline: solid 1px #006dd0;
-    outline-offset: -1px;
+.alliance.carousel-caption .form-group img:hover,
+.alliance.carousel-caption .form-control:focus {
+    border-color: #0078FF;
+    box-shadow: 0 0 10px 0 rgba(0, 120, 255, 0.5);
+}
+.horde.carousel-caption .form-group img:hover,
+.horde.carousel-caption .form-control:focus {
+    border-color: #B30000;
+    box-shadow: 0 0 10px 0 rgba(179, 0, 0, 0.5);
+}
+.neutral.carousel-caption .form-group img:hover,
+.neutral.carousel-caption .form-control:focus {
+    border-color: #74ff41;
+    box-shadow: 0 0 10px 0 rgba(116, 255, 65, 0.5);
 }
 .carousel-caption .help-block {
     text-align: left;
@@ -491,7 +584,7 @@ li.priest.active span {
     position: absolute; left: 0;
 }
 .carousel-caption .clause-text {
-    margin-top: -10px;
+    margin: -7px 0 0 -10px;
 }
 .carousel-caption .control-label {
     position: absolute;
@@ -521,7 +614,6 @@ li.priest.active span {
 }
 .wow-clause p {
     text-indent: 42px;
-    color: #e7e7e7;
     line-height: 50px;
 }
 
@@ -562,10 +654,10 @@ li.priest.active span {
     color: #ffffff;
 }
 .promote .choose {
-    color: #5bc2ff;
+    color: #FFD700;
 }
 .promote .choose:hover {
-    color: #006dd0;
+    color: rgba(255, 215, 0, 0.5);
 }
 .promote .choose.right {
     float: right;
@@ -768,26 +860,32 @@ li.priest.active span {
 }
 
 .home a {
-    color: #c4c4c4;
     float: right;
     margin-top: 30px;
+}
+.yellow a,
+.yellow div.active {
+    color: #FFD700;
+}
+.wow-tab a:hover,
+.wow-tab a:focus,
+.yellow a:hover,
+.yellow a:focus,
+.yellow div:hover,
+.yellow div:focus {
+    color: rgba(255, 215, 0, 0.5);
 }
 .wow-tab {
     margin: 50px 0 20px 0;
 }
 .wow-tab a {
     font-size: 20px;
-    color: #c4c4c4;
     margin: 0 10px;
     font-style: italic;
 }
 .wow-tab a.active {
     font-size: 40px;
     color: #FFD700 !important;
-}
-.wow-tab a:hover,
-.wow-tab a:focus {
-    color: rgba(255, 215, 0, 0.5);
 }
 #wow-movie {
     position: relative;
@@ -813,7 +911,6 @@ li.priest.active span {
     width: 100%;
     right: 0;
     margin-top: 19%;
-    color: #c4c4c4;
 }
 .youku embed {
     position: absolute;
@@ -826,22 +923,18 @@ li.priest.active span {
     height: 560px;
 }
 .movie-tab div {
+    color: #c4c4c4;
     width: 170px;
     font-style: italic;
-    color: #c4c4c4;
     font-size: 15px;
     margin-bottom: 11px;
     text-align: center;
 }
-.movie-tab div.active {
-    font-size: 20px;
-    color: #FFD700;
-}
+.movie-tab div.active,
 .movie-tab div:hover,
 .movie-tab div:focus {
     cursor: pointer;
     font-size: 20px;
-    color: rgba(255, 215, 0, 0.5);
 }
 .youku-toggle {
     width: 100%;
@@ -865,9 +958,7 @@ li.priest.active span {
     margin: 20px 0;
 }
 
-.jumbotron {
-    background-color: transparent;
-}
+
 .third-login {
     margin: 20px 0 0 10px;
     float: right;
@@ -882,12 +973,9 @@ li.priest.active span {
 .login h1 {
     margin: 0 0 20px;
 }
-.login .clause {
-    position: relative;
-}
-.login .clause-text {
-    margin: 0 0 0 5px;
+.login-clause {
     position: absolute;
+    margin: 4px 0 0 5px;
 }
 .login .right {
     float: right;
@@ -902,62 +990,29 @@ li.priest.active span {
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-    color: #fff;
+    color: #ffffff;
     background-color: transparent;
 }
-.posts a,
-.comments a {
-    color: #c4c4c4;
+.hold {
+    height: 50px;
 }
-a {
-    cursor: pointer;
-    color: #63a5cc;
-}
-a.fa-heart.default {
-    cursor: default;
-}
-a.text-toggle {
-    color: #ffffff;
-}
-a.btn {
-    border: none;
-    color: #ffffff;
-}
-a.btn-info {
-    background-color: rgba(42, 171, 210, 0.7);
-}
-a.btn-warning {
-    background-color: rgba(235, 147, 22, 0.7);
-}
-a.btn:hover,
-a.btn:focus {
-    color: #ffffff;
-    outline: none;
-}
-.posts a:hover,
-.posts a:focus,
-.comments a:hover,
-.comments a:focus,
-.to-class:hover,
-.to-class:focus,
-.home a:hover,
-.home a:focus {
-    color: #ffffff;
-}
-a:hover,
-a:focus {
-    text-decoration: none;
-    color: #0078FF;
-    outline: none;
-}
-a.text-toggle:hover {
-    color: #c4c4c4;
+.jumbotron {
+    background-color: transparent;
 }
 .str-inline {
     display: inline;
 }
-.rank {
+.twenty {
     font-size: 20px;
+}
+.forty {
+    font-size: 40px;
+}
+.sixty {
+    font-size: 60px;
+}
+.eighty {
+    font-size: 80px;
 }
 .lion {
     margin-top: -4%;
@@ -971,8 +1026,7 @@ a.text-toggle:hover {
     position: absolute;
 }
 .profile-header {
-    min-height: 100px;
-    margin-left: 120px;
+    margin: 30px 0 10px 120px;
 }
 div.post-tabs {
     margin-top: 16px;
@@ -1079,29 +1133,26 @@ div.flask-pagedown-preview h3 {
 .table thead tr:hover {
     background-color: transparent;
 }
-.table thead a:hover,
-.table thead a:focus,
 .table thead a.active {
     font-size: 20px;
 }
-.table .row1 {
-    width: 50px;
-}
-.table .row2 {
-    width: 150px;
-}
-.table .row6 {
-    width: 200px;
-}
-.table .row3,
-.table .row4,
-.table .row5,
-.table .row7,
-.table .row8,
-.table .row9,
-.table .row10 {
+.users-profile td {
     width: 100px;
 }
+td.row1 {
+    width: 50px;
+}
+td.row2 {
+    width: 180px;
+}
+td.row4,
+td.row5,
+td.row6,
+td.row11,
+td.row12 {
+    width: 120px;
+}
+
 .pagination > li > a {
     color: #c4c4c4;
     border: hidden;
@@ -1138,9 +1189,27 @@ div.flask-pagedown-preview h3 {
 }
 .page-num:focus,
 .jump:focus,
-.search:focus {
-    border-color: #006dd0;
+.search:focus,
+.keywords:focus {
     outline: none;
+}
+.page-num.alliance:focus,
+.jump.alliance:focus,
+.search.alliance:focus,
+.keywords.alliance:focus {
+    border-color: #0078FF;
+}
+.page-num.horde:focus,
+.jump.horde:focus,
+.search.horde:focus,
+.keywords.horde:focus {
+    border-color: #B30000;
+}
+.page-num.neutral:focus,
+.jump.neutral:focus,
+.search.neutral:focus,
+.keywords.neutral:focus {
+    border-color: #74ff41;
 }
 .jump,
 .search {
@@ -1148,11 +1217,23 @@ div.flask-pagedown-preview h3 {
     border: hidden;
     color: grey;
 }
-.jump.active:hover,
-.jump.active:focus,
-.search.active:hover,
-.search.active:focus {
+.jump.alliance.active:hover,
+.jump.alliance.active:focus,
+.search.alliance.active:hover,
+.search.alliance.active:focus {
     color: rgba(0, 109, 208, 0.5) !important;
+}
+.jump.horde.active:hover,
+.jump.horde.active:focus,
+.search.horde.active:hover,
+.search.horde.active:focus {
+    color: rgba(179, 0, 0, 0.5) !important;
+}
+.jump.neutral.active:hover,
+.jump.neutral.active:focus,
+.search.neutral.active:hover,
+.search.neutral.active:focus {
+    color: rgba(116, 255, 65, 0.5) !important;
 }
 .form.form-search {
     float: right;
@@ -1166,19 +1247,23 @@ div.flask-pagedown-preview h3 {
     width: 220px;
     margin-left: 0;
 }
-.keywords:focus {
-    border-color: #006dd0;
-    outline: none;
-    box-shadow: 0 0 10px 0 rgba(0, 109, 208, 0.5);
-}
+
 .accord-tab a {
     font-size: 15px;
     padding: 6px 15px 7px;
     border: 1px solid;
 }
-.accord-tab a.active {
-    border-color: #006dd0;
+.alliance .accord-tab a.active,
+.keywords.alliance:focus {
     box-shadow: 0 0 10px 0 rgba(0, 109, 208, 0.5);
+}
+.horde .accord-tab a.active,
+.keywords.horde:focus {
+    box-shadow: 0 0 10px 0 rgba(179, 0, 0, 0.5);
+}
+.neutral .accord-tab a.active,
+.keywords.neutral:focus {
+    box-shadow: 0 0 10px 0 rgba(0, 128, 0, 0.5);
 }
 .accord-tab a.left {
     border-bottom-left-radius: 20px;
@@ -1196,16 +1281,4 @@ div.flask-pagedown-preview h3 {
 .accord-tab a.right.active {
     border-left: 1px solid;
 }
-.blue > h1 > a {
-    font-size: 20px;
-}
-.blue a {
-    color: #c4c4c4;
-}
-.blue a.active {
-    color: #006dd0;
-}
-.blue a:hover,
-.blue a:focus {
-    color: rgba(0, 109, 208, 0.5);
-}
+

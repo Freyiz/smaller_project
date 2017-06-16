@@ -4,44 +4,44 @@
 {% block title %}追随与追随者{% endblock %}
 
 {% block page_content %}
-    <div class="jumbotron">
-        <a href="{{ url_for('.user', username=user.username) }}">
-            <h1 class="str-inline">{% if current_user == user %}你{% else %}{{ user.username }}{% endif %} </h1>
+    <div class="page-header container">
+        <a class="sixty {{ user.wow_faction_en() }}" href="{{ url_for('.user', username=user.username) }}">
+            {% if current_user == user %}你{% else %}{{ user.username }}{% endif %}
         </a>
-        <h2 class="str-inline">{{ title }}</h2><br><br>
-        <table class="table">
-            <thead><tr><th>用户</th><th>追随时间</th></tr></thead>
-            {% for follow in follows %}
-                {% if user != follow.user %}
-                    <tr>
-                        <td>
-                            <a style="color: {{ follow.user.class_color }}" href="{{ url_for('.user', username=follow.user.username) }}">
-                                {% if follow.user.avatar %}
-                                    <img src="{{ follow.user.avatar }}" width="32" height="32" class="img-rounded">
-                                {% else %}
-                                    <img src="{{ follow.user.wow_avatar }}" width="32" height="32" class="img-rounded">
-                                {% endif %}
-                                {{ follow.user.username }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ moment(follow.timestamp).format('L') }}
-                        </td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </table>
-        {% if pagination.pages > 1 %}
-            {{ macros.pagination_widget(pagination, endpoint, username=user.username) }}
-            <form method="post" class="form" role="form">
-                {{ form_jump.hidden_tag() }}
-                <div class="form-group">{{ form_jump.page_num(class="page-num") }}{{ form_jump.submit(class="jump", disabled='disabled') }}</div>
-            </form>
-        {% endif %}
+        <span class="forty">{{ title }}</span>
     </div>
+    <table class="table">
+        <thead><tr><th>用户</th><th>追随时间</th></tr></thead>
+        {% for follow in follows %}
+            {% if user != follow.user %}
+                <tr>
+                    <td>
+                        <a class="{{ follow.user.wow_class_en() }}" href="{{ url_for('.user', username=follow.user.username) }}">
+                            {% if follow.user.avatar %}
+                                <img src="{{ follow.user.avatar }}" width="32" height="32" class="img-rounded">
+                            {% else %}
+                                <img src="{{ follow.user.wow_avatar }}" width="32" height="32" class="img-rounded">
+                            {% endif %}
+                            {{ follow.user.username }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ moment(follow.timestamp).format('L') }}
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    {% if pagination.pages > 1 %}
+        {{ macros.pagination_widget(pagination, endpoint, username=user.username) }}
+        <form method="post" class="form" role="form">
+            {{ form_jump.hidden_tag() }}
+            <div class="form-group">{{ form_jump.page_num(class="page-num " + current_user.wow_faction_en()) }}{{ form_jump.submit(class="jump " + current_user.wow_faction_en(), disabled='disabled') }}</div>
+        </form>
+    {% endif %}
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
-    <script src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})"></script>
+    <script id="jump" src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})" arg="{{ current_user.wow_faction_color() }}"></script>
 {% endblock %}

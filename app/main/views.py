@@ -203,7 +203,7 @@ def delete_comment(id):
 
 @main.route('/users', methods=['GET', 'POST'])
 @login_required
-@admin_required
+@permission_required(Permission.MODERATE_COMMENTS)
 def users():
     # 获得 title 和 query
     title = '英雄榜'
@@ -242,6 +242,18 @@ def users():
         order = User.wow_class.asc()
     elif sort == 're_wow_class':
         order = User.wow_class.desc()
+    elif sort == 'location':
+        order = User.location.asc()
+    elif sort == 're_location':
+        order = User.location.desc()
+    elif sort == 'followed':
+        order = User.followed_count.asc()
+    elif sort == 're_followed':
+        order = User.followed_count.desc()
+    elif sort == 'followers':
+        order = User.followers_count.asc()
+    elif sort == 're_followers':
+        order = User.followers_count.desc()
     elif sort == 'role_id':
         order = User.role_id.asc()
     elif sort == 're_role_id':
@@ -284,6 +296,7 @@ def users():
 
 
 @main.route('/comments', methods=['GET', 'POST'])
+@login_required
 @permission_required(Permission.MODERATE_COMMENTS)
 def comments():
     # 获得 title 和 query
@@ -426,6 +439,7 @@ def show_accord():
 
 @main.route('/posts', methods=['GET', 'POST'])
 @login_required
+@permission_required(Permission.MODERATE_COMMENTS)
 def posts():
     # 获得 title 和 query
     title = '所有公告'

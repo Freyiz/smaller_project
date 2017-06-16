@@ -10,13 +10,15 @@
         $('.carousel-control').fadeOut();
         $('.carousel-control.left').fadeIn(1000);
         $('.register .wow_faction').val('联盟');
-        $('.form-group i').removeClass('horde').addClass('alliance');
+        $('.register').removeClass('neutral horde').addClass('alliance');
+        $('.register .carousel-caption').removeClass('neutral horde').addClass('alliance');
     });
     $('#join-horde').click(function () {
         $('.carousel-control').fadeOut();
         $('.carousel-control.right').fadeIn(1000);
         $('.register .wow_faction').val('部落');
-        $('.form-group i').removeClass('alliance').addClass('horde');
+        $('.register').removeClass('neutral alliance').addClass('horde');
+        $('.register .carousel-caption').removeClass('neutral alliance').addClass('horde');
     });
     $('.user-defined').click(function () {
         $('.to-class').hide();
@@ -37,11 +39,11 @@
         $('.choose.first').show();
         $('.choose.second').hide();
     });
-    $('.horde .carousel-caption-item a').click(function () {
+    $('.race-choose-horde .carousel-caption-item a').click(function () {
         $('.fa-reply').hide();
         $('.fa-reply.horde').show();
     });
-    $('.alliance .carousel-caption-item a').click(function () {
+    $('.race-choose-alliance .carousel-caption-item a').click(function () {
         $('.fa-reply').hide();
         $('.fa-reply.alliance').show();
     });

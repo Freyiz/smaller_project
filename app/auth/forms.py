@@ -25,8 +25,8 @@ class RegistrationForm(FlaskForm):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('邮箱已被注册。')
 
-    def validate_name(self, field):
-        if User.query.filter_by(username=field.data).first():
+    def validate_username(self, field):
+        if User.query.filter_by(username=field.data.title()).first():
             raise ValidationError('角色名已存在。')
 
 

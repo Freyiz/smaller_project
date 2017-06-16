@@ -10,12 +10,11 @@
         {% else %}
             <img src="{{ user.wow_avatar }}" width="100" height="100" class="img-rounded profile-thumbnail">
         {% endif %}
-        <h1 class="profile-header">
-            {% if user.name %}{{ user.name }} {% endif %}{{ user.username }}{% if user.is_following(current_user) and current_user != user %} <span class="rank">, 你的追随者</span>{% endif %}</h1>
+        <div class="profile-header sixty"><span class="{{ user.wow_faction_en() }}">{% if user.name %}{{ user.name }}{% endif %}&nbsp;{{ user.username }}</span>{% if user.is_following(current_user) and current_user != user %}&nbsp;<span class="twenty">, 你的追随者</span>{% endif %}</div>
         <p>
-            {{ user.wow_faction }} {{ user.wow_race }} {{ user.wow_class }}
+            {{ user.wow_faction }}&ensp;{{ user.wow_race }}&ensp;{{ user.wow_class }}&nbsp;
             {% if user.location %}
-                <a href="http://baike.baidu.com/item/{{ user.location }}" target="_blank">{{ user.location }}</a>
+                <a class="{{ user.wow_faction_en() }}" href="http://baike.baidu.com/item/{{ user.location }}" target="_blank">{{ user.location }}</a>
             {% endif %}
         </p>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
@@ -25,16 +24,16 @@
                     <span id="follow_icon"{% if current_user.is_following(user) %} hidden{% endif %}><i class="fa fa-heart"></i></span>
                     <span id="is_following">{% if current_user.is_following(user) %}取消追随{% else %}追随{% endif %}</span>
                 </a>
-            {% endif %}追随者
-            <a id="followers"{% if user.followers.count() > 1 %} href="{{ url_for('.followers', username=user.username) }}"{% endif %}>
-                {{ user.followers.count() - 1 }}
-            </a> 人 | 追随了
-            <a{% if user.followed.count() > 1 %} href="{{ url_for('.followed_by', username=user.username) }}"{% endif %}>
+            {% endif %} 追随了
+            <a{% if user.followed.count() > 1 %} class="{{ user.wow_faction_en() }}" href="{{ url_for('.followed_by', username=user.username) }}"{% endif %}>
                 {{ user.followed.count() - 1 }}
+            </a> 人 | 追随者
+            <a id="followers"{% if user.followers.count() > 1 %} class="{{ user.wow_faction_en() }}" href="{{ url_for('.followers', username=user.username) }}"{% endif %}>
+                {{ user.followers.count() - 1 }}
             </a> 人
         </p>
             {% if current_user.is_administrator() and user.email %}
-            <p><a href="{{ email_address }}" target="_blank">{{ user.email }}</a></p>
+            <p><a class="{{ user.wow_faction_en() }}" href="{{ email_address }}" target="_blank">{{ user.email }}</a></p>
         {% endif %}
         <p>出生于 {{ moment(user.member_since).format('L') }} | 上次在线 {{ moment(user.last_seen).fromNow() }}</p>
         <p>
@@ -48,13 +47,13 @@
         </p>
     </div>
     {% if posts %}
-        <h3>{{ user.username }}的公告</h3>
+        <h1>{{ user.username }}的公告</h1>
         {% include '_posts.html' %}
         {% if pagination.pages > 1 %}
             {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
             <form method="post" class="form" role="form">
                 {{ form_jump.hidden_tag() }}
-                <div class="form-group">{{ form_jump.page_num(class="page-num") }}{{ form_jump.submit(class="jump", disabled='disabled') }}</div>
+            <div class="form-group">{{ form_jump.page_num(class="page-num " + current_user.wow_faction_en()) }}{{ form_jump.submit(class="jump " + current_user.wow_faction_en(), disabled='disabled') }}</div>
             </form>
         {% endif %}
     {% endif %}
@@ -79,5 +78,5 @@
             });
         }
     </script>
-    <script src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})"></script>
+    <script id="jump" src="{{ url_for('static', filename='jump.js') }}" onload="jump({{ pages }})" arg="{{ current_user.wow_faction_color() }}"></script>
 {% endblock %}

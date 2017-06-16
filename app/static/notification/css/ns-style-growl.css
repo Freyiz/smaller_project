@@ -400,17 +400,30 @@
 	background: #1c2e2d;
 	box-shadow: 0 7px 6px rgba(0,0,0,0.2), 2px 4px 6px rgba(0,0,0,0.5);
 }
-
-.ns-effect-genie .ns-close::after,
-.ns-effect-genie .ns-close::before {
-	background: #0eada0;
+.ns-effect-genie .ns-close.alliance::after,
+.ns-effect-genie .ns-close.alliance::before {
+	background: #0078FF;
 }
-
-.ns-effect-genie .ns-close:hover::after,
-.ns-effect-genie .ns-close:hover::before {
-	background: #fff;
+.ns-effect-genie .ns-close.alliance:hover::after,
+.ns-effect-genie .ns-close.alliance:hover::before {
+	background: rgba(0, 120, 255, 0.5);
 }
-
+.ns-effect-genie .ns-close.horde::after,
+.ns-effect-genie .ns-close.horde::before {
+	background: #B30000;
+}
+.ns-effect-genie .ns-close.horde:hover::after,
+.ns-effect-genie .ns-close.horde:hover::before {
+	background: rgba(179, 0, 0, 0.5);
+}
+.ns-effect-genie .ns-close.neutral::after,
+.ns-effect-genie .ns-close.neutral::before {
+	background: #74ff41;
+}
+.ns-effect-genie .ns-close.neutral:hover::after,
+.ns-effect-genie .ns-close.neutral:hover::before {
+	background: rgba(116, 255, 65, 0.5);
+}
 .ns-effect-genie.ns-show,
 .ns-effect-genie.ns-hide {
 	-webkit-animation-name: animGenie;

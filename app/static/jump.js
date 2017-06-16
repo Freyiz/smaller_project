@@ -1,11 +1,12 @@
 /**
  * Created by freyiz on 17-6-11.
  */
-;function jump(arg) {
+;function jump(pages) {
+    var color = document.getElementById('jump').getAttribute('arg');
     $('.page-num').bind('input propertychange', function() {
         var val = $(this).val();
-        if ((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= arg) {
-            $('.jump').removeAttr('disabled').css('color', '#006dd0').addClass('active');
+        if ((/^(\+|-)?\d+$/.test(val)) && val > 0 && val <= pages) {
+            $('.jump').removeAttr('disabled').css('color', color).addClass('active');
         } else {
             $('.jump').attr('disabled', 'disabled').css('color', 'gray').removeClass('active');
         }
