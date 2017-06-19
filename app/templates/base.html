@@ -73,7 +73,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container my-body">
         {% for message in get_flashed_messages() %}
             <div class="alert alert-success">
                 <button class="close" data-dismiss="alert" >&times;</button>
@@ -83,6 +83,14 @@
         {% block page_content %}{% endblock %}
     </div>
     <a class="fa fa-arrow-circle-up fa-3x to-top"></a>
+    {% block footer %}
+        <div class="footer">
+            <div class="my-logo"><a href="{{ url_for('main.index') }}"><img src="../static/wow/logo/freyiz2.png" alt="" width="150"></a></div>
+            <div><a href="{{ url_for('main.license') }}" target="_blank">艾泽拉斯[2017]0308-527号</a>&ensp;丨&ensp;<a href="http://mail.qq.com" target="_blank">562124140@.com</a></div>
+            <div>艾泽拉斯不良行为举报处：联盟 暴风城旧城区军情七处丨部落 奥格瑞智慧谷格罗玛什堡垒丨中立 希尔斯布莱德丘陵拉文霍德城堡</div>
+            <div><a href="http://www.battlenet.com.cn/zh/" target="_blank">战网</a>&ensp;丨&ensp;<a href="https://www.wowchina.com/zh-cn/" target="_blank">魔兽世界中文官方网站</a>&ensp;丨&ensp;<a href="http://bbs.ngacn.cc/"  target="_blank">NGA</a></div>
+        </div>
+    {% endblock %}
 {% endblock %}
 
 {% block scripts %}

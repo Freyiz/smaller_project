@@ -46,7 +46,9 @@ def index():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    email_address = 'http://mail.%s' % current_user.email.rsplit('@')[-1]
+    email_address = '#'
+    if current_user.email:
+        email_address = 'http://mail.%s' % current_user.email.rsplit('@')[-1]
     page = request.args.get('page', 1, type=int)
     form_jump = JumpForm()
     if form_jump.validate_on_submit():
@@ -439,7 +441,6 @@ def show_accord():
 
 @main.route('/posts', methods=['GET', 'POST'])
 @login_required
-@permission_required(Permission.MODERATE_COMMENTS)
 def posts():
     # 获得 title 和 query
     title = '所有公告'
@@ -553,3 +554,8 @@ def server_shutdown():
 @main.route('/wow-memory')
 def wow_memory():
     return render_template("wow_memory.html")
+
+
+@main.route('/license')
+def license():
+    return render_template('license.html')

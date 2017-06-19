@@ -81,11 +81,13 @@
         </table>
     {% endif %}
     {% if pagination.pages > 1 %}
-        {{ macros.pagination_widget(pagination, '.users', sort=sort, accord=accord, keywords=keywords) }}
-        <form method="post" class="form" role="form">
-            {{ form_jump.hidden_tag() }}
-            <div class="form-group">{{ form_jump.page_num(class="page-num " + current_user.wow_faction_en()) }}{{ form_jump.submit(class="jump " + current_user.wow_faction_en(), disabled='disabled') }}</div>
-        </form>
+        <div class="my-pagination">
+            {{ macros.pagination_widget(pagination, '.users', sort=sort, accord=accord, keywords=keywords) }}
+            <form method="post" class="form" role="form">
+                {{ form_jump.hidden_tag() }}
+                <div class="form-group">{{ form_jump.page_num(class="page-num " + current_user.wow_faction_en()) }}{{ form_jump.submit(class="jump " + current_user.wow_faction_en(), disabled='disabled') }}</div>
+            </form>
+        </div>
     {% endif %}
 {% endblock %}
 

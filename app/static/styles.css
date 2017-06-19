@@ -2,6 +2,9 @@ body {
     background-image: url("wow/bg/FS9EDR75BL0H1473302337244.jpg");
     color: #ffffff;
 }
+.my-body {
+    min-height: 600px;
+}
 a {
     cursor: pointer;
     color: #c4c4c4;
@@ -619,6 +622,9 @@ li.priest.active span {
 
 .promote {
     position: relative;
+    width: 1150px;
+    height: 625px;
+    left: 100px;
 }
 .promote > div {
     width: 1150px;
@@ -1022,11 +1028,21 @@ li.priest.active span {
 .stormwind {
     overflow: hidden;
 }
+.user-profile {
+    position: relative;
+}
 .profile-thumbnail {
     position: absolute;
 }
 .profile-header {
     margin: 30px 0 10px 120px;
+}
+.user-faction {
+    z-index: -1;
+    position: absolute;
+    top: 20%;
+    right: 8%;
+    width: 25%;
 }
 div.post-tabs {
     margin-top: 16px;
@@ -1152,7 +1168,9 @@ td.row11,
 td.row12 {
     width: 120px;
 }
-
+.my-pagination {
+    margin: 20px 0 0 10px;
+}
 .pagination > li > a {
     color: #c4c4c4;
     border: hidden;
@@ -1281,4 +1299,25 @@ td.row12 {
 .accord-tab a.right.active {
     border-left: 1px solid;
 }
-
+.footer {
+    margin-top: 30px;
+    padding: 40px;
+    border-top: 2px solid #808080;
+    background: url("../static/wow/bg/night_repeat.png");
+}
+.footer div {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.footer div,
+.footer div a {
+    font-size: 12px;
+    color: #808080;
+}
+.footer div a:hover,
+.footer div a:focus {
+    color: #ffffff;
+}
+div.my-logo {
+    margin-bottom: 30px;
+}

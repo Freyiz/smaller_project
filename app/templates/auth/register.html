@@ -432,6 +432,8 @@
     <audio class="sound2" autoplay></audio>
 {% endblock %}
 
+{% block footer %}{% endblock %}
+
 {% block scripts %}
     {{ super() }}
     <script src="{{ url_for('static', filename='register.js') }}"></script>
