@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block navbar %}
-    <div hidden class="nav hold"></div>
+    <div hidden class="nav holder"></div>
     <div class="nav navbar-inverse" id="my_nav" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -109,10 +109,10 @@
                 var st2 = $(window).scrollTop();
                 if (st2 < st) {
                     $('#my_nav').addClass('navbar-fixed-top');
-                    $('.hold').show();
+                    $('.holder').show();
                 } else {
                     $('#my_nav').removeClass('navbar-fixed-top');
-                    $('.hold').hide();
+                    $('.holder').hide();
                 }
                 st = st2;
                 if( st2 > 500){

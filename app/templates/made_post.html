@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}公告{% endblock %}
+
+{% block content %}
+    <div class="carousel-caption made-post">
+        <h1>
+            {{ title }}
+            {% if user %}
+                <a class="{{ user.wow_faction_en() }}" href="{{ url_for('.user', username=user.username) }}">
+                    {{ user.username }}
+                </a>
+            {% endif %}
+        </h1>
+        <form method="post" class="form {{ current_user.wow_faction_en() }}" role="form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.body(class="form-control", required=True) }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="choose left", value='', disabled='disabled') }}
+                <i class="fa fa-check fa-2x"></i>
+                <a class="choose right"><i class="fa fa-close fa-2x active"></i></a>
+            </div>
+        </form>
+        <div class="abs-footer"></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ pagedown.include_pagedown() }}
+    <script type="text/javascript">
+        $(function () {
+            var faction = '{{ current_user.wow_faction_en() }}';
+            if (faction === 'alliance') {
+                $('body').css({'background':'url("../../static/wow/race/human_DCKLMIHOIKEA1472070163834.jpg")', 'background-size':'cover'});
+            } else if (faction === 'horde') {
+                $('body').css({'background':'url("../../static/wow/race/orc_F6NZ76C2G2RD1472070211038.jpg")', 'background-size':'cover'});
+            } else {
+                $('body').css({'background':'url("../../static/wow/race/pandaren_N7WMYKYS8IYY1472070228604.jpg")', 'background-size':'cover'});
+            }
+            $('.form-control').bind('input propertychange', function() {
+                var val = $(this).val();
+                if (/^\s*$/.test(val)) {
+                    $('.left').attr('disabled', 'disabled').removeClass('active');
+                    $('.fa-check').removeClass('active');
+                } else {
+                    $('.left').removeAttr('disabled').addClass('active');
+                    $('.fa-check').addClass('active');
+                }
+            });
+            $('.right').click(function () {
+                window.history.back();
+            });
+        })
+    </script>
+{% endblock %}

@@ -14,7 +14,7 @@
         <thead><tr><th>用户</th><th>追随时间</th></tr></thead>
         {% for follow in follows %}
             {% if user != follow.user %}
-                <tr>
+                <tr class="followed-follower {{ follow.user.wow_faction_en() }}">
                     <td>
                         <a class="{{ follow.user.wow_class_en() }}" href="{{ url_for('.user', username=follow.user.username) }}">
                             {% if follow.user.avatar %}

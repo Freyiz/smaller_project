@@ -1,6 +1,6 @@
 <ul class="comments">
     {% for comment in comments %}
-        <li id="{{ comment.id }}" class="comment">
+        <li id="{{ comment.id }}" class="comment {{ comment.author.wow_faction_en() }}">
             <div class="comment-thumbnail">
                 <a href="{{ url_for('.user', username=comment.author.username) }}">
                     {% if comment.author.avatar %}

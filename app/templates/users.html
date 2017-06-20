@@ -54,7 +54,7 @@
                 <a class="{% if sort == 're_last_seen' or sort == 'last_seen' %}active{% endif %}" href="{% if sort == 're_last_seen' %}{{ url_for('.users', sort='last_seen', accord=accord, keywords=keywords) }}{% else %}{{ url_for('.users', sort='re_last_seen', accord=accord, keywords=keywords) }}{% endif %}">上次在线</a>
             </th></tr></thead>
             {% for user in users %}
-                <tr class="users-profile">
+                <tr class="users-profile {{ user.wow_faction_en() }}">
                     <td class="row1">{{ user.id }}</td>
                     <td class="row2">
                         <a class="{{ user.wow_class_en() }}" href="{{ url_for('.user', username=user.username) }}">

@@ -4,7 +4,7 @@
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block page_content %}
-    <div class="jumbotron user-profile">
+    <div class="jumbotron">
         <img class="user-faction" {% if user.wow_faction == '联盟' %}src="../static/wow/logo/alliance.png"{% elif user.wow_faction == '部落' %}src="../static/wow/logo/horde.png"{% endif %}>
         {% if user.avatar %}
             <img id="avatar" src="{{ user.avatar }}" width="100" height="100" class="img-rounded profile-thumbnail">
@@ -18,7 +18,7 @@
                 <a class="{{ user.wow_faction_en() }}" href="http://baike.baidu.com/item/{{ user.location }}" target="_blank">{{ user.location }}</a>
             {% endif %}
         </p>
-        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+        {% if user.about_me %}<p class="user-about-me">{{ user.about_me }}</p>{% endif %}
         <p>
             {% if current_user.can(Permission.FOLLOW) and current_user != user %}
                 <a class="btn bg-primary" onclick="follow_toggle()">
@@ -48,7 +48,7 @@
         </p>
     </div>
     {% if posts %}
-        <h1>{{ user.username }}的公告</h1>
+        <h1 class="str-inline">{{ user.username }}&nbsp;的公告</h1>{% if user == current_user %}&ensp;&ensp;<a href="{{ url_for('main.made_post') }}" class="fa fa-plus fa-2x {{ user.wow_faction_en() }}"></a>{% endif %}
         {% include '_posts.html' %}
         {% if pagination.pages > 1 %}
             <div class="my-pagination">

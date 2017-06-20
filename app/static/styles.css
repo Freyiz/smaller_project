@@ -42,8 +42,8 @@ a.text-toggle:hover {
 }
 a.to-top {
     position:fixed;
-    bottom:5%;
-    right:4%;
+    bottom: 40px;
+    right: 50px;
     color: rgba(196, 196, 196, 0.5);
 }
 a.to-top:hover {
@@ -51,6 +51,7 @@ a.to-top:hover {
 }
 a.alliance,
 span.alliance,
+.right-top.alliance a,
 .register.alliance a,
 .alliance a.active {
     color: #0078FF;
@@ -58,25 +59,30 @@ span.alliance,
 }
 a.alliance:hover,
 a.alliance:focus,
-.alliance a:hover,
-.alliance a:focus {
+.right-top.alliance a:hover,
+.right-top.alliance a:focus,
+div.alliance a:hover,
+div.alliance a:focus {
     color: rgba(0, 120, 255, 0.5);
 }
 a.horde,
 span.horde,
+.right-top.horde a,
 .register.horde a,
 .horde a.active {
     color: #B30000;
 }
 a.horde:hover,
 a.horde:focus,
-.horde a:hover,
-.horde a:focus {
+.right-top.horde a:hover,
+.right-top.horde a:focus,
+div.horde a:hover,
+div.horde a:focus {
     color: rgba(179, 0, 0, 0.5);
 }
 a.neutral,
 span.neutral,
-.third-login a,
+.right-top.neutral a,
 .login.neutral a,
 .register.neutral a,
 .neutral a.active {
@@ -84,10 +90,10 @@ span.neutral,
 }
 a.neutral:hover,
 a.neutral:focus,
-.third-login a:hover,
-.third-login a:focus,
-.neutral a:hover,
-.neutral a:focus {
+.right-top.neutral a:hover,
+.right-top.neutral a:focus,
+div.neutral a:hover,
+div.neutral a:focus {
     color: rgba(116, 255, 65, 0.5);
 }
 #warrior span,
@@ -560,18 +566,18 @@ li.priest.active span {
 .carousel-caption .form-control:hover {
     border-color: #ffffff;
 }
-.alliance.carousel-caption .form-group img:hover,
-.alliance.carousel-caption .form-control:focus {
+.alliance .form-group img:hover,
+.alliance .form-control:focus {
     border-color: #0078FF;
     box-shadow: 0 0 10px 0 rgba(0, 120, 255, 0.5);
 }
-.horde.carousel-caption .form-group img:hover,
-.horde.carousel-caption .form-control:focus {
+.horde .form-group img:hover,
+.horde .form-control:focus {
     border-color: #B30000;
     box-shadow: 0 0 10px 0 rgba(179, 0, 0, 0.5);
 }
-.neutral.carousel-caption .form-group img:hover,
-.neutral.carousel-caption .form-control:focus {
+.neutral .form-group img:hover,
+.neutral .form-control:focus {
     border-color: #74ff41;
     box-shadow: 0 0 10px 0 rgba(116, 255, 65, 0.5);
 }
@@ -964,10 +970,12 @@ li.priest.active span {
     margin: 20px 0;
 }
 
-
-.third-login {
+.right-top {
     margin: 20px 0 0 10px;
     float: right;
+}
+.right-top.new-post {
+    margin-right: -50px;
 }
 .login {
     position: static;
@@ -986,6 +994,68 @@ li.priest.active span {
 .login .right {
     float: right;
 }
+.made-post {
+    margin-top: 50px;
+}
+.made-post h1 {
+    width: 45%;
+    left: 5%;
+    margin-bottom: 30px;
+}
+.made-post .form-group {
+    width: 45%;
+    left: 0;
+    text-align: left;
+}
+.made-post .form-control {
+    border-radius: 4px;
+    height: 300px;
+    border-color: #c4c4c4;
+}
+.made-post .choose {
+    background-color: transparent;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    height: 60px;
+    width: 70px;
+    position: absolute;
+}
+.made-post .fa-check {
+    color: #808080;
+}
+.made-post .alliance .active  {
+    color: #0087FF;
+}
+.made-post .alliance .active:hover,
+.made-post .alliance .right:hover {
+    border-color: rgba(0, 135, 255, 0.5);
+    box-shadow: 0 0 10px 0 rgba(0, 135, 255, 0.5);
+}
+.made-post .horde .active {
+    color: #B30000;
+}
+.made-post .horde .active:hover,
+.made-post .horde .right:hover {
+    border-color: rgba(179, 0, 0, 0.5);
+    box-shadow: 0 0 10px 0 rgba(179, 0, 0, 0.5);
+}
+.made-post .neutral .active {
+    color: #74ff41;
+}
+.made-post .neutral .active:hover,
+.made-post .neutral .right:hover {
+    border-color: rgba(116, 255, 65, 0.5);
+    box-shadow: 0 0 10px 0 rgba(116, 255, 65, 0.5);
+}
+.made-post .right {
+    right: 0;
+}
+.made-post .fa {
+    z-index: -1;
+    position: absolute;
+    left: 22px;
+    top: 15px;
+}
 .dropdown-menu {
     min-width: 72px;
     background-color: #222;
@@ -999,7 +1069,7 @@ li.priest.active span {
     color: #ffffff;
     background-color: transparent;
 }
-.hold {
+.holder {
     height: 50px;
 }
 .jumbotron {
@@ -1028,8 +1098,8 @@ li.priest.active span {
 .stormwind {
     overflow: hidden;
 }
-.user-profile {
-    position: relative;
+.user-about-me {
+    width: 65%;
 }
 .profile-thumbnail {
     position: absolute;
@@ -1040,9 +1110,9 @@ li.priest.active span {
 .user-faction {
     z-index: -1;
     position: absolute;
-    top: 20%;
-    right: 8%;
-    width: 25%;
+    top: 30%;
+    right: 15%;
+    width: 18%;
 }
 div.post-tabs {
     margin-top: 16px;
@@ -1057,11 +1127,30 @@ div.post-tabs ul.posts {
     border-top: none;
 }
 ul.posts li.post {
+    position: relative;
     padding: 8px;
+}
+ul.posts li.post:before {
+    top: 60px;
+    left: 13px;
+    position: absolute;
+    content:"";
+    width: 30px;
+    border-bottom: 5px dotted;
+}
+ul.posts li.post.alliance:before {
+    border-color: #0078FF;
+}
+ul.posts li.post.horde:before {
+    border-color: #B30000;
+}
+ul.posts li.post.neutral:before {
+    border-color: #74ff41;
 }
 ul.posts li.post:hover {
     background-color: rgba(77, 83, 82, 0.26);
 }
+
 div.post-date {
     float: right;
 }
@@ -1084,12 +1173,26 @@ ul.comments {
     margin: 16px 0 0 0;
 }
 ul.comments li.comment {
+    position: relative;
     margin-left: 32px;
     padding: 8px;
-
 }
-ul.comments li.comment:nth-child(1) {
-
+ul.comments li.comment:before {
+    top: 60px;
+    left: 13px;
+    position: absolute;
+    content:"";
+    width: 30px;
+    border-bottom: 5px dotted;
+}
+ul.comments li.comment.alliance:before {
+    border-color: #0078FF;
+}
+ul.comments li.comment.horde:before {
+    border-color: #B30000;
+}
+ul.comments li.comment.neutral:before {
+    border-color: #74ff41;
 }
 ul.comments li.comment:hover {
     background-color:  rgba(77, 83, 82, 0.26);
@@ -1140,8 +1243,32 @@ div.flask-pagedown-preview h3 {
     font-size: 120%;
 }
 .table tr {
-    margin: 100%;
+    position: relative;
     border: hidden;
+    margin-top: 50px;
+}
+.table tr.alliance:after,
+.table tr.horde:after,
+.table tr.neutral:after {
+    top: 8px;
+    left: -8px;
+    position: absolute;
+    height: 22px;
+    content:"";
+    border-left: 4px dotted;
+}
+.table tr.followed-follower:after {
+    top: 12px;
+    left: -10px;
+}
+.table tr.alliance:after {
+    border-color: #0078FF;
+}
+.table tr.horde:after {
+    border-color: #B30000;
+}
+.table tr.neutral:after {
+    border-color: #74ff41;
 }
 .table tr:hover {
     background-color:  rgba(77, 83, 82, 0.26);
@@ -1318,6 +1445,10 @@ td.row12 {
 .footer div a:focus {
     color: #ffffff;
 }
-div.my-logo {
+.footer div.my-logo {
     margin-bottom: 30px;
 }
+.abs-footer {
+    height: 100px;
+}
+

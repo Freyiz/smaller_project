@@ -1,6 +1,6 @@
 <ul class="posts">
     {% for post in posts %}
-        <li class="post">
+        <li class="post  {{ post.author.wow_faction_en() }}">
             <div class="post-thumbnail">
                 <a href="{{ url_for('.user', username=post.author.username) }}">
                     {% if post.author.avatar %}
@@ -35,9 +35,9 @@
                     </div>
                     <div class="post-footer">
                         {% if current_user == post.author %}
-                            <a href="{{ url_for('.edit_post', id=post.id) }}" class="btn btn-info btn-xs">编辑</a>
+                            <a href="{{ url_for('.made_post', id=post.id, user_id=post.author.id) }}" class="btn btn-info btn-xs">编辑</a>
                         {% elif current_user.is_administrator() %}
-                            <a href="{{ url_for('.edit_post', id=post.id) }}" class="btn btn-primary btn-xs">编辑-官员</a>
+                            <a href="{{ url_for('.made_post', id=post.id, user_id=post.author.id) }}" class="btn btn-primary btn-xs">编辑-官员</a>
                         {% endif %}
                     </div>
                 </div>

@@ -4,6 +4,7 @@
 {% block title %}公告{% endblock %}
 
 {% block page_content %}
+    <div class="right-top new-post {{ current_user.wow_faction_en() }}"><a href="{{ url_for('main.made_post') }}" class="fa fa-plus fa-2x"></a></div>
     <div class="page-header container twenty {{ current_user.wow_faction_en() }}">
         <h1>
             {{ title }}

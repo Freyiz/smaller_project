@@ -3,7 +3,7 @@ from flask import render_template, request, jsonify, redirect, \
 from .forms import PostForm, CommentForm, EditProfileForm, \
     EditProfileAdminForm, RecaptchaForm, DemotionForm, JumpForm, SearchForm
 from ..decorators import admin_required, permission_required
-from ..models import Post, Comment, User, Role, Permission
+from ..models import Post, Comment, User, Role, Permission, Follow
 from flask_login import login_required, current_user
 from flask_sqlalchemy import get_debug_queries
 from datetime import datetime
@@ -29,6 +29,7 @@ def index():
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
         post = Post(body=form.body.data, author=current_user._get_current_object())
         db.session.add(post)
+        flash('新公告已发布！')
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
     form_jump = JumpForm()
@@ -173,19 +174,32 @@ def collect_toggle():
     return jsonify(result=post.collects)
 
 
-@main.route('/edit-post/<int:id>', methods=['GET', 'POST'])
+@main.route('/made-post', methods=['GET', 'POST'])
 @login_required
-def edit_post(id):
-    post = Post.query.get_or_404(id)
-    if current_user != post.author and not current_user.is_administrator():
-        abort(403)
+def made_post():
+    id = request.args.get('id', 0, type=int)
+    user_id = request.args.get('user_id', 0, type=int)
+    user = User.query.get(user_id)
     form = PostForm()
-    if form.validate_on_submit():
-        post.body = form.body.data
-        db.session.add(post)
-        return redirect(url_for('.post', id=post.id))
-    form.body.data = post.body
-    return render_template('edit_post.html', form=form)
+    title = '变更公告：'
+    if id:
+        post = Post.query.get_or_404(id)
+        if current_user != post.author and not current_user.is_administrator():
+            abort(403)
+        if form.validate_on_submit():
+            post.body = form.body.data
+            db.session.add(post)
+            flash('公告已更改！')
+            return redirect(url_for('.post', id=post.id))
+        form.body.data = post.body
+    else:
+        title = '新公告'
+        if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
+            post = Post(body=form.body.data, author=current_user._get_current_object())
+            db.session.add(post)
+            flash('新公告已发布！')
+            return redirect(url_for('.index'))
+    return render_template('made_post.html', form=form, title=title, user=user)
 
 
 @main.route('/edit-comment/<int:id>')
@@ -380,7 +394,7 @@ def followers(username):
     if form_jump.validate_on_submit():
         page = form_jump.page_num.data
         return redirect(url_for('.followers', page=page, username=username))
-    pagination = user.followers.paginate(
+    pagination = user.followers.order_by(Follow.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_FOLLOWERS_PER_PAGE'],
         error_out=False)
     follows = [{'user': item.follower, 'timestamp': item.timestamp}
@@ -398,7 +412,7 @@ def followed_by(username):
     if form_jump.validate_on_submit():
         page = form_jump.page_num.data
         return redirect(url_for('.followed_by', page=page, username=username))
-    pagination = user.followed.paginate(
+    pagination = user.followed.order_by(Follow.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_FOLLOWERS_PER_PAGE'],
         error_out=False)
     follows = [{'user': item.followed, 'timestamp': item.timestamp}
