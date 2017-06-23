@@ -8,10 +8,6 @@ function fadeout_in(x) {
     $('.promote > div > div').fadeOut();
     $(x).fadeIn(1000);
 }
-function hide_in(x) {
-    $('.promote > div > div').hide();
-    $(x).fadeIn(1000);
-}
 function to_black() {
     $('.promote > div').fadeOut(2000);
     $('.black-screen').fadeIn();

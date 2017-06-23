@@ -8,7 +8,7 @@ from flask import current_app
 
 
 class PostForm(FlaskForm):
-    body = PageDownField('随便写写', validators=[DataRequired()])
+    body = PageDownField('公告牌', validators=[DataRequired()])
     submit = SubmitField('提交')
 
 

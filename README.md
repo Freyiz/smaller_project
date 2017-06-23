@@ -145,8 +145,13 @@
 2017_06_19 (3b)
 * 增加网站 footer。
 
-2017_06_19 (3b)
+2017_06_20 (3b)
 * 修改文章表格 css。
+
+2017_06_22 (3b)
+* JS 中数组的拷贝有深浅之分，浅拷贝使用 = 即可，实际为一个对象，深拷贝使用 arrayObj.slice(start, [end]) 或 arrayObject.concat(arrayX,arrayX,......,arrayX)，实际为两个对象。
+* 阻止二次点击事件： var t = 0; if (t === 1) { return false; } else { t = 1 }。
+
 
 学习编程的个人经验
 * google 是个好工具。

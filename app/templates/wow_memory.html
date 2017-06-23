@@ -13,10 +13,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container wow">
+    <div class="container">
         <div class="home"><a class="fa fa-home fa-2x" href="{{ url_for('.index') }}"></a></div>
         <div class="wow-tab"><a href="#wow-movie" class="active" data-toggle="tab">动画</a><a href="#wow-music" data-toggle="tab">音乐</a></div>
-        <div class="tab-content wow">
+        <div class="tab-content">
             <div class="tab-pane active" id="wow-movie">
                 <video id="wow-video" src="http://wow-movie.herokuapp.com/static/WOW_Intro.m4v" controls></video>
                 <div class="wow-control"><img src="../static/wow/logo/world_of_warcraft.png"><a class="fa fa-play fa-3x"></a></div>

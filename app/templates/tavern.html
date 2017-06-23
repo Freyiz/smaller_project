@@ -1,0 +1,216 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}酒馆{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font_awesome/css/font-awesome.min.css') }}">
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font_awesome/css/font-awesome-ie7.min.css') }}">
+    <![endif]-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='wow/logo/wow-inverse.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="home"><a class="fa fa-home fa-2x" href="{{ url_for('.index') }}"></a></div>
+        <div class="tavern">
+            <h1>艾泽拉斯酒馆
+                <span hidden class="title1">：人类&ensp;<a class="alliance"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title2">：矮人&ensp;<a class="alliance"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title3">：暗夜精灵&ensp;<a class="alliance"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title4">：联盟&ensp;<a class="alliance"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title5">：海盗&ensp;<a class="neutral"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title6">：部落&ensp;<a class="horde"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title7">：兽人&ensp;<a class="horde"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title8">：亡灵&ensp;<a class="horde"><i class="fa fa-close"></i></a></span>
+                <span hidden class="title9">：牛头人&ensp;<a class="horde"><i class="fa fa-close"></i></a></span>
+            </h1>
+            <span class="alliance">
+                <img hidden class="img1" src="../static/wow/race/human_RD64MPEJDDP21472070159249.jpg" alt="">
+                <img hidden class="img2" src="../static/wow/race/human_DCKLMIHOIKEA1472070163834.jpg" alt="">
+                <img hidden class="img3" src="../static/wow/race/human_HZJQRG4GRHFU1472070161324.jpg" alt="">
+                <img hidden class="img4" src="../static/wow/race/human_IAUOR6ZP2ANX1472070176577.jpg" alt="">
+                <img hidden class="img5" src="../static/wow/race/human_NCKVJ8TOQH091472070164629.jpg" alt="">
+            </span>
+            <div class="alliance human"><a><img src="../static/wow/race/human_RD64MPEJDDP21472070159249.jpg" alt=""></a>人类</div>
+            <div class="alliance dwarf"><a><img src="../static/wow/race/dwarf_8RKF67GCUCGN1472070116606.jpg" alt=""></a>矮人</div>
+            <div class="alliance night-elf"><a><img src="../static/wow/race/night-elf_W3YTIMNXLGEV1472070189489.jpg" alt=""></a>暗夜精灵</div>
+            <div class="alliance origin"><a><img src="../static/wow/hero/瓦里安.jpg" alt=""></a>联盟</div>
+            <div class="neutral pirate"><a><img src="../static/wow/pirate.jpg" alt=""></a>海盗</div>
+            <div class="horde origin"><a><img src="../static/wow/hero/萨尔.jpg" alt=""></a>部落</div>
+            <div class="horde orc"><a><img src="../static/wow/race/orc_M26AY5H3WB9O1472070206259.jpg" alt=""></a>兽人</div>
+            <div class="horde undead"><a><img src="../static/wow/race/undead_XQN2FXU0S9JX1472070275983.jpg" alt=""></a>亡灵</div>
+            <div class="horde tauren"><a><img src="../static/wow/race/tauren_OWKJSB3FNVTT1472070257917.jpg" alt=""></a>牛头人</div>
+        </div>
+        <div class="wow-footer"></div>
+    </div>
+    <audio class="sound" autoplay></audio>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        var t = 0,t1,t2,t3,t4,t5,t6;
+        function fadeout_in(x) {
+            $('.tavern > span img').fadeOut(2000);
+            $(x).fadeIn(4000);
+        }
+        function loop(total, sounds) {
+            var num = Math.floor(Math.random()*total);
+            var total2 = total, sounds2 = sounds.slice(0);
+            $('.sound').attr('src', sounds[num]).bind('ended', function () {
+                total2 -= 1;
+                sounds2.splice($.inArray(sounds2[num],sounds2),1);
+                if (total2 === 0 ) {
+                    total2 = total;
+                    sounds2 = sounds.slice(0);
+                }
+                num = Math.floor(Math.random()*total2);
+                $('.sound').attr('src', sounds2[num]);
+            });
+        }
+        function human() {
+            t1 = setTimeout("fadeout_in('.img2')", 5000);
+            t2 = setTimeout("fadeout_in('.img3')", 10000);
+            t3 = setTimeout("fadeout_in('.img4')", 15000);
+            t4 = setTimeout("fadeout_in('.img5')", 20000);
+            t5 = setTimeout("fadeout_in('.img1')", 25000);
+            t6 = setTimeout("human()", 25000);
+        }
+        $(function () {
+            $('body').css({'background':'url("../../static/wow/bg/night_repeat.png")', 'background-size':'cover'});
+            $('.tavern h1 a').click(function () {
+                t = 0;
+                clearTimeout(t1);
+                clearTimeout(t2);
+                clearTimeout(t3);
+                clearTimeout(t4);
+                clearTimeout(t5);
+                clearTimeout(t6);
+                $('h1 span').fadeOut();
+                $('.sound').attr('src', '');
+                $('.tavern > span img').stop().fadeOut();
+                $('.tavern div').fadeIn();
+            });
+            $('.tavern div a').click(function () {
+                $('.tavern div').fadeOut();
+            });
+            $('.alliance.human a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title1').fadeIn(1000);
+                human();
+                loop(6, [
+                    '../../static/wow/sound/tavern/TavernHuman/RA_HumanTavern1A.mp3',
+                    '../../static/wow/sound/tavern/TavernHuman/RA_HumanTavern2A.mp3',
+                    '../../static/wow/sound/tavern/TavernHuman/RA_HumanTavern2B.mp3',
+                    '../../static/wow/sound/tavern/TavernHuman/RA_Tavern1_RevisitedA.mp3',
+                    '../../static/wow/sound/tavern/TavernHuman/RA_Tavern1_RevisitedB.mp3',
+                    '../../static/wow/sound/tavern/TavernHuman/RA_HumanTavern1B.mp3'
+                ]);
+            });
+            $('.alliance.dwarf a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title2').fadeIn(1000);
+                human();
+                loop(5, [
+                    '../../static/wow/sound/tavern/TavernDwarf/RA_DwarfTavern1A.mp3',
+                    '../../static/wow/sound/tavern/TavernDwarf/RA_DwarfTavern1B.mp3',
+                    '../../static/wow/sound/tavern/TavernDwarf/RA_DwarfTavern2A.mp3',
+                    '../../static/wow/sound/tavern/TavernDwarf/RA_DwarfTavern2B.mp3',
+                    '../../static/wow/sound/tavern/TavernDwarf/RA_DwarfTavern3.mp3'
+                ]);
+            });
+            $('.alliance.night-elf a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title3').fadeIn(1000);
+                human();
+                loop(2, [
+                    '../../static/wow/sound/tavern/TavernNightElf/RA_TempleOfTheMoonA.mp3',
+                    '../../static/wow/sound/tavern/TavernNightElf/RA_TempleOfTheMoonB.mp3'
+                ]);
+            });
+            $('.alliance.origin a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title4').fadeIn(1000);
+                human();
+                loop(2, [
+                    '../../static/wow/sound/tavern/TavernAlliance/TavernAlliance01.mp3',
+                    '../../static/wow/sound/tavern/TavernAlliance/TavernAlliance02.mp3'
+                ]);
+            });
+            $('.pirate a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title5').fadeIn(1000);
+                human();
+                loop(6, [
+                    '../../static/wow/sound/tavern/TavernPirate/RA_PirateTavern1A.mp3',
+                    '../../static/wow/sound/tavern/TavernPirate/RA_PirateTavern1B.mp3',
+                    '../../static/wow/sound/tavern/TavernPirate/RA_PirateTavern2A.mp3',
+                    '../../static/wow/sound/tavern/TavernPirate/RA_PirateTavern2B.mp3',
+                    '../../static/wow/sound/tavern/TavernPirate/RA_PirateTavern3A.mp3',
+                    '../../static/wow/sound/tavern/TavernPirate/RA_PirateTavern3B.mp3'
+                ]);
+            });
+            $('.horde.origin a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title6').fadeIn(1000);
+                human();
+                loop(4, [
+                    '../../static/wow/sound/tavern/TavernHorde/TavernHorde01.mp3',
+                    '../../static/wow/sound/tavern/TavernHorde/TavernHorde02.mp3',
+                    '../../static/wow/sound/tavern/TavernHorde/TavernHorde03.mp3',
+                    '../../static/wow/sound/tavern/TavernHorde/undead_dance.mp3'
+                ]);
+            });
+            $('.horde.orc a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title7').fadeIn(1000);
+                human();
+                loop(6, [
+                    '../../static/wow/sound/tavern/TavernOrc/RA_OrcRestArea1A.mp3',
+                    '../../static/wow/sound/tavern/TavernOrc/RA_OrcRestArea1B.mp3',
+                    '../../static/wow/sound/tavern/TavernOrc/RA_OrcRestArea2A.mp3',
+                    '../../static/wow/sound/tavern/TavernOrc/RA_OrcRestArea2B.mp3',
+                    '../../static/wow/sound/tavern/TavernOrc/RA_OrcRestArea3A.mp3',
+                    '../../static/wow/sound/tavern/TavernOrc/RA_OrcRestArea3B.mp3'
+                ]);
+            });
+            $('.horde.undead a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title8').fadeIn(1000);
+                human();
+                loop(5, [
+                    '../../static/wow/sound/tavern/TavernUndead/RA_UndeadTavern1A.mp3',
+                    '../../static/wow/sound/tavern/TavernUndead/RA_UndeadTavern1B.mp3',
+                    '../../static/wow/sound/tavern/TavernUndead/RA_UndeadTavern2.mp3',
+                    '../../static/wow/sound/tavern/TavernUndead/RA_UndeadTavern3A.mp3',
+                    '../../static/wow/sound/tavern/TavernUndead/RA_UndeadTavern3B.mp3'
+                ]);
+            });
+            $('.horde.tauren a').click(function () {
+                if (t === 1) { return false; } else { t = 1 }
+                setTimeout("fadeout_in('.img1')", 500);
+                $('.title9').fadeIn(1000);
+                human();
+                loop(6, [
+                    '../../static/wow/sound/tavern/TavernTauren/RA_TaurenRestArea1A.mp3',
+                    '../../static/wow/sound/tavern/TavernTauren/RA_TaurenRestArea1B.mp3',
+                    '../../static/wow/sound/tavern/TavernTauren/RA_TaurenRestArea2A.mp3',
+                    '../../static/wow/sound/tavern/TavernTauren/RA_TaurenRestArea2B.mp3',
+                    '../../static/wow/sound/tavern/TavernTauren/RA_TaurenRestArea3A.mp3',
+                    '../../static/wow/sound/tavern/TavernTauren/RA_TaurenRestArea3B.mp3'
+                ]);
+            });
+        })
+    </script>
+{% endblock %}

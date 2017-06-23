@@ -570,6 +570,11 @@ def wow_memory():
     return render_template("wow_memory.html")
 
 
+@main.route('/tavern')
+def tavern():
+    return render_template("tavern.html")
+
+
 @main.route('/license')
 def license():
     return render_template('license.html')

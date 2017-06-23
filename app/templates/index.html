@@ -5,9 +5,8 @@
 {% block title %}艾泽拉斯{% endblock %}
 
 {% block page_content %}
-    <div class="jumbotron stormwind">
-        <img class="img-rounded lion" src="{{ url_for('static', filename='wow/hotel_shanjinzhen.jpg') }}">
-        <h1>欢迎来到暴风城!</h1>
+    <div class="jumbotron">
+        <h1>欢迎来到艾泽拉斯!</h1>
         <p>{% if current_user.is_authenticated %}{{ current_user.username }}{% else %}旅行者{% endif %}，在狮王之傲旅店放松放松吧！</p>
     </div>
     {% if current_user.can(Permission.WRITE_ARTICLES) and current_user.confirmed%}

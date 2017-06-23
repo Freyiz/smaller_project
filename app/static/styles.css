@@ -18,7 +18,6 @@ a:focus {
 a.fa-heart.default {
     cursor: default;
 }
-
 a.btn {
     border: none;
     color: #ffffff;
@@ -967,9 +966,54 @@ li.priest.active span {
     box-shadow: 0 0 10px 5px rgba(255, 125, 10, 0.5);
 }
 .wow-footer {
-    margin: 20px 0;
+    clear: both;
+    height: 30px;
 }
-
+.tavern {
+    position: relative;
+    margin-top: 70px;
+    height: 800px;
+}
+.tavern h1 {
+    margin-bottom: 30px;
+}
+.tavern span img {
+    position: absolute;
+    width: 1140px;
+    left: 0;
+    border-radius: 4px;
+}
+.tavern div {
+    font-size: 20px;
+    text-align: center;
+    margin: 0 29px 20px 30px;
+    width: 320px;
+    float: left;
+}
+.tavern div img {
+    margin-bottom: 5px;
+    width: 320px;
+    height: 180px;
+    border-radius: 4px;
+}
+.tavern .alliance img {
+    box-shadow: 0 0 5px 2px rgba(0, 120, 255, 0.5);
+}
+.tavern div.alliance img:hover {
+    box-shadow: 0 0 10px 3px #0078FF;
+}
+.tavern .horde img {
+    box-shadow: 0 0 5px 2px rgba(179, 0, 0, 0.5);
+}
+.tavern div.horde img:hover {
+    box-shadow: 0 0 10px 3px #B30000;
+}
+.tavern .neutral img {
+    box-shadow: 0 0 5px 2px rgba(116, 255, 65, 0.5);
+}
+.tavern div.neutral img:hover {
+    box-shadow: 0 0 10px 3px #74ff41;
+}
 .right-top {
     margin: 20px 0 0 10px;
     float: right;
@@ -1000,6 +1044,7 @@ li.priest.active span {
 .made-post h1 {
     width: 45%;
     left: 5%;
+    color: #ededed;
     margin-bottom: 30px;
 }
 .made-post .form-group {
@@ -1089,14 +1134,6 @@ li.priest.active span {
 }
 .eighty {
     font-size: 80px;
-}
-.lion {
-    margin-top: -4%;
-    padding-bottom: 2%;
-    float: right;
-}
-.stormwind {
-    overflow: hidden;
 }
 .user-about-me {
     width: 65%;
